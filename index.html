@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <!-- Main Navigation Bar -->
+    <nav class="main-navbar">
+      <div class="navbar-logo gradient-text">
+        <a href="index.html">Neo Gonzales</a>
+      </div>
+      <div class="navbar-subtitle gradient-text">Web & Mobile Developer</div>
+      <div class="navbar-links">
+        <a href="#hero_bookmark" class="active gradient-text">Home</a>
+        <a href="#about_bookmark" class="gradient-text">About</a>
+        <a href="#projects_bookmark" class="gradient-text">Projects</a>
+        <a href="https://neos26.github.io/IFAW/" class="gradient-text">Group</a>
+        <a href="#contact_bookmark" class="gradient-text">Contact</a>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero" id="hero_bookmark">
+      <img src="portfolio_images/hero_grid.jpg" alt="Profile Picture" class="profile-pic">
+      <div class="hero-text">
+        <h1>Neo Gonzales</h1>
+        <div class="tagline">Turning ideas into interactive realities.</div>
+        <button class="hero-btn" onclick="location.href='#projects_bookmark'">View My Work</button>
+      </div>
+    </div>
+
+    <!-- About Section -->
+    <div id="about_bookmark"></div>
+    <h1 class="about_title">Biography</h1>
+    <div class="about about-flex">
+      <div class="about-img">
+        <img src="portfolio_images/neo_image.png" alt="About Image">
+      </div>
+      <div class="about-text">
+        <p>HELLO! I'm Neo an IT student at NU–Clark, majoring in Web and Mobile Development. I enjoy building responsive, user-friendly websites and mobile apps. Lately, I’ve been exploring Flutter, React, and Firebase to level up my skills and create better digital experiences.</p>
+      </div>
+    </div>
+
+    <!-- Education Section -->
+    <div id="education_bookmark"></div>
+    <h2 class="education-title">Education</h2>
+    <h2 class="education-tagline">
+      More than a milestone — it’s where <span class="highlight">curiosity</span> <br> meets <span class="highlight">discipline</span> to shape future <span class="highlight">possibilities</span>.
+    </h2>
+    <section class="education-timeline-section">
+      <div class="education-timeline">
+        <div class="education-event glass_panel_edu">
+          <div class="education-dot"></div>
+          <div class="education-content">
+            <h3>Senior High School Diploma</h3>
+            <span class="education-date">2021 – 2023</span>
+            <p>Angeles City Science High School</p>
+          </div>
+        </div>
+        <div class="education-event glass_panel_edu">
+          <div class="education-dot"></div>
+          <div class="education-content">
+            <h3>Bachelor of Science in Information Technology</h3>
+            <span class="education-date">2023 – present</span>
+            <p>National University - Clark, Major in Web and Mobile Development</p>
+          </div>
+        </div>
+      </div>
+      <img src="portfolio_images/blue_grid3.png" alt="Education Timeline Background" class="education_bg">
+    </section>
+
+    <!-- Skills Section -->
+    <div id="skills_bookmark"></div>
+    <section class="skills-carousel-section">
+      <h1 class="skills-title">Skills Snapshot</h1>
+      <h2 class="skill-tagline">
+        Skills aren’t just listed — they’re <span class="highlight">lived</span>, <span class="highlight">refined</span>,<br> and <span class="highlight">ready</span> for the next <span class="highlight">challenge</span>.
+      </h2>
+      <h2 class="skill_subtitle">LANGUAGES</h2>
+      <div class="skills-carousel-container">
+        <div class="skills-carousel-track" id="skills-carousel">
+          <!-- Each skill card below -->
+          <div class="skills-carousel-item glass_panel">
+            <div class="skills-icon"></div>
+            <h3>HTML</h3>
+            <p>I build responsive web pages using HTML5.</p>
+          </div>
+          <div class="skills-carousel-item glass_panel">
+            <div class="skills-icon"></div>
+            <h3>JAVA</h3>
+            <p>I develop robust backend systems and applications using Java.</p>
+          </div>
+          <div class="skills-carousel-item glass_panel">
+            <div class="skills-icon"></div>
+            <h3>JAVASCRIPT</h3>
+            <p>I create interactive web applications using JavaScript frameworks.</p>
+          </div>
+          <div class="skills-carousel-item glass_panel">
+            <div class="skills-icon"></div>
+            <h3>CSS</h3>
+            <p>I style web pages using CSS3 and create responsive designs.</p>
+          </div>
+          <div class="skills-carousel-item glass_panel">
+            <div class="skills-icon"></div>
+            <h3>C++</h3>
+            <p>I create efficient algorithms and data structures using C++.</p>
+          </div>
+          <!-- Duplicate items for seamless loop -->
+          <div class="skills-carousel-item glass_panel">
+            <div class="skills-icon"></div>
+            <h3>HTML</h3>
+            <p>I build responsive web pages using HTML5.</p>
+          </div>
+          <div class="skills-carousel-item glass_panel">
+            <div class="skills-icon"></div>
+            <h3>JAVA</h3>
+            <p>I develop robust backend systems and applications using Java.</p>
+          </div>
+          <div class="skills-carousel-item glass_panel">
+            <div class="skills-icon"></div>
+            <h3>JAVASCRIPT</h3>
+            <p>I create interactive web applications using JavaScript frameworks.</p>
+          </div>
+          <div class="skills-carousel-item glass_panel">
+            <div class="skills-icon"></div>
+            <h3>CSS</h3>
+            <p>I style web pages using CSS3 and create responsive designs.</p>
+          </div>
+          <div class="skills-carousel-item glass_panel">
+            <div class="skills-icon"></div>
+            <h3>C++</h3>
+            <p>I create efficient algorithms and data structures using C++.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="skills-carousel-section">
+      <h2 class="skill_subtitle">TOOLS</h2>
+      <div class="skills-carousel-container">
+        <div class="skills-carousel-track" id="skills-carousel-rev">
+          <div class="skills-carousel-item glass_panel">
+            <div class="skills-icon"></div>
+            <h3>Github</h3>
+            <p>I host my projects on GitHub for collaboration, backup, and showcasing my work.</p>
+          </div>
+          <div class="skills-carousel-item glass_panel">
+            <div class="skills-icon"></div>
+            <h3>Firebase</h3>
+            <p>I use Firebase for building real-time applications and managing user authentication.</p>
+          </div>
+          <div class="skills-carousel-item glass_panel">
+            <div class="skills-icon"></div>
+            <h3>VScode</h3>
+            <p>My main code editor for writing and testing both web and Flutter apps.</p>
+          </div>
+          <div class="skills-carousel-item glass_panel">
+            <div class="skills-icon"></div>
+            <h3>Android Studio</h3>
+            <p>I use Android Studio to build, test, and run my Flutter and native Android apps.</p>
+          </div>
+          <!-- Duplicate items for seamless loop -->
+          <div class="skills-carousel-item glass_panel">
+            <div class="skills-icon"></div>
+            <h3>Github</h3>
+            <p>I host my projects on GitHub for collaboration, backup, and showcasing my work.</p>
+          </div>
+          <div class="skills-carousel-item glass_panel">
+            <div class="skills-icon"></div>
+            <h3>Firebase</h3>
+            <p>I use Firebase for building real-time applications and managing user authentication.</p>
+          </div>
+          <div class="skills-carousel-item glass_panel">
+            <div class="skills-icon"></div>
+            <h3>VScode</h3>
+            <p>My main code editor for writing and testing both web and Flutter apps.</p>
+          </div>
+          <div class="skills-carousel-item glass_panel">
+            <div class="skills-icon"></div>
+            <h3>Android Studio</h3>
+            <p>I use Android Studio to build, test, and run my Flutter and native Android apps.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Awards Section -->
+    <h1 class="awards_title">Awards & Recognition</h1>
+    <section class="awards-section">
+      <div class="awards-header">
+        <h2 class="awards-tagline">
+          It’s not just about winning. It’s about <span class="highlight">impact</span> and <span class="highlight">growth</span> that inspires others.
+        </h2>
+      </div>
+      <div class="awards-cards">
+        <div class="award-card glass_panel animate-in" data-anim="left">
+          <div class="award-photo">
+            <img src="portfolio_images/pagal.png" alt="Award Photo">
+          </div>
+          <div class="award-desc">Ganting Pagal: Rank 1 Recognition in Information Technology Department</div>
+        </div>
+        <div class="award-card glass_panel animate-in" data-anim="right">
+          <div class="award-photo">
+            <img src="portfolio_images/chum.png" alt="Award Photo">
+          </div>
+          <div class="award-desc">2025 CodeChum regional programming competition: Champion</div>
+        </div>
+        <div class="award-card glass_panel animate-in" data-anim="top">
+          <div class="award-photo">
+            <img src="portfolio_images/ctf.jpg" alt="Award Photo">
+          </div>
+          <div class="award-desc">3rd Regional Cybersecurity Conference: CTF Champion</div>
+        </div>
+        <div class="award-card glass_panel animate-in" data-anim="left">
+          <div class="award-photo">
+            <img src="portfolio_images/ai.jpg" alt="Award Photo">
+          </div>
+          <div class="award-desc">Nation AI Prompting Challenge: Champion</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Showcase Section -->
+    <div id="projects_bookmark"></div>
+    <h1 class="project_showcase_title">Project Showcase</h1>
+    <h2 class="project-tagline">
+      It starts with an <span class="highlight">idea</span>. Then comes <span class="highlight">creativity</span>, problem-solving, <br> and real-world <span class="highlight">impact</span> that sparks <span class="highlight">innovation</span>.
+    </h2>
+    <section class="simple-carousel">
+      <button class="carousel-btn" id="carouselPrev">&#8592;</button>
+      <img id="carouselImage" src="portfolio_images/pagal.png" alt="Project Image" />
+      <button class="carousel-btn" id="carouselNext">&#8594;</button>
+    </section>
+    <div class="project-btn-container">
+      <button class="project-btn" onclick="location.href='index2.html'">View All Projects</button>
+    </div>
+
+    <!-- Contact Section -->
+    <h1 class="contact-title" id="contact_bookmark">Contact</h1>
+    <section class="contact-glass-panel animate-contact">
+      <div class="contact-glass-inner">
+        <div class="contact-content">
+          <h2 class="gradient-text">Let’s Connect</h2>
+          <p>
+            Interested in collaborating or have a project in mind?<br>
+            Reach out and let’s build something great together!
+          </p>
+          <div class="contact-details">
+            <div>Email: <a href="mailto:neo.gonzales@email.com">neo.gonzales@email.com</a></div>
+            <div>Phone: <a href="tel:+639123456789">+63 912 345 6789</a></div>
+            <div>LinkedIn: <a href="https://linkedin.com/in/neogonzales" target="_blank">/in/neogonzales</a></div>
+          </div>
+        </div>
+        <form class="contact-form" action="#" method="post" autocomplete="off">
+          <div class="form-row">
+            <input type="text" name="name" placeholder="Your Name" required>
+          </div>
+          <div class="form-row">
+            <input type="email" name="email" placeholder="Your Email" required>
+          </div>
+          <div class="form-row">
+            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+          </div>
+          <button type="submit" class="contact-submit-btn">Send Message</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="site-footer glass_panel_nav">
+      <div class="footer-top">
+        <div class="footer-logo-nav">
+          <div class="footer-logo">
+            <span>Neo</span>
+          </div>
+          <nav class="footer-main-nav">
+            <div>
+              <h4>projects</h4>
+              <ul>
+                <li><a href="Activities/Activity6/Activity6.html">Calendar pt.1</a></li>
+                <li><a href="Activities/Activity7/Activity7.html">Calendar pt.2</a></li>
+                <li><a href="Activities/Activity8/Activity8.html">NU Quest</a></li>
+                <li><a href="Activities/Activity9/activity9.html">Navigation</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4>Exhibitions</h4>
+              <ul>
+                <li><a href="Activities/Activity1/Activity1.html">Eye of the tiger</a></li>
+                <li><a href="Activities/Activity2/Resume.html">Resume pt.1</a></li>
+                <li><a href="Activities/Activity3/activity3.html">Resume pt.2</a></li>
+                <li><a href="Activities/Activity4/Activity4.html">Map area</a></li>
+                <li><a href="Activities/Activity5/Activity5.html">Table colspan & rowspan</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4>Browse</h4>
+              <ul>
+                <li><a href="#hero_bookmark">Home</a></li>
+                <li><a href="#about_bookmark">About</a></li>
+                <li><a href="#project_bookmark">Projects</a></li>
+                <li><a href="https://neos26.github.io/IFAW/">Group</a></li>
+                <li><a href="#contact_bookmark">Contacts</a></li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+        <div class="footer-contact">
+          <button class="footer-contact-btn" onclick="location.href='#contact_bookmark'">Contact us <span>&#8594;</span></button>
+        </div>
+      </div>
+      <div class="footer-social-cert">
+        <div class="footer-social">
+          <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" /></a>
+          <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook" /></a>
+          <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" /></a>
+          <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg" alt="Tiktok" /></a>
+          <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube" /></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2025 NEO</span>
+        <span id="footer-web-design">WEB DESIGN BY NEO</span>
+      </div>
+      <div class="footer-bg-text">NEO</div>
+    </footer>
+
+    <!-- Main JS -->
+    <script src="main.js"></script>
+  </body>
+</html>

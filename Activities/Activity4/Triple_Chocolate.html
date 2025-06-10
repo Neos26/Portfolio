@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triple Chocolate Cake</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+        body {
+            background-color: #000;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+            background: linear-gradient(90deg, #263c5c, #fdded4, #4f6697);
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 6rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-top: 90px;
+            margin-bottom: 0;
+            animation: gradient-flow 5s linear infinite;
+        }
+
+        h3 {
+            text-align: center;
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, #263c5c, #fdded4, #4f6697);
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-flow 5s linear infinite;
+        }
+
+        @keyframes gradient-flow {
+            0% { background-position: 0% center; }
+            50% { background-position: 100% center; }
+            100% { background-position: 200% center; }
+        }
+
+        img {
+            border: 5px solid #73c6fd;
+            border-radius: 10px;
+            margin-top: 30px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            box-shadow: 0 4px 24px #263c5c80;
+            width: auto;
+            height: 50vh; /* 50% of viewport height */
+            max-width: 50vw; /* Prevents it from being too wide */
+            object-fit: cover;
+            aspect-ratio: 16 / 9; /* Maintains a 16:9 aspect ratio */
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 32px;
+        }
+
+        .back-link a {
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            background: linear-gradient(90deg, #00aeff, #73c6fd, #fdded4);
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: background 0.4s;
+        }
+
+        .back-link a:hover {
+            background: linear-gradient(90deg, #263c5c, #fdded4, #4f6697);
+            background-size: 200% auto;
+            background-position: right center;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Navbar styles */
+        .main-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            z-index: 200;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            font-family: 'Inter', sans-serif;
+            box-sizing: border-box;
+            transition: top 0.3s;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(8px);
+        }
+
+        .main-navbar.hide-navbar {
+            top: -80px;
+        }
+
+        .navbar-logo {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        .navbar-subtitle {
+            flex: 1;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .navbar-links a {
+            color: #fff;
+            font-size: 1.08rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.18s;
+            position: relative;
+        }
+
+        .navbar-links a.active,
+        .navbar-links a:hover {
+            color: #6ee7ff;
+        }
+
+        @media (max-width: 900px) {
+            .main-navbar {
+                flex-direction: column;
+                height: auto;
+                padding: 12px 8px;
+                gap: 8px;
+            }
+
+            .navbar-logo,
+            .navbar-subtitle,
+            .navbar-links {
+                text-align: center;
+                margin: 0;
+            }
+
+            .navbar-links {
+                gap: 18px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #ffffff, #ffffff, #ffffff);
+            background-size: 200% auto;
+            color: #fff;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: background 0.4s;
+            display: inline-block;
+        }
+
+        .gradient-text:hover {
+            background: linear-gradient(90deg, #00aeff, #73c6fd, #fdded4);
+            background-size: 200% auto;
+            background-position: right center;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation bar for site navigation -->
+    <nav class="main-navbar">
+      <div class="navbar-logo gradient-text">
+        <a href="/index.html">Neo Gonzales</a>
+      </div>
+      <div class="navbar-subtitle gradient-text">Web & Mobile Developer</div>
+      <div class="navbar-links">
+        <a href="Activity4.html" class="active gradient-text">Home</a>
+        <a href="/index.html" class="gradient-text">Portfolio</a>
+        <a href="/index2.html#activity4_bookmark" class="gradient-text">Projects</a>
+      </div>
+    </nav>
+
+    <!-- Main title and subtitle for the cake -->
+    <h1>Triple Chocolate Cake</h1>
+    <h3>made with belgian chocolate</h3>
+
+    <!-- Image of the Triple Chocolate Cake -->
+    <img src="/portfolio_images/chocolate.jpg" alt="Triple Chocolate">
+
+    <!-- Link to go back to the main Activity4 page -->
+    <div class="back-link">
+        <a href="Activity4.html">BACK TO MAIN</a>
+    </div>
+
+    <!-- JavaScript for hiding/showing navbar on scroll -->
+    <script>
+        let lastScrollY = window.scrollY;
+        const navbar = document.querySelector('.main-navbar');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > lastScrollY) {
+                // Scrolling down: hide navbar
+                navbar.classList.add('hide-navbar');
+            } else {
+                // Scrolling up: show navbar
+                navbar.classList.remove('hide-navbar');
+            }
+            lastScrollY = window.scrollY;
+        });
+    </script>
+</body>
+</html>

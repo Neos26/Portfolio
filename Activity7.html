@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+        body {
+            background-color: #000;
+            font-family: 'Inter', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .Calendar {
+            color: #fff;
+            font-size: 8rem;
+            margin: 60px 0 10px 0;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-align: center;
+            margin-top: 100px;
+            background: linear-gradient(90deg, #263c5c, #fdded4, #4f6697);
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-flow 5s linear infinite;
+        }
+
+        @keyframes gradient-flow {
+            0% {
+                background-position: 0% center;
+            }
+
+            50% {
+                background-position: 100% center;
+            }
+
+            100% {
+                background-position: 200% center;
+            }
+        }
+
+
+        .main-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            z-index: 200;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            font-family: 'Inter', sans-serif;
+            box-sizing: border-box;
+            transition: top 0.3s;
+            background: rgba(0, 0, 0, 0.85);
+        }
+
+        .main-navbar.hide-navbar {
+            top: -80px;
+        }
+
+        .navbar-logo {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        .navbar-subtitle {
+            flex: 1;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .navbar-links a {
+            color: #fff;
+            font-size: 1.08rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.18s;
+            position: relative;
+        }
+
+        .navbar-links a.active,
+        .navbar-links a:hover {
+            color: #6ee7ff;
+        }
+
+        @media (max-width: 900px) {
+            .main-navbar {
+                flex-direction: column;
+                height: auto;
+                padding: 12px 8px;
+                gap: 8px;
+            }
+
+            .navbar-logo,
+            .navbar-subtitle,
+            .navbar-links {
+                text-align: center;
+                margin: 0;
+            }
+
+            .navbar-links {
+                gap: 18px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #ffffff, #ffffff, #ffffff);
+            background-size: 200% auto;
+            color: #fff;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: background 0.4s;
+            display: inline-block;
+        }
+
+        .gradient-text:hover {
+            background: linear-gradient(90deg, #00aeff, #73c6fd, #fdded4);
+            background-size: 200% auto;
+            background-position: right center;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .myContainer,
+        .holidays,
+        .holidays2 {
+            display: flex;
+            border-radius: 10px;
+            background: rgba(38, 60, 92, 0.25);
+            box-shadow: 0 2px 12px 0 rgba(38, 60, 92, 0.10);
+            border: 1.5px solid #73c6fd;
+            margin-top: 40px;
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+            overflow-x: auto;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            /* Allow wrapping to prevent cutting */
+        }
+
+        .myContainer {
+
+            margin-bottom: 100px;
+        }
+
+        .holidays2 {
+            margin-bottom: 250px;
+        }
+
+        .myContainer>div,
+        .holidays>div,
+        .holidays2>div {
+            flex: 1 1 180px;
+            min-width: 140px;
+            max-width: 220px;
+            background-color: rgba(115, 198, 253, 0.10);
+            border-radius: 8px;
+            color: #fff;
+            font-weight: 600;
+            text-align: center;
+            margin: 8px 0;
+            padding: 10px 18px;
+            font-size: 1.08rem;
+            border: 1px solid transparent;
+            transition: background 0.18s, color 0.18s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+
+        .myContainer>div a,
+        .holidays>div a,
+        .holidays2>div a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.2s;
+            display: inline-block;
+            width: 100%;
+            font-size: 1.08rem;
+        }
+
+        .myContainer>div a:hover,
+        .holidays>div a:hover,
+        .holidays2>div a:hover {
+            background: #6ee7ff;
+            color: #263c5c;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+
+        .holiday_title {
+            font-size: 4rem;
+            text-align: center;
+            color: azure;
+            background: linear-gradient(90deg, #263c5c, #fdded4, #4f6697);
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-flow 5s linear infinite;
+            font-family: 'Inter', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            margin: 40px 0 10px 0;
+        }
+
+        .holiday_title p {
+            margin: 0;
+            font-size: 4rem;
+            text-align: center;
+        }
+
+        table {
+            margin-top: 150px;
+            border-spacing: 2px;
+            font-size: 2rem;
+            width: 100%;
+            height: 100%;
+            background: rgba(38, 60, 92, 0.15);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 3px solid #73c6fd;
+        }
+
+        th,
+        td {
+            padding: 40px;
+            text-align: center;
+        }
+
+        th {
+            color: #fff;
+            background: linear-gradient(90deg, #263c5c 60%, #4f6697 100%);
+            font-weight: 700;
+        }
+
+        td {
+            color: #fff;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+
+        th,
+        td {
+            padding: 40px;
+            text-align: center;
+        }
+
+        /* Sundays in table body */
+        tbody td:first-child {
+            color: #3fa7ff !important;
+            /* Better blue */
+            font-weight: bold;
+            background: rgba(63, 167, 255, 0.15);
+            /* Lighter blue background */
+        }
+
+        /* Sundays in table header */
+        thead th:first-child {
+            color: #3fa7ff !important;
+            background: linear-gradient(90deg, #b3e0ff 60%, #4f6697 100%);
+        }
+
+        caption {
+            color: #fff;
+            font-size: 4rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            background: linear-gradient(90deg, #263c5c, #fdded4, #4f6697);
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-flow 5s linear infinite;
+            font-family: 'Inter', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+
+        a:link,
+        a:visited {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: #6ee7ff;
+        }
+
+        @media (max-width: 900px) {
+
+            table,
+            th,
+            td {
+                font-size: 1rem;
+                padding: 8px;
+            }
+
+            caption,
+            .holiday_title {
+                font-size: 1.2rem;
+            }
+
+            .Calendar {
+                font-size: 3rem;
+            }
+
+            .myContainer>div,
+            .holidays>div,
+            .holidays2>div {
+                min-width: 80px;
+                font-size: 0.85rem;
+                padding: 4px 7px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation bar for site navigation -->
+    <nav class="main-navbar">
+        <div class="navbar-logo gradient-text"><a href="index.html">Neo Gonzales</a></div>
+        <div class="navbar-subtitle gradient-text">Web & Mobile Developer</div>
+        <div class="navbar-links">
+            <a href="#calendar" class="active gradient-text">Calendar</a>
+            <a href="#holidays" class="gradient-text">Holidays</a>
+            <a href="index.html" class="gradient-text">Portfolio</a>
+            <a href="index2.html#activity7_bookmark" class="gradient-text">Projects</a>
+        </div>
+    </nav>
+
+    <!-- Main calendar title -->
+    <p class="Calendar">~2025 Calendar ~</p>
+
+    <!-- Month navigation container -->
+    <div class="myContainer">
+        <div><a href="#jan">January</a></div>
+        <div><a href="#feb">February</a></div>
+        <div><a href="#mar">March</a></div>
+        <div><a href="#apr">April</a></div>
+        <div><a href="#may">May</a></div>
+        <div><a href="#jun">June</a></div>
+        <div><a href="#jul">July</a></div>
+        <div><a href="#aug">August</a></div>
+        <div><a href="#sep">September</a></div>
+        <div><a href="#oct">October</a></div>
+        <div><a href="#nov">November</a></div>
+        <div><a href="#dec">December</a></div>
+    </div>
+
+    <!-- Holidays section title -->
+    <div class="holiday_title">
+        <p>~ HOLIDAYS ~</p>
+    </div>
+
+    <!-- Holidays navigation container 1 -->
+    <div class="holidays">
+        <div><a href="#jan">New Year’s Day </a></div>
+        <div><a href="#apr">Araw ng Kagitingan</a></div>
+        <div><a href="#apr">Maundy Thursday</a></div>
+        <div><a href="#apr">Good Friday</a></div>
+        <div><a href="#may">Labor Day</a></div>
+        <div><a href="#jun">Independence Day</a></div>
+        <div><a href="#aug">National Heroes Day</a></div>
+        <div><a href="#nov">Bonifacio Day</a></div>
+    </div>
+
+    <!-- Holidays navigation container 2 -->
+    <div class="holidays2">
+        <div><a href="#dec">Christmas Day</a></div>
+        <div><a href="#dec">Rizal Day</a></div>
+        <div><a href="#aug">Ninoy Aquino Day</a></div>
+        <div><a href="#nov">All Saints Day</a></div>
+        <div><a href="#dec">New years Eve</a></div>
+        <div><a href="#feb">Chinese New Year</a></div>
+        <div><a href="#apr">Black Saturday</a></div>
+        <div><a href="#dec">Christmas Eve</a></div>
+    </div>
+
+    <!-- Calendar tables for each month of 2025 -->
+    <!-- January -->
+    <table>
+        <caption id="jan">January 2025</caption>
+        <colgroup>
+            <col>
+            <col span="6">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>SUN</th>
+                <th>MON</th>
+                <th>TUE</th>
+                <th>WED</th>
+                <th>THU</th>
+                <th>FRI</th>
+                <th>SAT</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+                <td>11</td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>13</td>
+                <td>14</td>
+                <td>15</td>
+                <td>16</td>
+                <td>17</td>
+                <td>18</td>
+            </tr>
+            <tr>
+                <td>19</td>
+                <td>20</td>
+                <td>21</td>
+                <td>22</td>
+                <td>23</td>
+                <td>24</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>26</td>
+                <td>27</td>
+                <td>28</td>
+                <td>29</td>
+                <td>30</td>
+                <td>31</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- February -->
+    <table>
+        <caption id="feb">February 2025</caption>
+        <colgroup>
+            <col>
+            <col span="6">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>SUN</th>
+                <th>MON</th>
+                <th>TUE</th>
+                <th>WED</th>
+                <th>THU</th>
+                <th>FRI</th>
+                <th>SAT</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>10</td>
+                <td>11</td>
+                <td>12</td>
+                <td>13</td>
+                <td>14</td>
+                <td>15</td>
+            </tr>
+            <tr>
+                <td>16</td>
+                <td>17</td>
+                <td>18</td>
+                <td>19</td>
+                <td>20</td>
+                <td>21</td>
+                <td>22</td>
+            </tr>
+            <tr>
+                <td>23</td>
+                <td>24</td>
+                <td>25</td>
+                <td>26</td>
+                <td>27</td>
+                <td>28</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- March -->
+    <table>
+        <caption id="mar">March 2025</caption>
+        <colgroup>
+            <col>
+            <col span="6">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>SUN</th>
+                <th>MON</th>
+                <th>TUE</th>
+                <th>WED</th>
+                <th>THU</th>
+                <th>FRI</th>
+                <th>SAT</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>10</td>
+                <td>11</td>
+                <td>12</td>
+                <td>13</td>
+                <td>14</td>
+                <td>15</td>
+            </tr>
+            <tr>
+                <td>16</td>
+                <td>17</td>
+                <td>18</td>
+                <td>19</td>
+                <td>20</td>
+                <td>21</td>
+                <td>22</td>
+            </tr>
+            <tr>
+                <td>23</td>
+                <td>24</td>
+                <td>25</td>
+                <td>26</td>
+                <td>27</td>
+                <td>28</td>
+                <td>29</td>
+            </tr>
+            <tr>
+                <td>30</td>
+                <td>31</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- April -->
+    <table>
+        <caption id="apr">April 2025</caption>
+        <colgroup>
+            <col>
+            <col span="6">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>SUN</th>
+                <th>MON</th>
+                <th>TUE</th>
+                <th>WED</th>
+                <th>THU</th>
+                <th>FRI</th>
+                <th>SAT</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+                <td>11</td>
+                <td>12</td>
+            </tr>
+            <tr>
+                <td>13</td>
+                <td>14</td>
+                <td>15</td>
+                <td>16</td>
+                <td>17</td>
+                <td>18</td>
+                <td>19</td>
+            </tr>
+            <tr>
+                <td>20</td>
+                <td>21</td>
+                <td>22</td>
+                <td>23</td>
+                <td>24</td>
+                <td>25</td>
+                <td>26</td>
+            </tr>
+            <tr>
+                <td>27</td>
+                <td>28</td>
+                <td>29</td>
+                <td>30</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- May -->
+    <table>
+        <caption id="may">May 2025</caption>
+        <colgroup>
+            <col>
+            <col span="6">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>SUN</th>
+                <th>MON</th>
+                <th>TUE</th>
+                <th>WED</th>
+                <th>THU</th>
+                <th>FRI</th>
+                <th>SAT</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>12</td>
+                <td>13</td>
+                <td>14</td>
+                <td>15</td>
+                <td>16</td>
+                <td>17</td>
+            </tr>
+            <tr>
+                <td>18</td>
+                <td>19</td>
+                <td>20</td>
+                <td>21</td>
+                <td>22</td>
+                <td>23</td>
+                <td>24</td>
+            </tr>
+            <tr>
+                <td>25</td>
+                <td>26</td>
+                <td>27</td>
+                <td>28</td>
+                <td>29</td>
+                <td>30</td>
+                <td>31</td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- June -->
+    <table>
+        <caption id="jun">June 2025</caption>
+        <colgroup>
+            <col>
+            <col span="6">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>SUN</th>
+                <th>MON</th>
+                <th>TUE</th>
+                <th>WED</th>
+                <th>THU</th>
+                <th>FRI</th>
+                <th>SAT</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+                <td>11</td>
+                <td>12</td>
+                <td>13</td>
+                <td>14</td>
+            </tr>
+            <tr>
+                <td>15</td>
+                <td>16</td>
+                <td>17</td>
+                <td>18</td>
+                <td>19</td>
+                <td>20</td>
+                <td>21</td>
+            </tr>
+            <tr>
+                <td>22</td>
+                <td>23</td>
+                <td>24</td>
+                <td>25</td>
+                <td>26</td>
+                <td>27</td>
+                <td>28</td>
+            </tr>
+            <tr>
+                <td>29</td>
+                <td>30</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- July -->
+    <table>
+        <caption id="jul">July 2025</caption>
+        <colgroup>
+            <col>
+            <col span="6">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>SUN</th>
+                <th>MON</th>
+                <th>TUE</th>
+                <th>WED</th>
+                <th>THU</th>
+                <th>FRI</th>
+                <th>SAT</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+                <td>11</td>
+                <td>12</td>
+            </tr>
+            <tr>
+                <td>13</td>
+                <td>14</td>
+                <td>15</td>
+                <td>16</td>
+                <td>17</td>
+                <td>18</td>
+                <td>19</td>
+            </tr>
+            <tr>
+                <td>20</td>
+                <td>21</td>
+                <td>22</td>
+                <td>23</td>
+                <td>24</td>
+                <td>25</td>
+                <td>26</td>
+            </tr>
+            <tr>
+                <td>27</td>
+                <td>28</td>
+                <td>29</td>
+                <td>30</td>
+                <td>31</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- August -->
+    <table>
+        <caption id="aug">August 2025</caption>
+        <colgroup>
+            <col>
+            <col span="6">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>SUN</th>
+                <th>MON</th>
+                <th>TUE</th>
+                <th>WED</th>
+                <th>THU</th>
+                <th>FRI</th>
+                <th>SAT</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>1</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>11</td>
+                <td>12</td>
+                <td>13</td>
+                <td>14</td>
+                <td>15</td>
+                <td>16</td>
+            </tr>
+            <tr>
+                <td>17</td>
+                <td>18</td>
+                <td>19</td>
+                <td>20</td>
+                <td>21</td>
+                <td>22</td>
+                <td>23</td>
+            </tr>
+            <tr>
+                <td>24</td>
+                <td>25</td>
+                <td>26</td>
+                <td>27</td>
+                <td>28</td>
+                <td>29</td>
+                <td>30</td>
+            </tr>
+            <tr>
+                <td>31</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- September -->
+    <table>
+        <caption id="sep">September 2025</caption>
+        <colgroup>
+            <col>
+            <col span="6">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>SUN</th>
+                <th>MON</th>
+                <th>TUE</th>
+                <th>WED</th>
+                <th>THU</th>
+                <th>FRI</th>
+                <th>SAT</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+                <td>11</td>
+                <td>12</td>
+                <td>13</td>
+            </tr>
+            <tr>
+                <td>14</td>
+                <td>15</td>
+                <td>16</td>
+                <td>17</td>
+                <td>18</td>
+                <td>19</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>21</td>
+                <td>22</td>
+                <td>23</td>
+                <td>24</td>
+                <td>25</td>
+                <td>26</td>
+                <td>27</td>
+            </tr>
+            <tr>
+                <td>28</td>
+                <td>29</td>
+                <td>30</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- October -->
+    <table>
+        <caption id="oct">October 2025</caption>
+        <colgroup>
+            <col>
+            <col span="6">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>SUN</th>
+                <th>MON</th>
+                <th>TUE</th>
+                <th>WED</th>
+                <th>THU</th>
+                <th>FRI</th>
+                <th>SAT</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+                <td>11</td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>13</td>
+                <td>14</td>
+                <td>15</td>
+                <td>16</td>
+                <td>17</td>
+                <td>18</td>
+            </tr>
+            <tr>
+                <td>19</td>
+                <td>20</td>
+                <td>21</td>
+                <td>22</td>
+                <td>23</td>
+                <td>24</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>26</td>
+                <td>27</td>
+                <td>28</td>
+                <td>29</td>
+                <td>30</td>
+                <td>31</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- November -->
+    <table>
+        <caption id="nov">November 2025</caption>
+        <colgroup>
+            <col>
+            <col span="6">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>SUN</th>
+                <th>MON</th>
+                <th>TUE</th>
+                <th>WED</th>
+                <th>THU</th>
+                <th>FRI</th>
+                <th>SAT</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>10</td>
+                <td>11</td>
+                <td>12</td>
+                <td>13</td>
+                <td>14</td>
+                <td>15</td>
+            </tr>
+            <tr>
+                <td>16</td>
+                <td>17</td>
+                <td>18</td>
+                <td>19</td>
+                <td>20</td>
+                <td>21</td>
+                <td>22</td>
+            </tr>
+            <tr>
+                <td>23</td>
+                <td>24</td>
+                <td>25</td>
+                <td>26</td>
+                <td>27</td>
+                <td>28</td>
+                <td>29</td>
+            </tr>
+            <tr>
+                <td>30</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- December -->
+    <table>
+        <caption id="dec">December 2025</caption>
+        <colgroup>
+            <col>
+            <col span="6">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>SUN</th>
+                <th>MON</th>
+                <th>TUE</th>
+                <th>WED</th>
+                <th>THU</th>
+                <th>FRI</th>
+                <th>SAT</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+                <td>11</td>
+                <td>12</td>
+                <td>13</td>
+            </tr>
+            <tr>
+                <td>14</td>
+                <td>15</td>
+                <td>16</td>
+                <td>17</td>
+                <td>18</td>
+                <td>19</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>21</td>
+                <td>22</td>
+                <td>23</td>
+                <td>24</td>
+                <td>25</td>
+                <td>26</td>
+                <td>27</td>
+            </tr>
+            <tr>
+                <td>28</td>
+                <td>29</td>
+                <td>30</td>
+                <td>31</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- JavaScript for hiding/showing navbar on scroll -->
+    <script>
+        let lastScrollY = window.scrollY;
+        const navbar = document.querySelector('.main-navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > lastScrollY) {
+                // Scrolling down: hide navbar
+                navbar.classList.add('hide-navbar');
+            } else {
+                // Scrolling up: show navbar
+                navbar.classList.remove('hide-navbar');
+            }
+            lastScrollY = window.scrollY;
+        });
+    </script>
+</body>
+
+</html>

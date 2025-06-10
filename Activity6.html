@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+        body {
+            background-color: black;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            font-size: 5rem;
+            margin: 60px 0 10px 0;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-align: center;
+            background: linear-gradient(90deg, #263c5c, #fdded4, #4f6697);
+            background-size: 200% auto;
+            color: #fff;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-flow 5s linear infinite;
+        }
+
+        @keyframes gradient-flow {
+            0% {
+                background-position: 0% center;
+            }
+
+            50% {
+                background-position: 100% center;
+            }
+
+            100% {
+                background-position: 200% center;
+            }
+        }
+
+        .main-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            z-index: 200;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            font-family: 'Inter', sans-serif;
+            box-sizing: border-box;
+            transition: top 0.3s;
+            background: rgba(0, 0, 0, 0.85);
+        }
+
+        .main-navbar.hide-navbar {
+            top: -80px;
+        }
+
+        .navbar-logo {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        .navbar-subtitle {
+            flex: 1;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .navbar-links a {
+            color: #fff;
+            font-size: 1.08rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.18s;
+            position: relative;
+        }
+
+        .navbar-links a.active,
+        .navbar-links a:hover {
+            color: #6ee7ff;
+        }
+
+        @media (max-width: 900px) {
+            .main-navbar {
+                flex-direction: column;
+                height: auto;
+                padding: 12px 8px;
+                gap: 8px;
+            }
+
+            .navbar-logo,
+            .navbar-subtitle,
+            .navbar-links {
+                text-align: center;
+                margin: 0;
+            }
+
+            .navbar-links {
+                gap: 18px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #ffffff, #ffffff, #ffffff);
+            background-size: 200% auto;
+            color: #fff;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: background 0.4s;
+            display: inline-block;
+        }
+
+        .gradient-text:hover {
+            background: linear-gradient(90deg, #00aeff, #73c6fd, #fdded4);
+            background-size: 200% auto;
+            background-position: right center;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Calendar Theme */
+        table {
+            margin-top: 150px;
+            border-spacing: 2px;
+            font-size: 2rem;
+            width: 100%;
+            height: 100%;
+            background: rgba(38, 60, 92, 0.15);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        table,
+        th,
+        td {
+            border: 3px solid #73c6fd;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 40px;
+            text-align: center;
+        }
+
+        th {
+            color: #fff;
+            background: linear-gradient(90deg, #263c5c 60%, #4f6697 100%);
+            font-weight: 700;
+        }
+
+        td {
+            color: #fff;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        caption {
+            color: #fff;
+            font-size: 4rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            background: linear-gradient(90deg, #263c5c, #fdded4, #4f6697);
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-flow 5s linear infinite;
+        }
+
+        table.nav {
+            margin-top: 90px;
+            border: none;
+            background: none;
+        }
+
+        table.nav th,
+        table.nav td {
+            border: 1px solid #73c6fd60;
+            padding: 0 20px;
+            background: none;
+        }
+
+        table.nav caption {
+            font-size: 3rem;
+            color: #fff;
+            margin-bottom: 40px;
+            background: none;
+            -webkit-text-fill-color: #fff;
+            background-clip: unset;
+            -webkit-background-clip: unset;
+            animation: none;
+        }
+
+        table.holidays,
+        table.holidays th {
+            border: 1px solid #73c6fd60;
+            background: rgba(38, 60, 92, 0.25);
+        }
+
+        table.holidays caption {
+            font-size: 2rem;
+            color: #fff;
+            background: none;
+            -webkit-text-fill-color: #fff;
+            background-clip: unset;
+            -webkit-background-clip: unset;
+            animation: none;
+        }
+
+        /* Colgroup styles for calendar */
+        col.sunday {
+            background-color: #73c6fd;
+        }
+
+        col.weekday {
+            background-color: #263c5c;
+        }
+
+        /* Calendar links */
+        a:link,
+        a:visited {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: #6ee7ff;
+        }
+
+        @media (max-width: 900px) {
+
+            table,
+            th,
+            td {
+                font-size: 1rem;
+                padding: 8px;
+            }
+
+            caption {
+                font-size: 1.2rem;
+            }
+
+            h1 {
+                font-size: 3rem;
+            }
+        }
+
+
+        table.nav,
+        table.holidays {
+            margin-top: 40px;
+            width: 100vw;
+            margin-left: 0;
+            margin-right: 0;
+            border-radius: 16px;
+            background: rgba(38, 60, 92, 0.25);
+            box-shadow: 0 2px 12px 0 rgba(38, 60, 92, 0.10);
+            border: 1.5px solid #73c6fd;
+            overflow-x: visible;
+            /* Allow wrapping */
+        }
+
+        table.nav tr,
+        table.holidays tr {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+        }
+
+        table.nav th,
+        table.holidays th {
+            flex: 0 1 220px;
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        table.nav th a,
+        table.holidays th a {
+            width: 400px;
+            min-width: 400px;
+            max-width: 400px;
+            display: inline-block;
+            padding: 10px 18px;
+            text-align: center;
+            border-radius: 8px;
+            background: rgba(115, 198, 253, 0.10);
+            color: #fff;
+            font-weight: 600;
+            transition: background 0.18s, color 0.18s;
+            border: 1px solid transparent;
+            white-space: normal;
+            box-sizing: border-box;
+        }
+
+        table.nav th a:hover,
+        table.holidays th a:hover {
+            background: #6ee7ff;
+            color: #263c5c;
+            border: 1px solid #4f6697;
+            text-decoration: none;
+        }
+
+        table.nav caption,
+        table.holidays caption {
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+            color: #fff;
+            background: none;
+            -webkit-text-fill-color: #fff;
+            background-clip: unset;
+            -webkit-background-clip: unset;
+            animation: none;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 900px) {
+
+            table.nav th,
+            table.holidays th {
+                padding: 4px 6px;
+                font-size: 0.85rem;
+            }
+
+            table.nav th a,
+            table.holidays th a {
+                padding: 4px 7px;
+                font-size: 0.85rem;
+            }
+
+            table.nav caption,
+            table.holidays caption {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation bar for site navigation -->
+    <nav class="main-navbar">
+        <div class="navbar-logo gradient-text"><a href="index.html">Neo Gonzales</a></div>
+        <div class="navbar-subtitle gradient-text">Web & Mobile Developer</div>
+        <div class="navbar-links">
+            <a href="Activity6.html" class="active gradient-text">Home</a>
+            <a href="#holidays" class="gradient-text">Holidays</a>
+            <a href="index.html" class="gradient-text">Portfolio</a>
+            <a href="index2.html#activity6_bookmark" class="gradient-text">Projects</a>
+        </div>
+    </nav>
+
+    <!-- Main title for the calendar page -->
+    <h1 id="calendar">2025 CALENDAR</h1>
+
+    <!-- Navigation table for jumping to months -->
+    <table class="nav">
+        <caption>Jump to Month</caption>
+        <tr>
+            <th><a href="#jan">January</a></th>
+            <th><a href="#feb">February</a></th>
+            <th><a href="#mar">March</a></th>
+            <th><a href="#apr">April</a></th>
+            <th><a href="#may">May</a></th>
+            <th><a href="#jun">June</a></th>
+            <th><a href="#jul">July</a></th>
+            <th><a href="#aug">August</a></th>
+            <th><a href="#sep">September</a></th>
+            <th><a href="#oct">October</a></th>
+            <th><a href="#nov">November</a></th>
+            <th><a href="#dec">December</a></th>
+        </tr>
+    </table>
+
+    <!-- Table listing holidays for 2025 -->
+    <table class="holidays" id="holidays">
+        <caption>2025 HOLIDAYS</caption>
+        <tr>
+            <th><a href="#jan">New Year’s Day </a></th>
+            <th><a href="#apr">Araw ng Kagitingan</a></th>
+            <th><a href="#apr">Maundy Thursday</a></th>
+            <th><a href="#apr">Good Friday</a></th>
+            <th><a href="#may">Labor Day</a></th>
+            <th><a href="#jun">Independence Day</a></th>
+            <th><a href="#aug">National Heroes Day</a></th>
+            <th><a href="#nov">Bonifacio Day</a></th>
+        </tr>
+        <tr>
+            <th><a href="#dec">Christmas Day</a></th>
+            <th><a href="#dec">Rizal Day</a></th>
+            <th><a href="#aug">Ninoy Aquino Day</a></th>
+            <th><a href="#nov">All Saints Day</a></th>
+            <th><a href="#dec">Feast of the Immaculate Conception of Mary</a></th>
+            <th><a href="#feb">Chinese New Year</a></th>
+            <th><a href="#apr">Black Saturday</a></th>
+            <th><a href="#dec">Christmas Eve</a></th>
+        </tr>
+    </table>
+
+    <!-- Calendar tables for each month of 2025 -->
+    <!-- January -->
+    <table>
+        <caption id="jan">January 2025</caption>
+        <colgroup>
+            <col class="sunday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>SUN</th>
+                <th>MON</th>
+                <th>TUE</th>
+                <th>WED</th>
+                <th>THU</th>
+                <th>FRI</th>
+                <th>SAT</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+                <td>11</td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>13</td>
+                <td>14</td>
+                <td>15</td>
+                <td>16</td>
+                <td>17</td>
+                <td>18</td>
+            </tr>
+            <tr>
+                <td>19</td>
+                <td>20</td>
+                <td>21</td>
+                <td>22</td>
+                <td>23</td>
+                <td>24</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>26</td>
+                <td>27</td>
+                <td>28</td>
+                <td>29</td>
+                <td>30</td>
+                <td>31</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- February -->
+    <table>
+        <caption id="feb">February 2025</caption>
+        <colgroup>
+            <col class="sunday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>SUN</th>
+                <th>MON</th>
+                <th>TUE</th>
+                <th>WED</th>
+                <th>THU</th>
+                <th>FRI</th>
+                <th>SAT</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>10</td>
+                <td>11</td>
+                <td>12</td>
+                <td>13</td>
+                <td>14</td>
+                <td>15</td>
+            </tr>
+            <tr>
+                <td>16</td>
+                <td>17</td>
+                <td>18</td>
+                <td>19</td>
+                <td>20</td>
+                <td>21</td>
+                <td>22</td>
+            </tr>
+            <tr>
+                <td>23</td>
+                <td>24</td>
+                <td>25</td>
+                <td>26</td>
+                <td>27</td>
+                <td>28</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- March -->
+    <table>
+        <caption id="mar">March 2025</caption>
+        <colgroup>
+            <col class="sunday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>SUN</th>
+                <th>MON</th>
+                <th>TUE</th>
+                <th>WED</th>
+                <th>THU</th>
+                <th>FRI</th>
+                <th>SAT</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>10</td>
+                <td>11</td>
+                <td>12</td>
+                <td>13</td>
+                <td>14</td>
+                <td>15</td>
+            </tr>
+            <tr>
+                <td>16</td>
+                <td>17</td>
+                <td>18</td>
+                <td>19</td>
+                <td>20</td>
+                <td>21</td>
+                <td>22</td>
+            </tr>
+            <tr>
+                <td>23</td>
+                <td>24</td>
+                <td>25</td>
+                <td>26</td>
+                <td>27</td>
+                <td>28</td>
+                <td>29</td>
+            </tr>
+            <tr>
+                <td>30</td>
+                <td>31</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- April -->
+    <table>
+        <caption id="apr">April 2025</caption>
+        <colgroup>
+            <col class="sunday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>SUN</th>
+                <th>MON</th>
+                <th>TUE</th>
+                <th>WED</th>
+                <th>THU</th>
+                <th>FRI</th>
+                <th>SAT</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+                <td>11</td>
+                <td>12</td>
+            </tr>
+            <tr>
+                <td>13</td>
+                <td>14</td>
+                <td>15</td>
+                <td>16</td>
+                <td>17</td>
+                <td>18</td>
+                <td>19</td>
+            </tr>
+            <tr>
+                <td>20</td>
+                <td>21</td>
+                <td>22</td>
+                <td>23</td>
+                <td>24</td>
+                <td>25</td>
+                <td>26</td>
+            </tr>
+            <tr>
+                <td>27</td>
+                <td>28</td>
+                <td>29</td>
+                <td>30</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- May -->
+    <table>
+        <caption id="may">May 2025</caption>
+        <colgroup>
+            <col class="sunday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>SUN</th>
+                <th>MON</th>
+                <th>TUE</th>
+                <th>WED</th>
+                <th>THU</th>
+                <th>FRI</th>
+                <th>SAT</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>12</td>
+                <td>13</td>
+                <td>14</td>
+                <td>15</td>
+                <td>16</td>
+                <td>17</td>
+            </tr>
+            <tr>
+                <td>18</td>
+                <td>19</td>
+                <td>20</td>
+                <td>21</td>
+                <td>22</td>
+                <td>23</td>
+                <td>24</td>
+            </tr>
+            <tr>
+                <td>25</td>
+                <td>26</td>
+                <td>27</td>
+                <td>28</td>
+                <td>29</td>
+                <td>30</td>
+                <td>31</td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- June -->
+    <table>
+        <caption id="jun">June 2025</caption>
+        <colgroup>
+            <col class="sunday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>SUN</th>
+                <th>MON</th>
+                <th>TUE</th>
+                <th>WED</th>
+                <th>THU</th>
+                <th>FRI</th>
+                <th>SAT</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+                <td>11</td>
+                <td>12</td>
+                <td>13</td>
+                <td>14</td>
+            </tr>
+            <tr>
+                <td>15</td>
+                <td>16</td>
+                <td>17</td>
+                <td>18</td>
+                <td>19</td>
+                <td>20</td>
+                <td>21</td>
+            </tr>
+            <tr>
+                <td>22</td>
+                <td>23</td>
+                <td>24</td>
+                <td>25</td>
+                <td>26</td>
+                <td>27</td>
+                <td>28</td>
+            </tr>
+            <tr>
+                <td>29</td>
+                <td>30</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- July -->
+    <table>
+        <caption id="jul">July 2025</caption>
+        <colgroup>
+            <col class="sunday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>SUN</th>
+                <th>MON</th>
+                <th>TUE</th>
+                <th>WED</th>
+                <th>THU</th>
+                <th>FRI</th>
+                <th>SAT</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+                <td>11</td>
+                <td>12</td>
+            </tr>
+            <tr>
+                <td>13</td>
+                <td>14</td>
+                <td>15</td>
+                <td>16</td>
+                <td>17</td>
+                <td>18</td>
+                <td>19</td>
+            </tr>
+            <tr>
+                <td>20</td>
+                <td>21</td>
+                <td>22</td>
+                <td>23</td>
+                <td>24</td>
+                <td>25</td>
+                <td>26</td>
+            </tr>
+            <tr>
+                <td>27</td>
+                <td>28</td>
+                <td>29</td>
+                <td>30</td>
+                <td>31</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- August -->
+    <table>
+        <caption id="aug">August 2025</caption>
+        <colgroup>
+            <col class="sunday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>SUN</th>
+                <th>MON</th>
+                <th>TUE</th>
+                <th>WED</th>
+                <th>THU</th>
+                <th>FRI</th>
+                <th>SAT</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>1</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>11</td>
+                <td>12</td>
+                <td>13</td>
+                <td>14</td>
+                <td>15</td>
+                <td>16</td>
+            </tr>
+            <tr>
+                <td>17</td>
+                <td>18</td>
+                <td>19</td>
+                <td>20</td>
+                <td>21</td>
+                <td>22</td>
+                <td>23</td>
+            </tr>
+            <tr>
+                <td>24</td>
+                <td>25</td>
+                <td>26</td>
+                <td>27</td>
+                <td>28</td>
+                <td>29</td>
+                <td>30</td>
+            </tr>
+            <tr>
+                <td>31</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- September -->
+    <table>
+        <caption id="sep">September 2025</caption>
+        <colgroup>
+            <col class="sunday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>SUN</th>
+                <th>MON</th>
+                <th>TUE</th>
+                <th>WED</th>
+                <th>THU</th>
+                <th>FRI</th>
+                <th>SAT</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+                <td>11</td>
+                <td>12</td>
+                <td>13</td>
+            </tr>
+            <tr>
+                <td>14</td>
+                <td>15</td>
+                <td>16</td>
+                <td>17</td>
+                <td>18</td>
+                <td>19</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>21</td>
+                <td>22</td>
+                <td>23</td>
+                <td>24</td>
+                <td>25</td>
+                <td>26</td>
+                <td>27</td>
+            </tr>
+            <tr>
+                <td>28</td>
+                <td>29</td>
+                <td>30</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- October -->
+    <table>
+        <caption id="oct">October 2025</caption>
+        <colgroup>
+            <col class="sunday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>SUN</th>
+                <th>MON</th>
+                <th>TUE</th>
+                <th>WED</th>
+                <th>THU</th>
+                <th>FRI</th>
+                <th>SAT</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+                <td>11</td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>13</td>
+                <td>14</td>
+                <td>15</td>
+                <td>16</td>
+                <td>17</td>
+                <td>18</td>
+            </tr>
+            <tr>
+                <td>19</td>
+                <td>20</td>
+                <td>21</td>
+                <td>22</td>
+                <td>23</td>
+                <td>24</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>26</td>
+                <td>27</td>
+                <td>28</td>
+                <td>29</td>
+                <td>30</td>
+                <td>31</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- November -->
+    <table>
+        <caption id="nov">November 2025</caption>
+        <colgroup>
+            <col class="sunday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>SUN</th>
+                <th>MON</th>
+                <th>TUE</th>
+                <th>WED</th>
+                <th>THU</th>
+                <th>FRI</th>
+                <th>SAT</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>10</td>
+                <td>11</td>
+                <td>12</td>
+                <td>13</td>
+                <td>14</td>
+                <td>15</td>
+            </tr>
+            <tr>
+                <td>16</td>
+                <td>17</td>
+                <td>18</td>
+                <td>19</td>
+                <td>20</td>
+                <td>21</td>
+                <td>22</td>
+            </tr>
+            <tr>
+                <td>23</td>
+                <td>24</td>
+                <td>25</td>
+                <td>26</td>
+                <td>27</td>
+                <td>28</td>
+                <td>29</td>
+            </tr>
+            <tr>
+                <td>30</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- December -->
+    <table>
+        <caption id="dec">December 2025</caption>
+        <colgroup>
+            <col class="sunday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+            <col class="weekday">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>SUN</th>
+                <th>MON</th>
+                <th>TUE</th>
+                <th>WED</th>
+                <th>THU</th>
+                <th>FRI</th>
+                <th>SAT</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+                <td>11</td>
+                <td>12</td>
+                <td>13</td>
+            </tr>
+            <tr>
+                <td>14</td>
+                <td>15</td>
+                <td>16</td>
+                <td>17</td>
+                <td>18</td>
+                <td>19</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>21</td>
+                <td>22</td>
+                <td>23</td>
+                <td>24</td>
+                <td>25</td>
+                <td>26</td>
+                <td>27</td>
+            </tr>
+            <tr>
+                <td>28</td>
+                <td>29</td>
+                <td>30</td>
+                <td>31</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- JavaScript for hiding/showing navbar on scroll -->
+    <script>
+        let lastScrollY = window.scrollY;
+        const navbar = document.querySelector('.main-navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > lastScrollY) {
+                // Scrolling down: hide navbar
+                navbar.classList.add('hide-navbar');
+            } else {
+                // Scrolling up: show navbar
+                navbar.classList.remove('hide-navbar');
+            }
+            lastScrollY = window.scrollY;
+        });
+    </script>
+</body>
+
+</html>

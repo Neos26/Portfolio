@@ -1,23 +1,29 @@
+  /* Import Google Fonts */
   @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-
+  
+  /* Base styles for html and body */
   html,
   body {
     height: 100%;
     scroll-behavior: smooth;
-    background: #000;
+    background-image: url(portfolio_images/whole_grid.png);
+    background-size: cover;
     font-family: 'Inter', sans-serif;
   }
-
+  
+  /* Main content showcase area */
   .showcase {
     margin-left: 0;
     padding: 1px 16px;
     min-height: 100vh;
   }
-
+  
+  /* Section spacing */
   .section {
     margin-bottom: 60px;
   }
-
+  
+  /* Sidebar navigation (glassmorphism) */
   ul {
     position: fixed;
     top: 0;
@@ -37,17 +43,19 @@
     scrollbar-width: none;
     -ms-overflow-style: none;
   }
-
+  
+  /* Hide scrollbar for sidebar */
   ul::-webkit-scrollbar {
     display: none;
-    /* Chrome, Safari, Opera */
   }
-
+  
+  /* Sidebar list item spacing */
   li {
     margin: 0 0 10px 0;
     padding: 0;
   }
-
+  
+  /* Sidebar link styles */
   ul li a {
     display: block;
     color: #fff;
@@ -60,14 +68,16 @@
     background: none;
     border-left: 4px solid transparent;
   }
-
+  
+  /* Sidebar link hover and active state */
   ul li a.active,
   ul li a:hover {
     color: #6ee7ff;
-    background: linear-gradient(90deg, #263c5c80 0%, #73c6fd33 100%);
+    background: linear-gradient(90deg, #61799c80 0%, #73c6fd33 100%);
     border-left: 4px solid #73c6fd;
   }
-
+  
+  /* Responsive sidebar for mobile */
   @media (max-width: 900px) {
     ul {
       position: static;
@@ -81,26 +91,25 @@
       padding: 0;
       background: rgba(38, 60, 92, 0.85);
     }
-
+  
     ul li {
       margin: 0;
     }
-
+  
     ul li a {
       border-radius: 0;
       border-left: none;
       border-bottom: 4px solid transparent;
     }
-
+  
     ul li a.active,
     ul li a:hover {
       border-bottom: 4px solid #73c6fd;
       border-left: none;
     }
   }
-
-
-
+  
+  /* Main heading styles with animated gradient */
   h1 {
     font-size: 4rem;
     margin: 60px 0 10px 0;
@@ -115,18 +124,19 @@
     -webkit-text-fill-color: transparent;
     animation: gradient-flow 5s linear infinite;
   }
-
+  
+  /* Subheading styles */
   h2,
   h3 {
     color: #fff;
     text-align: center;
   }
-
+  
+  /* Paragraph and card content styles */
   p,
-  .card>div,
-  .card>p {
+  .card > div,
+  .card > p {
     color: aliceblue;
-    font-family: 'Courier New', Courier, monospace;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-radius: 15px;
@@ -136,41 +146,36 @@
     font-size: 1.2rem;
     text-align: center;
   }
-
+  
+  /* Animated gradient for headings */
   @keyframes gradient-flow {
     0% {
       background-position: 0% center;
     }
-
     50% {
       background-position: 100% center;
     }
-
     100% {
       background-position: 200% center;
     }
   }
-
-
-  /* Responsive for showcase margin */
+  
+  /* Responsive margin for showcase on large screens */
   @media (min-width: 900px) {
     .showcase {
       margin-left: 240px;
     }
   }
-
-
-  .indent{
+  
+  /* Utility classes */
+  .indent {
     margin-left: 50px;
   }
-
-  .side{
+  .side {
     margin-left: 0;
   }
-
-
-
-  /* tranform method */
+  
+  /* Example: transform method demo */
   div.transmethod {
     width: 300px;
     height: 100px;
@@ -178,11 +183,10 @@
     border: 1px solid black;
     transform: translate(50px, 100px);
     border-radius: 15px;
+    color: black;
   }
-
-
-
-
+  
+  /* Example: transition demo */
   div.transition {
     width: 100px;
     height: 100px;
@@ -190,12 +194,10 @@
     transition: width 2s;
     border-radius: 15px;
   }
-
   div.transition:hover {
     width: 300px;
   }
-
-
+  
   div.transition2 {
     width: 100px;
     height: 100px;
@@ -203,12 +205,11 @@
     transition: width 2s, height 4s;
     border-radius: 15px;
   }
-
   div.transition2:hover {
     width: 300px;
     height: 300px;
   }
-
+  
   div.transition3 {
     width: 100px;
     height: 100px;
@@ -217,12 +218,10 @@
     transition-delay: 1s;
     border-radius: 15px;
   }
-
   div.transition3:hover {
     width: 300px;
   }
-
-
+  
   div.transition4 {
     width: 100px;
     height: 100px;
@@ -230,13 +229,13 @@
     transition: width 2s, height 2s, transform 2s;
     border-radius: 15px;
   }
-
   div.transition4:hover {
     width: 300px;
     height: 300px;
     transform: rotate(180deg);
   }
-
+  
+  /* Example: animation demo */
   div.animation {
     width: 100px;
     height: 100px;
@@ -245,18 +244,18 @@
     animation-duration: 4s;
     border-radius: 15px;
   }
-
+  
+  /* Keyframes for simple color change */
   @keyframes example {
     from {
       background-color: red;
     }
-
     to {
       background-color: yellow;
     }
   }
-
-
+  
+  /* Example: multi-step animation */
   div.animation2 {
     width: 100px;
     height: 100px;
@@ -265,25 +264,22 @@
     animation-duration: 4s;
     border-radius: 15px;
   }
-
   @keyframes example {
     0% {
       background-color: red;
     }
-
     25% {
       background-color: yellow;
     }
-
     50% {
       background-color: blue;
     }
-
     100% {
       background-color: green;
     }
   }
-
+  
+  /* Example: animated movement and color */
   div.animation3 {
     width: 100px;
     height: 100px;
@@ -293,39 +289,35 @@
     animation-duration: 4s;
     border-radius: 15px;
   }
-
   @keyframes example {
     0% {
       background-color: red;
       left: 0px;
       top: 0px;
     }
-
     25% {
       background-color: yellow;
       left: 200px;
       top: 0px;
     }
-
     50% {
       background-color: blue;
       left: 200px;
       top: 200px;
     }
-
     75% {
       background-color: green;
       left: 0px;
       top: 200px;
     }
-
     100% {
       background-color: red;
       left: 0px;
       top: 0px;
     }
   }
-
+  
+  /* Example: animation with delay */
   div.animation4 {
     width: 100px;
     height: 100px;
@@ -336,39 +328,35 @@
     animation-delay: 2s;
     border-radius: 15px;
   }
-
   @keyframes example {
     0% {
       background-color: red;
       left: 0px;
       top: 0px;
     }
-
     25% {
       background-color: yellow;
       left: 200px;
       top: 0px;
     }
-
     50% {
       background-color: blue;
       left: 200px;
       top: 200px;
     }
-
     75% {
       background-color: green;
       left: 0px;
       top: 200px;
     }
-
     100% {
       background-color: red;
       left: 0px;
       top: 0px;
     }
   }
-
+  
+  /* Example: animation with limited iterations */
   div.animation5 {
     width: 100px;
     height: 100px;
@@ -379,40 +367,35 @@
     animation-iteration-count: 3;
     border-radius: 15px;
   }
-
   @keyframes example {
     0% {
       background-color: red;
       left: 0px;
       top: 0px;
     }
-
     25% {
       background-color: yellow;
       left: 200px;
       top: 0px;
     }
-
     50% {
       background-color: blue;
       left: 200px;
       top: 200px;
     }
-
     75% {
       background-color: green;
       left: 0px;
       top: 200px;
     }
-
     100% {
       background-color: red;
       left: 0px;
       top: 0px;
     }
   }
-
-
+  
+  /* Example: infinite animation */
   div.animation6 {
     width: 100px;
     height: 100px;
@@ -423,44 +406,39 @@
     animation-iteration-count: infinite;
     border-radius: 15px;
   }
-
   @keyframes example {
     0% {
       background-color: red;
       left: 0px;
       top: 0px;
     }
-
     25% {
       background-color: yellow;
       left: 200px;
       top: 0px;
     }
-
     50% {
       background-color: blue;
       left: 200px;
       top: 200px;
     }
-
     75% {
       background-color: green;
       left: 0px;
       top: 200px;
     }
-
     100% {
       background-color: red;
       left: 0px;
       top: 0px;
     }
   }
-
-
+  
+  /* Example: animation timing functions */
   div.animation7 {
     width: 100px;
     height: 50px;
-    background-color: red;
+    background-color: rgb(97, 2, 2);
     font-weight: bold;
     position: relative;
     animation: mymove 5s;
@@ -468,39 +446,17 @@
     border-radius: 15px;
     text-align: center;
   }
-
-  #div1 {
-    animation-timing-function: linear;
-  }
-
-  #div2 {
-    animation-timing-function: ease;
-  }
-
-  #div3 {
-    animation-timing-function: ease-in;
-  }
-
-  #div4 {
-    animation-timing-function: ease-out;
-  }
-
-  #div5 {
-    animation-timing-function: ease-in-out;
-  }
-
+  #div1 { animation-timing-function: linear; }
+  #div2 { animation-timing-function: ease; }
+  #div3 { animation-timing-function: ease-in; }
+  #div4 { animation-timing-function: ease-out; }
+  #div5 { animation-timing-function: ease-in-out; }
   @keyframes mymove {
-    from {
-      left: 0px;
-    }
-
-    to {
-      left: 300px;
-    }
+    from { left: 0px; }
+    to { left: 300px; }
   }
-
-
-
+  
+  /* Example: alternate direction animation */
   div.animation8 {
     width: 100px;
     height: 100px;
@@ -514,40 +470,35 @@
     animation-direction: alternate;
     border-radius: 15px;
   }
-
   @keyframes example {
     0% {
       background-color: red;
       left: 0px;
       top: 0px;
     }
-
     25% {
       background-color: yellow;
       left: 200px;
       top: 0px;
     }
-
     50% {
       background-color: blue;
       left: 200px;
       top: 200px;
     }
-
     75% {
       background-color: green;
       left: 0px;
       top: 200px;
     }
-
     100% {
       background-color: red;
       left: 0px;
       top: 0px;
     }
   }
-
-
+  
+  /* Example: alternate direction animation with delay */
   div.animation9 {
     width: 100px;
     height: 100px;
@@ -561,41 +512,35 @@
     animation-direction: alternate;
     border-radius: 15px;
   }
-
   @keyframes example {
     0% {
       background-color: red;
       left: 0px;
       top: 0px;
     }
-
     25% {
       background-color: yellow;
       left: 200px;
       top: 0px;
     }
-
     50% {
       background-color: blue;
       left: 200px;
       top: 200px;
     }
-
     75% {
       background-color: green;
       left: 0px;
       top: 200px;
     }
-
     100% {
       background-color: red;
       left: 0px;
       top: 0px;
     }
   }
-
-
-
+  
+  /* Example: alternate direction animation with custom keyframes */
   div.animation10 {
     width: 100px;
     height: 100px;
@@ -604,43 +549,37 @@
     animation: myfirst 5s linear 2s infinite alternate;
     border-radius: 15px;
   }
-
   @keyframes myfirst {
     0% {
       background-color: red;
       left: 0px;
       top: 0px;
     }
-
     25% {
       background-color: yellow;
       left: 200px;
       top: 0px;
     }
-
     50% {
       background-color: blue;
       left: 200px;
       top: 200px;
     }
-
     75% {
       background-color: green;
       left: 0px;
       top: 200px;
     }
-
     100% {
       background-color: red;
       left: 0px;
       top: 0px;
     }
   }
-
-
-
+  
+  /* Card component styles (used for content sections) */
   .card {
-    background: rgba(38, 60, 92, 0.10);
+    background: linear-gradient(180deg, #18283fdc, #000000d7);
     border-radius: 18px;
     box-shadow: 0 4px 32px #263c5c33;
     margin-bottom: 40px;
@@ -649,8 +588,8 @@
     margin-left: 20px;
     height: 90vh;
   }
-
-
+  
+  /* Card margin adjustment for animation cards */
   .card#animation1,
   .card#animation2,
   .card#animation3,
@@ -662,20 +601,4 @@
   .card#animation9,
   .card#animation10 {
     margin-left: 10px;
-  }
-
-
-  @font-face {
-    font-family: myFirstFont;
-    src: url(sansation_light.woff);
-  }
-
-  @font-face {
-    font-family: myFirstFont;
-    src: url(sansation_bold.woff);
-    font-weight: bold;
-  }
-
-  * {
-    font-family: myFirstFont;
   }

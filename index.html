@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
   </head>
+
   <body>
-    <!-- Main Navigation Bar -->
+    <!-- Navigation bar at the top -->
     <nav class="main-navbar">
       <div class="navbar-logo gradient-text">
         <a href="index.html">Neo Gonzales</a>
       </div>
       <div class="navbar-subtitle gradient-text">Web & Mobile Developer</div>
       <div class="navbar-links">
+        <!-- Navigation links -->
         <a href="#hero_bookmark" class="active gradient-text">Home</a>
         <a href="#about_bookmark" class="gradient-text">About</a>
         <a href="#projects_bookmark" class="gradient-text">Projects</a>
@@ -21,13 +23,19 @@
       </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero section with profile and intro -->
     <div class="hero" id="hero_bookmark">
-      <img src="portfolio_images/hero_grid.jpg" alt="Profile Picture" class="profile-pic">
+      <img
+        src="portfolio_images/hero_grid.jpg"
+        alt="Profile Picture"
+        class="profile-pic"
+      />
       <div class="hero-text">
         <h1>Neo Gonzales</h1>
         <div class="tagline">Turning ideas into interactive realities.</div>
-        <button class="hero-btn" onclick="location.href='#projects_bookmark'">View My Work</button>
+        <button class="hero-btn" onclick="location.href='#projects_bookmark'">
+          View My Work
+        </button>
       </div>
     </div>
 
@@ -35,23 +43,32 @@
     <div id="about_bookmark"></div>
     <h1 class="about_title">Biography</h1>
     <div class="about about-flex">
-      <div class="about-img">
-        <img src="portfolio_images/neo_image.png" alt="About Image">
+      <div class="about-img animate-on-scroll">
+        <img src="portfolio_images/neo_image.png" alt="About Image" />
       </div>
       <div class="about-text">
-        <p>HELLO! I'm Neo an IT student at NU–Clark, majoring in Web and Mobile Development. I enjoy building responsive, user-friendly websites and mobile apps. Lately, I’ve been exploring Flutter, React, and Firebase to level up my skills and create better digital experiences.</p>
+        <p>
+          HELLO! I'm Neo an IT student at NU–Clark, majoring in Web and Mobile
+          Development. I enjoy building responsive, user-friendly websites and
+          mobile apps. Lately, I’ve been exploring Flutter, React, and Firebase
+          to level up my skills and create better digital experiences.
+        </p>
       </div>
     </div>
 
-    <!-- Education Section -->
+    <!-- Education timeline -->
     <div id="education_bookmark"></div>
     <h2 class="education-title">Education</h2>
     <h2 class="education-tagline">
-      More than a milestone — it’s where <span class="highlight">curiosity</span> <br> meets <span class="highlight">discipline</span> to shape future <span class="highlight">possibilities</span>.
+      More than a milestone — it’s where
+      <span class="highlight">curiosity</span> <br />
+      meets <span class="highlight">discipline</span> to shape future
+      <span class="highlight">possibilities</span>.
     </h2>
     <section class="education-timeline-section">
       <div class="education-timeline">
-        <div class="education-event glass_panel_edu">
+        <!-- SHS diploma -->
+        <div class="education-event animate-on-scroll glass_panel_edu">
           <div class="education-dot"></div>
           <div class="education-content">
             <h3>Senior High School Diploma</h3>
@@ -59,29 +76,41 @@
             <p>Angeles City Science High School</p>
           </div>
         </div>
-        <div class="education-event glass_panel_edu">
+        <!-- College degree -->
+        <div class="education-event animate-on-scroll glass_panel_edu">
           <div class="education-dot"></div>
           <div class="education-content">
             <h3>Bachelor of Science in Information Technology</h3>
             <span class="education-date">2023 – present</span>
-            <p>National University - Clark, Major in Web and Mobile Development</p>
+            <p>
+              National University - Clark, Major in Web and Mobile Development
+            </p>
           </div>
         </div>
       </div>
-      <img src="portfolio_images/blue_grid3.png" alt="Education Timeline Background" class="education_bg">
+      <!-- Decorative background -->
+      <img
+        src="portfolio_images/blue_grid3.png"
+        alt="Education Timeline Background"
+        class="education_bg"
+      />
     </section>
 
-    <!-- Skills Section -->
+    <!-- Skills section: programming languages -->
     <div id="skills_bookmark"></div>
     <section class="skills-carousel-section">
       <h1 class="skills-title">Skills Snapshot</h1>
       <h2 class="skill-tagline">
-        Skills aren’t just listed — they’re <span class="highlight">lived</span>, <span class="highlight">refined</span>,<br> and <span class="highlight">ready</span> for the next <span class="highlight">challenge</span>.
+        Skills aren’t just listed — they’re
+        <span class="highlight">lived</span>,
+        <span class="highlight">refined</span>,<br />
+        and <span class="highlight">ready</span> for the next
+        <span class="highlight">challenge</span>.
       </h2>
       <h2 class="skill_subtitle">LANGUAGES</h2>
       <div class="skills-carousel-container">
         <div class="skills-carousel-track" id="skills-carousel">
-          <!-- Each skill card below -->
+          <!-- Repeating skill cards -->
           <div class="skills-carousel-item glass_panel">
             <div class="skills-icon"></div>
             <h3>HTML</h3>
@@ -95,7 +124,9 @@
           <div class="skills-carousel-item glass_panel">
             <div class="skills-icon"></div>
             <h3>JAVASCRIPT</h3>
-            <p>I create interactive web applications using JavaScript frameworks.</p>
+            <p>
+              I create interactive web applications using JavaScript frameworks.
+            </p>
           </div>
           <div class="skills-carousel-item glass_panel">
             <div class="skills-icon"></div>
@@ -121,7 +152,9 @@
           <div class="skills-carousel-item glass_panel">
             <div class="skills-icon"></div>
             <h3>JAVASCRIPT</h3>
-            <p>I create interactive web applications using JavaScript frameworks.</p>
+            <p>
+              I create interactive web applications using JavaScript frameworks.
+            </p>
           </div>
           <div class="skills-carousel-item glass_panel">
             <div class="skills-icon"></div>
@@ -137,6 +170,7 @@
       </div>
     </section>
 
+    <!-- Skills section: tools -->
     <section class="skills-carousel-section">
       <h2 class="skill_subtitle">TOOLS</h2>
       <div class="skills-carousel-container">
@@ -144,155 +178,308 @@
           <div class="skills-carousel-item glass_panel">
             <div class="skills-icon"></div>
             <h3>Github</h3>
-            <p>I host my projects on GitHub for collaboration, backup, and showcasing my work.</p>
+            <p>
+              I host my projects on GitHub for collaboration, backup, and
+              showcasing my work.
+            </p>
           </div>
           <div class="skills-carousel-item glass_panel">
             <div class="skills-icon"></div>
             <h3>Firebase</h3>
-            <p>I use Firebase for building real-time applications and managing user authentication.</p>
+            <p>
+              I use Firebase for building real-time applications and managing
+              user authentication.
+            </p>
           </div>
           <div class="skills-carousel-item glass_panel">
             <div class="skills-icon"></div>
             <h3>VScode</h3>
-            <p>My main code editor for writing and testing both web and Flutter apps.</p>
+            <p>
+              My main code editor for writing and testing both web and Flutter
+              apps.
+            </p>
           </div>
           <div class="skills-carousel-item glass_panel">
             <div class="skills-icon"></div>
             <h3>Android Studio</h3>
-            <p>I use Android Studio to build, test, and run my Flutter and native Android apps.</p>
+            <p>
+              I use Android Studio to build, test, and run my Flutter and native
+              Android apps.
+            </p>
           </div>
           <!-- Duplicate items for seamless loop -->
           <div class="skills-carousel-item glass_panel">
             <div class="skills-icon"></div>
             <h3>Github</h3>
-            <p>I host my projects on GitHub for collaboration, backup, and showcasing my work.</p>
+            <p>
+              I host my projects on GitHub for collaboration, backup, and
+              showcasing my work.
+            </p>
           </div>
           <div class="skills-carousel-item glass_panel">
             <div class="skills-icon"></div>
             <h3>Firebase</h3>
-            <p>I use Firebase for building real-time applications and managing user authentication.</p>
+            <p>
+              I use Firebase for building real-time applications and managing
+              user authentication.
+            </p>
           </div>
           <div class="skills-carousel-item glass_panel">
             <div class="skills-icon"></div>
             <h3>VScode</h3>
-            <p>My main code editor for writing and testing both web and Flutter apps.</p>
+            <p>
+              My main code editor for writing and testing both web and Flutter
+              apps.
+            </p>
           </div>
           <div class="skills-carousel-item glass_panel">
             <div class="skills-icon"></div>
             <h3>Android Studio</h3>
-            <p>I use Android Studio to build, test, and run my Flutter and native Android apps.</p>
+            <p>
+              I use Android Studio to build, test, and run my Flutter and native
+              Android apps.
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Awards Section -->
+    <!-- Awards and recognition section -->
     <h1 class="awards_title">Awards & Recognition</h1>
     <section class="awards-section">
       <div class="awards-header">
         <h2 class="awards-tagline">
-          It’s not just about winning. It’s about <span class="highlight">impact</span> and <span class="highlight">growth</span> that inspires others.
+          It’s not just about winning. It’s about
+          <span class="highlight">impact</span> and
+          <span class="highlight">growth</span> that inspires others.
         </h2>
       </div>
+      <!-- Each award card -->
       <div class="awards-cards">
-        <div class="award-card glass_panel animate-in" data-anim="left">
+        <!-- Award card 1 -->
+        <div class="award-card glass_panel animate-on-scroll" data-anim="left">
           <div class="award-photo">
-            <img src="portfolio_images/pagal.png" alt="Award Photo">
+            <img src="portfolio_images/pagal.png" alt="Award Photo" />
           </div>
-          <div class="award-desc">Ganting Pagal: Rank 1 Recognition in Information Technology Department</div>
-        </div>
-        <div class="award-card glass_panel animate-in" data-anim="right">
-          <div class="award-photo">
-            <img src="portfolio_images/chum.png" alt="Award Photo">
+          <div class="award-desc">
+            Ganting Pagal: Rank 1 Recognition in Information Technology
+            Department
           </div>
-          <div class="award-desc">2025 CodeChum regional programming competition: Champion</div>
         </div>
-        <div class="award-card glass_panel animate-in" data-anim="top">
+        <!-- Award card 2 -->
+        <div class="award-card glass_panel animate-on-scroll" data-anim="right">
           <div class="award-photo">
-            <img src="portfolio_images/ctf.jpg" alt="Award Photo">
+            <img src="portfolio_images/chum.png" alt="Award Photo" />
           </div>
-          <div class="award-desc">3rd Regional Cybersecurity Conference: CTF Champion</div>
+          <div class="award-desc">
+            2025 CodeChum regional programming competition: Champion
+          </div>
         </div>
-        <div class="award-card glass_panel animate-in" data-anim="left">
+        <!-- Award card 3 -->
+        <div class="award-card glass_panel animate-on-scroll" data-anim="top">
           <div class="award-photo">
-            <img src="portfolio_images/ai.jpg" alt="Award Photo">
+            <img src="portfolio_images/ctf.jpg" alt="Award Photo" />
+          </div>
+          <div class="award-desc">
+            3rd Regional Cybersecurity Conference: CTF Champion
+          </div>
+        </div>
+        <!-- Award card 4 -->
+        <div class="award-card glass_panel animate-on-scroll" data-anim="left">
+          <div class="award-photo">
+            <img src="portfolio_images/ai.jpg" alt="Award Photo" />
           </div>
           <div class="award-desc">Nation AI Prompting Challenge: Champion</div>
         </div>
       </div>
     </section>
 
-    <!-- Project Showcase Section -->
+    <!-- Certifications section -->
+    <h1 class="certification_title">Certifications</h1>
+    <h2 class="certificate-tagline">
+      It’s not just the paper — it’s the
+      <span class="highlight">knowledge</span>, <br />
+      <span class="highlight">skills</span>, and
+      <span class="highlight">dedication</span> behind it.
+    </h2>
+    <!-- Hidden radio buttons for image selection -->
+    <input type="radio" name="thumb" id="img1" />
+    <input type="radio" name="thumb" id="img2" />
+    <input type="radio" name="thumb" id="img3" />
+    <input type="radio" name="thumb" id="img4" />
+    <input type="radio" name="thumb" id="img5" checked />
+    <!-- Default selected -->
+    <input type="radio" name="thumb" id="img6" />
+    <input type="radio" name="thumb" id="img7" />
+    <input type="radio" name="thumb" id="img8" />
+    <input type="radio" name="thumb" id="img9" />
+
+    <!-- Thumbnail gallery -->
+    <div class="gallery animate-on-scroll">
+      <!-- certification thumbnail 1 -->
+      <label for="img1" class="thumb glass_panel">
+        <img src="portfolio_images/cert1.jpg" alt="cert1" />
+        <span class="thumb-label">TOEIC</span>
+      </label>
+      <!-- certification thumbnail 2 -->
+      <label for="img2" class="thumb glass_panel">
+        <img src="portfolio_images/cert2.jpg" alt="cert2" />
+        <span class="thumb-label">DICT</span>
+      </label>
+      <!-- certification thumbnail 3 -->
+      <label for="img3" class="thumb glass_panel">
+        <img src="portfolio_images/cert5.jpg" alt="cert3" />
+        <span class="thumb-label">QuizBee</span>
+      </label>
+      <!-- certification thumbnail 4 -->
+      <label for="img4" class="thumb glass_panel">
+        <img src="portfolio_images/cert4.jpg" alt="cert4" />
+        <span class="thumb-label">CompTIA</span>
+      </label>
+      <!-- certification thumbnail 5 -->
+      <label for="img5" class="thumb glass_panel">
+        <img src="portfolio_images/cert3.jpg" alt="cert5" />
+        <span class="thumb-label">Ganting Pagal: Term 3</span>
+      </label>
+      <!-- certification thumbnail 6 -->
+      <label for="img6" class="thumb glass_panel">
+        <img src="portfolio_images/cert6.jpg" alt="cert6" />
+        <span class="thumb-label">Ganting Pagal: Term 1</span>
+      </label>
+      <!-- certification thumbnail 7 -->
+      <label for="img7" class="thumb glass_panel">
+        <img src="portfolio_images/cert7.jpg" alt="cert7" />
+        <span class="thumb-label">Capture the Flag</span>
+      </label>
+      <!-- certification thumbnail 8 -->
+      <label for="img8" class="thumb glass_panel">
+        <img src="portfolio_images/cert8.jpg" alt="cert8" />
+        <span class="thumb-label">Ganting Pagal: Term 2</span>
+      </label>
+      <!-- certification thumbnail 9 -->
+      <label for="img9" class="thumb glass_panel">
+        <img src="portfolio_images/cert9.jpg" alt="cert9" />
+        <span class="thumb-label">Ganting Pagal: Term 4</span>
+      </label>
+    </div>
+
+    <!-- Project showcase section -->
     <div id="projects_bookmark"></div>
     <h1 class="project_showcase_title">Project Showcase</h1>
     <h2 class="project-tagline">
-      It starts with an <span class="highlight">idea</span>. Then comes <span class="highlight">creativity</span>, problem-solving, <br> and real-world <span class="highlight">impact</span> that sparks <span class="highlight">innovation</span>.
+      It starts with an <span class="highlight">idea</span>. Then comes
+      <span class="highlight">creativity</span>, problem-solving, <br />
+      and real-world <span class="highlight">impact</span> that sparks
+      <span class="highlight">innovation</span>.
     </h2>
-    <section class="simple-carousel">
+    <section class="simple-carousel animate-on-scroll">
+      <!-- Carousel buttons and image -->
       <button class="carousel-btn" id="carouselPrev">&#8592;</button>
-      <img id="carouselImage" src="portfolio_images/pagal.png" alt="Project Image" />
+      <img
+        id="carouselImage"
+        src="portfolio_images/pagal.png"
+        alt="Project Image"
+      />
       <button class="carousel-btn" id="carouselNext">&#8594;</button>
     </section>
     <div class="project-btn-container">
-      <button class="project-btn" onclick="location.href='index2.html'">View All Projects</button>
+      <button class="project-btn" onclick="location.href='index2.html'">
+        View All Projects
+      </button>
     </div>
 
     <!-- Contact Section -->
     <h1 class="contact-title" id="contact_bookmark">Contact</h1>
-    <section class="contact-glass-panel animate-contact">
+    <section class="contact-glass-panel animate-on-scroll">
       <div class="contact-glass-inner">
+        <!-- Contact content (text + links) -->
         <div class="contact-content">
           <h2 class="gradient-text">Let’s Connect</h2>
           <p>
-            Interested in collaborating or have a project in mind?<br>
+            Interested in collaborating or have a project in mind?<br />
             Reach out and let’s build something great together!
           </p>
           <div class="contact-details">
-            <div>Email: <a href="mailto:neo.gonzales@email.com">neo.gonzales@email.com</a></div>
+            <div>
+              Email:
+              <a href="mailto:neo.gonzales@email.com">neo.gonzales@email.com</a>
+            </div>
             <div>Phone: <a href="tel:+639123456789">+63 912 345 6789</a></div>
-            <div>LinkedIn: <a href="https://linkedin.com/in/neogonzales" target="_blank">/in/neogonzales</a></div>
+            <div>
+              LinkedIn:
+              <a href="https://linkedin.com/in/neogonzales" target="_blank"
+                >/in/neogonzales</a
+              >
+            </div>
           </div>
         </div>
+        <!-- Contact form -->
         <form class="contact-form" action="#" method="post" autocomplete="off">
           <div class="form-row">
-            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="text" name="name" placeholder="Your Name" required />
           </div>
           <div class="form-row">
-            <input type="email" name="email" placeholder="Your Email" required>
+            <input
+              type="email"
+              name="email"
+              placeholder="Your Email"
+              required
+            />
           </div>
           <div class="form-row">
-            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+            <textarea
+              name="message"
+              rows="5"
+              placeholder="Your Message"
+              required
+            ></textarea>
           </div>
-          <button type="submit" class="contact-submit-btn" onclick="location.href='#'">Send Message</button>
+          <button
+            type="submit"
+            class="contact-submit-btn"
+            onclick="location.href='#'"
+          >
+            Send Message
+          </button>
         </form>
       </div>
     </section>
 
     <!-- Footer Section -->
-    <footer class="site-footer glass_panel_nav">
+    <footer class="site-footer animate-on-scroll glass_panel_nav">
       <div class="footer-top">
+        <!-- Logo and navigation inside footer -->
         <div class="footer-logo-nav">
           <div class="footer-logo">
             <span>Neo</span>
           </div>
           <nav class="footer-main-nav">
+            <!-- Footer link groups -->
             <div>
               <h4>projects</h4>
               <ul>
-                <li class="pulse"><a href="Activity6.html">Calendar pt.1</a></li>
-                <li class="pulse"><a href="Activity7.html">Calendar pt.2</a></li>
+                <li class="pulse">
+                  <a href="Activity6.html">Calendar pt.1</a>
+                </li>
+                <li class="pulse">
+                  <a href="Activity7.html">Calendar pt.2</a>
+                </li>
                 <li class="pulse"><a href="Activity8.html">NU Quest</a></li>
-                <li class="pulse"><a href="activity9.html">Navigation</a></li>
+                <li class="pulse"><a href="Activity9.html">Navigation</a></li>
               </ul>
             </div>
             <div>
               <h4>Exhibitions</h4>
               <ul>
-                <li class="pulse"><a href="Activity1.html">Eye of the tiger</a></li>
+                <li class="pulse">
+                  <a href="Activity1.html">Eye of the tiger</a>
+                </li>
                 <li class="pulse"><a href="Resume.html">Resume pt.1</a></li>
-                <li class="pulse"><a href="activity3.html">Resume pt.2</a></li>
+                <li class="pulse"><a href="Activity3.html">Resume pt.2</a></li>
                 <li class="pulse"><a href="Activity4.html">Map area</a></li>
-                <li class="pulse"><a href="Activity5.html">Table colspan & rowspan</a></li>
+                <li class="pulse">
+                  <a href="Activity5.html">Table colspan & rowspan</a>
+                </li>
               </ul>
             </div>
             <div>
@@ -301,25 +488,55 @@
                 <li class="pulse"><a href="#hero_bookmark">Home</a></li>
                 <li class="pulse"><a href="#about_bookmark">About</a></li>
                 <li class="pulse"><a href="#project_bookmark">Projects</a></li>
-                <li class="pulse"><a href="https://neos26.github.io/IFAW/">Group</a></li>
+                <li class="pulse">
+                  <a href="https://neos26.github.io/IFAW/">Group</a>
+                </li>
                 <li class="pulse"><a href="#contact_bookmark">Contacts</a></li>
               </ul>
             </div>
           </nav>
         </div>
+        <!-- Button to jump to contact -->
         <div class="footer-contact">
-          <button class="footer-contact-btn" onclick="location.href='#contact_bookmark'">Contact us <span>&#8594;</span></button>
+          <button
+            class="footer-contact-btn"
+            onclick="location.href='#contact_bookmark'"
+          >
+            Contact us <span>&#8594;</span>
+          </button>
         </div>
       </div>
+      <!-- Social media icons -->
       <div class="footer-social-cert">
         <div class="footer-social">
-          <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" /></a>
-          <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook" /></a>
-          <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" /></a>
-          <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg" alt="Tiktok" /></a>
-          <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube" /></a>
+          <a href="#"
+            ><img
+              src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg"
+              alt="LinkedIn"
+          /></a>
+          <a href="#"
+            ><img
+              src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg"
+              alt="Facebook"
+          /></a>
+          <a href="#"
+            ><img
+              src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg"
+              alt="Instagram"
+          /></a>
+          <a href="#"
+            ><img
+              src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg"
+              alt="Tiktok"
+          /></a>
+          <a href="#"
+            ><img
+              src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg"
+              alt="YouTube"
+          /></a>
         </div>
       </div>
+      <!-- Footer bottom with credits -->
       <div class="footer-bottom">
         <span>&copy; 2025 NEO</span>
         <span id="footer-web-design">WEB DESIGN BY NEO</span>
@@ -327,7 +544,7 @@
       <div class="footer-bg-text">NEO</div>
     </footer>
 
-    <!-- Main JS -->
+    <!-- JavaScript file -->
     <script src="main.js"></script>
   </body>
 </html>

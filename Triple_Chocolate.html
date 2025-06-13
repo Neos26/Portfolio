@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Triple Chocolate Cake</title>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+      @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
       body {
         background-color: #000;
-        font-family: 'Inter', sans-serif;
+        font-family: "Inter", sans-serif;
         margin: 0;
         padding: 0;
       }
@@ -28,9 +28,15 @@
         animation: gradient-flow 5s linear infinite;
       }
       @keyframes gradient-flow {
-        0% { background-position: 0% center; }
-        50% { background-position: 100% center; }
-        100% { background-position: 200% center; }
+        0% {
+          background-position: 0% center;
+        }
+        50% {
+          background-position: 100% center;
+        }
+        100% {
+          background-position: 200% center;
+        }
       }
       img {
         border: 5px solid #73c6fd;
@@ -83,7 +89,7 @@
         align-items: center;
         justify-content: space-between;
         padding: 0 48px;
-        font-family: 'Inter', sans-serif;
+        font-family: "Inter", sans-serif;
         box-sizing: border-box;
         transition: top 0.3s;
         background: rgba(0, 0, 0, 0.85);
@@ -286,16 +292,26 @@
       <div class="navbar-links">
         <a href="Activity4.html" class="active gradient-text">Home</a>
         <a href="index.html" class="gradient-text">Portfolio</a>
-        <a href="index2.html#activity4_bookmark" class="gradient-text">Projects</a>
+        <a href="index2.html#activity4_bookmark" class="gradient-text"
+          >Projects</a
+        >
       </div>
     </nav>
     <!-- Main title for the cake -->
     <h1>Triple Chocolate Cake</h1>
     <!-- Glassmorphism card for cake content -->
     <div class="cake-glass-card">
-      <img src="/portfolio_images/chocolate.jpg" alt="Triple Chocolate" class="cake-image-glass">
+      <img
+        src="portfolio_images/chocolate.jpg"
+        alt="Triple Chocolate"
+        class="cake-image-glass"
+      />
       <div class="cake-description-glass">
-        <p>This decadent triple chocolate cake features layers of rich Belgian chocolate sponge, creamy chocolate mousse, and a glossy chocolate ganache. Perfect for true chocolate lovers!</p>
+        <p>
+          This decadent triple chocolate cake features layers of rich Belgian
+          chocolate sponge, creamy chocolate mousse, and a glossy chocolate
+          ganache. Perfect for true chocolate lovers!
+        </p>
       </div>
     </div>
     <!-- Link to go back to the main Activity4 page -->
@@ -305,14 +321,14 @@
     <!-- JavaScript for hiding/showing navbar on scroll -->
     <script>
       let lastScrollY = window.scrollY;
-      const navbar = document.querySelector('.main-navbar');
-      window.addEventListener('scroll', () => {
+      const navbar = document.querySelector(".main-navbar");
+      window.addEventListener("scroll", () => {
         if (window.scrollY > lastScrollY) {
           // Scrolling down: hide navbar
-          navbar.classList.add('hide-navbar');
+          navbar.classList.add("hide-navbar");
         } else {
           // Scrolling up: show navbar
-          navbar.classList.remove('hide-navbar');
+          navbar.classList.remove("hide-navbar");
         }
         lastScrollY = window.scrollY;
       });

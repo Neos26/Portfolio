@@ -18,6 +18,87 @@ body {
   /* Sets the main background and font for the site */
 }
 
+/* Main Navigation Bar Styles */
+.main-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 200;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  font-family: "Inter", sans-serif;
+  box-sizing: border-box;
+  transition: top 0.3s;
+}
+
+.main-navbar.hide-navbar {
+  top: -80px;
+  /* Hide above the viewport */
+}
+
+.navbar-logo {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.navbar-subtitle {
+  flex: 1;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 40px;
+}
+
+.navbar-links a {
+  color: #fff;
+  font-size: 1.08rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.18s;
+  position: relative;
+}
+
+.navbar-links a.active,
+.navbar-links a:hover {
+  color: #6ee7ff;
+}
+
+@media (max-width: 900px) {
+  .main-navbar {
+    flex-direction: column;
+    height: auto;
+    padding: 12px 8px;
+    gap: 8px;
+  }
+
+  .navbar-logo,
+  .navbar-subtitle,
+  .navbar-links {
+    text-align: center;
+    margin: 0;
+  }
+
+  .navbar-links {
+    gap: 18px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
 /* Hero Section */
 .hero {
   position: relative;
@@ -829,158 +910,6 @@ input[type="radio"] {
   opacity: 1;
   transition: opacity 0.4s;
 }
-/* Footer Section Styles */
-.site-footer {
-  background: #084181;
-  color: #fff;
-  padding: 48px 32px 32px 32px;
-  position: relative;
-  overflow: hidden;
-  margin-top: 64px;
-  border-radius: 24px 24px 0 0;
-  /* Footer container with blue background and rounded top corners */
-}
-
-.footer-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 32px;
-  /* Top section of the footer: logo, nav, contact */
-}
-
-.footer-logo-nav {
-  display: flex;
-  gap: 48px;
-  /* Container for logo and navigation links */
-}
-
-.footer-logo {
-  margin-right: 32px;
-  color: #fff;
-  /* Footer logo styling */
-}
-
-.footer-logo span {
-  font-weight: bold;
-  font-size: 2rem;
-  letter-spacing: 1px;
-}
-
-.footer-main-nav {
-  display: flex;
-  gap: 48px;
-  /* Main navigation links in the footer */
-}
-
-.footer-main-nav a {
-  color: #ffffff;
-  text-decoration: none;
-}
-
-.footer-main-nav h4 {
-  color: #73c6fd;
-  margin-bottom: 8px;
-  font-size: 1.1rem;
-}
-
-.footer-main-nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.footer-main-nav li {
-  margin-bottom: 6px;
-  font-size: 1rem;
-  color: #fff;
-  opacity: 0.85;
-}
-
-.footer-contact {
-  align-self: flex-start;
-  /* Contact button container in the footer */
-}
-
-.footer-contact-btn {
-  background: #fff;
-  color: #251b26;
-  border: none;
-  border-radius: 24px;
-  padding: 12px 28px;
-  font-size: 1.1rem;
-  font-weight: 500;
-  cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  transition: background 0.2s;
-}
-
-.footer-contact-btn span {
-  font-size: 1.2em;
-}
-
-.footer-contact-btn:hover {
-  background: #73c6fd;
-  color: #fff;
-}
-
-#footer-web-design {
-  float: right;
-}
-
-.footer-social a img {
-  width: 28px;
-  height: 28px;
-  margin-right: 12px;
-  filter: brightness(0) invert(1);
-  opacity: 0.8;
-  transition: opacity 0.2s;
-}
-
-.footer-social a img:hover {
-  opacity: 1;
-}
-
-/* Footer Bottom Bar */
-.footer-bottom {
-  font-size: 0.95rem;
-  color: #ccc;
-  border-top: 1px solid #2d3041;
-  padding-top: 12px;
-  margin-top: 12px;
-  display: flex;
-  justify-content: space-between;
-  /* Bottom bar for copyright and extra info */
-}
-
-.footer-bg-text {
-  user-select: none;
-  position: absolute;
-  left: 0;
-  bottom: -40px;
-  font-size: 12vw;
-  color: #73c6fd;
-  opacity: 0.2;
-  z-index: 0;
-  pointer-events: none;
-  font-weight: bold;
-  line-height: 1;
-  /* Large faded background text for footer branding */
-}
-
-@media (max-width: 900px) {
-  .footer-top,
-  .footer-social-cert {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 24px;
-    /* Responsive: stack footer sections vertically on small screens */
-  }
-  .footer-main-nav {
-    gap: 24px;
-  }
-}
 
 /* Contact Glass Panel Styles - Blue and Bigger */
 .contact-title {
@@ -1171,84 +1100,156 @@ input[type="radio"] {
   }
 }
 
-/* Main Navigation Bar Styles */
-.main-navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  z-index: 200;
-  height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 48px;
-  font-family: "Inter", sans-serif;
-  box-sizing: border-box;
-  transition: top 0.3s;
-}
-
-.main-navbar.hide-navbar {
-  top: -80px;
-  /* Hide above the viewport */
-}
-
-.navbar-logo {
-  font-size: 1.35rem;
-  font-weight: 700;
+/* Footer Section Styles */
+.site-footer {
+  background: #084181;
   color: #fff;
-  letter-spacing: 1px;
-  white-space: nowrap;
-}
-
-.navbar-subtitle {
-  flex: 1;
-  text-align: center;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #fff;
-  letter-spacing: 0.5px;
-  white-space: nowrap;
-}
-
-.navbar-links {
-  display: flex;
-  gap: 40px;
-}
-
-.navbar-links a {
-  color: #fff;
-  font-size: 1.08rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: color 0.18s;
+  padding: 48px 32px 32px 32px;
   position: relative;
+  overflow: hidden;
+  margin-top: 64px;
+  border-radius: 24px 24px 0 0;
+  /* Footer container with blue background and rounded top corners */
 }
 
-.navbar-links a.active,
-.navbar-links a:hover {
-  color: #6ee7ff;
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 32px;
+  /* Top section of the footer: logo, nav, contact */
+}
+
+.footer-logo-nav {
+  display: flex;
+  gap: 48px;
+  /* Container for logo and navigation links */
+}
+
+.footer-logo {
+  margin-right: 32px;
+  color: #fff;
+  /* Footer logo styling */
+}
+
+.footer-logo span {
+  font-weight: bold;
+  font-size: 2rem;
+  letter-spacing: 1px;
+}
+
+.footer-main-nav {
+  display: flex;
+  gap: 48px;
+  /* Main navigation links in the footer */
+}
+
+.footer-main-nav a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.footer-main-nav h4 {
+  color: #73c6fd;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+.footer-main-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-main-nav li {
+  margin-bottom: 6px;
+  font-size: 1rem;
+  color: #fff;
+  opacity: 0.85;
+}
+
+.footer-contact {
+  align-self: flex-start;
+  /* Contact button container in the footer */
+}
+
+.footer-contact-btn {
+  background: #fff;
+  color: #251b26;
+  border: none;
+  border-radius: 24px;
+  padding: 12px 28px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: background 0.2s;
+}
+
+.footer-contact-btn span {
+  font-size: 1.2em;
+}
+
+.footer-contact-btn:hover {
+  background: #73c6fd;
+  color: #fff;
+}
+
+#footer-web-design {
+  float: right;
+}
+
+.footer-social a img {
+  width: 28px;
+  height: 28px;
+  margin-right: 12px;
+  filter: brightness(0) invert(1);
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.footer-social a img:hover {
+  opacity: 1;
+}
+
+/* Footer Bottom Bar */
+.footer-bottom {
+  font-size: 0.95rem;
+  color: #ccc;
+  border-top: 1px solid #2d3041;
+  padding-top: 12px;
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  /* Bottom bar for copyright and extra info */
+}
+
+.footer-bg-text {
+  user-select: none;
+  position: absolute;
+  left: 0;
+  bottom: -40px;
+  font-size: 12vw;
+  color: #73c6fd;
+  opacity: 0.2;
+  z-index: 0;
+  pointer-events: none;
+  font-weight: bold;
+  line-height: 1;
+  /* Large faded background text for footer branding */
 }
 
 @media (max-width: 900px) {
-  .main-navbar {
+  .footer-top,
+  .footer-social-cert {
     flex-direction: column;
-    height: auto;
-    padding: 12px 8px;
-    gap: 8px;
+    align-items: flex-start;
+    gap: 24px;
+    /* Responsive: stack footer sections vertically on small screens */
   }
-
-  .navbar-logo,
-  .navbar-subtitle,
-  .navbar-links {
-    text-align: center;
-    margin: 0;
-  }
-
-  .navbar-links {
-    gap: 18px;
-    flex-wrap: wrap;
-    justify-content: center;
+  .footer-main-nav {
+    gap: 24px;
   }
 }
 

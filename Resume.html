@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Resume</title>
     <!-- Inline CSS for Resume Page Styling -->
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+      /* Import Google Fonts */
+      @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
       body {
         background-color: #000;
-        font-family: 'Inter', sans-serif;
+        font-family: "Inter", sans-serif;
         color: #e6e6e6;
         margin-left: 10%;
         margin-right: 10%;
@@ -26,12 +27,12 @@
         align-items: center;
         justify-content: space-between;
         padding: 0 48px;
+        font-family: "Inter", sans-serif;
         box-sizing: border-box;
-        background: #000;
         transition: top 0.3s;
       }
       .main-navbar.hide-navbar {
-        top: -80px;
+        top: -80px; /* Hide above the viewport */
       }
       .navbar-logo {
         font-size: 1.35rem;
@@ -84,6 +85,22 @@
           justify-content: center;
         }
       }
+      #scroll-hint {
+        display: none;
+        position: fixed;
+        top: 12px;
+        right: 16px;
+        z-index: 9999;
+        font-size: 0.8rem;
+        color: #fff;
+        padding: 6px 16px;
+        border-radius: 12px;
+        box-shadow: 0 0 80px 0 #4f66978a, 0 0 0 2px #263c5c96;
+        font-family: inherit;
+        pointer-events: none;
+        transition: opacity 0.3s;
+        opacity: 0.92;
+      }
       .gradient-text {
         background: linear-gradient(90deg, #ffffff, #ffffff, #ffffff);
         background-size: 200% auto;
@@ -120,9 +137,15 @@
         animation: gradient-flow 5s linear infinite;
       }
       @keyframes gradient-flow {
-        0% { background-position: 0% center; }
-        50% { background-position: 100% center; }
-        100% { background-position: 200% center; }
+        0% {
+          background-position: 0% center;
+        }
+        50% {
+          background-position: 100% center;
+        }
+        100% {
+          background-position: 200% center;
+        }
       }
       .subtitle {
         margin: 0 0 30px 0;
@@ -183,80 +206,100 @@
         <a href="index.html" class="gradient-text">Portfolio</a>
         <a href="index2.html#activity2_bookmark" class="gradient-text">Projects</a>
       </div>
+      <div id="scroll-hint">Scroll up to see menu</div>
     </nav>
     <!-- Name and Subtitle -->
     <p class="name">Neo Gonzales</p>
     <p class="subtitle">BSIT - National University</p>
-    <hr>
+    <hr />
     <!-- Contact Information Section -->
     <h1>Contact Information</h1>
-    <p class="section-content"><strong>Email: </strong>Gonzalesni@students.nu-clark.edu.ph</p>
+    <p class="section-content">
+      <strong>Email: </strong>Gonzalesni@students.nu-clark.edu.ph
+    </p>
     <p class="section-content"><strong>Phone: </strong>09964728109</p>
     <p class="section-content"><strong>Address: </strong>Angeles City, 2009</p>
-    <hr>
+    <hr />
     <!-- Objective Section -->
     <h1>Objective</h1>
-    <p class="section-content">Dedicated and tech-savy professional seeking a position at IT works to leverage my skilla in Programming, Networking, Web-development. <br> Passionate about delivering effiecient IT solutions, Troubleshooting technical issues. and contributing to a dynamic team environtment</p>
-    <hr>
+    <p class="section-content">
+      Dedicated and tech-savy professional seeking a position at IT works to
+      leverage my skilla in Programming, Networking, Web-development. <br />
+      Passionate about delivering effiecient IT solutions, Troubleshooting
+      technical issues. and contributing to a dynamic team environtment
+    </p>
+    <hr />
     <!-- Educational Background Section -->
     <h1>Educational Background</h1>
-    <p class="section-content"><strong>Senior High School: </strong> Angeles City Science High School - (2021 to 2023)</p>
-    <p class="section-content"><strong>College: </strong> National University Clark - (2023 to 2027)</p>
-    <hr>
+    <p class="section-content">
+      <strong>Senior High School: </strong> Angeles City Science High School -
+      (2021 to 2023)
+    </p>
+    <p class="section-content">
+      <strong>College: </strong> National University Clark - (2023 to 2027)
+    </p>
+    <hr />
     <!-- Skills Section -->
     <h1>Skills</h1>
     <p class="section-content"><strong>Programming Language: </strong></p>
     <p class="subsection-content">Java, Javascript, Python, C++</p>
     <p class="section-content"><strong>Problem-Solving: </strong></p>
-    <p class="subsection-content">Debugging, Troubleshooting, Critical thinking</p>
+    <p class="subsection-content">
+      Debugging, Troubleshooting, Critical thinking
+    </p>
     <p class="section-content"><strong>Communication: </strong></p>
     <p class="subsection-content">Writing clear Documents, Teamwork</p>
     <p class="section-content"><strong>Time management: </strong></p>
     <p class="subsection-content">Good with deadlines, prioritizing Task</p>
-    <hr>
+    <hr />
     <!-- Experience Section -->
     <h1>Experience</h1>
-    <p class="section-content">3rd Regional Cybersecurity - Capture the flag participant</p>
-    <p class="section-content">CodeChum Regional Programming Competition - participant</p>
-    <p class="section-content">National University Clark QuizBee - participant</p>
-    <hr>
+    <p class="section-content">
+      3rd Regional Cybersecurity - Capture the flag participant
+    </p>
+    <p class="section-content">
+      CodeChum Regional Programming Competition - participant
+    </p>
+    <p class="section-content">
+      National University Clark QuizBee - participant
+    </p>
+    <hr />
     <!-- Projects Section -->
     <h1>Projects</h1>
     <p class="section-content"><strong>Soul Fighter: </strong></p>
-    <p class="subsection-content">A game of leveraging the world of monster to gain strength and be the person with the highest level.</p>
-    <p class="subsection-content"><strong>Role: </strong> Programming Head/back-end Developer</p>
+    <p class="subsection-content">
+      A game of leveraging the world of monster to gain strength and be the
+      person with the highest level.
+    </p>
+    <p class="subsection-content">
+      <strong>Role: </strong> Programming Head/back-end Developer
+    </p>
     <p class="subsection-content"><strong>Year: </strong> April - 2024</p>
-    <br>
+    <br />
     <p class="section-content"><strong>ServeOn: </strong></p>
-    <p class="subsection-content">An app that helps freelancer to seek clients </p>
-    <p class="subsection-content"><strong>Role: </strong>Front-end/back-end Developer</p>
+    <p class="subsection-content">
+      An app that helps freelancer to seek clients
+    </p>
+    <p class="subsection-content">
+      <strong>Role: </strong>Front-end/back-end Developer
+    </p>
     <p class="subsection-content"><strong>Year: </strong> February- 2024</p>
-    <hr>
+    <hr />
     <!-- Certification Section -->
     <h1>Certification</h1>
     <p class="section-content">Comptia ITF+ Certification</p>
-    <p class="section-content">Deparment of Information, Communication and Technology Certifcation</p>
+    <p class="section-content">
+      Deparment of Information, Communication and Technology Certifcation
+    </p>
     <p class="section-content">Cisco Certification</p>
     <p class="section-content">TOEIC Certification</p>
-    <hr>
+    <hr />
     <!-- Reference Section -->
     <h1>Reference</h1>
     <p class="section-content">Charles Daniel Cunanan - Charles@gmail.com</p>
     <p class="section-content">Renz Biag - Renz@gmail.com</p>
     <p class="section-content">Craven Conlu - Craven@gmail.com</p>
-    <!-- Navbar hide/show on scroll -->
-    <script>
-      // Hide/show the main navigation bar based on scroll direction
-      let lastScrollY = window.scrollY;
-      const navbar = document.querySelector('.main-navbar');
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > lastScrollY) {
-          navbar.classList.add('hide-navbar');
-        } else {
-          navbar.classList.remove('hide-navbar');
-        }
-        lastScrollY = window.scrollY;
-      });
-    </script>
+    <!-- Main JS for navbar/scroll logic -->
+    <script src="main.js"></script>
   </body>
 </html>

@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Map Area</title>
     <!-- Inline CSS for Map Area Project -->
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+      /* Import Google Fonts */
+      @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
       body {
         background-color: #000;
-        font-family: 'Inter', sans-serif;
+        font-family: "Inter", sans-serif;
         margin: 0;
         padding: 0;
       }
@@ -31,9 +32,15 @@
       }
 
       @keyframes gradient-flow {
-        0% { background-position: 0% center; }
-        50% { background-position: 100% center; }
-        100% { background-position: 200% center; }
+        0% {
+          background-position: 0% center;
+        }
+        50% {
+          background-position: 100% center;
+        }
+        100% {
+          background-position: 200% center;
+        }
       }
 
       img {
@@ -44,7 +51,7 @@
         margin-right: auto;
         display: block;
         box-shadow: 0 4px 24px #263c5c80;
-        filter: brightness(.5);
+        filter: brightness(0.5);
       }
 
       hr {
@@ -78,15 +85,14 @@
         align-items: center;
         justify-content: space-between;
         padding: 0 48px;
-        font-family: 'Inter', sans-serif;
+        font-family: "Inter", sans-serif;
         box-sizing: border-box;
         transition: top 0.3s;
-        background: rgba(0,0,0,0.85);
-        backdrop-filter: blur(8px);
       }
 
       .main-navbar.hide-navbar {
         top: -80px;
+        /* Hide above the viewport */
       }
 
       .navbar-logo {
@@ -148,6 +154,23 @@
         }
       }
 
+      #scroll-hint {
+        display: none;
+        position: fixed;
+        top: 12px;
+        right: 16px;
+        z-index: 9999;
+        font-size: 0.8rem;
+        color: #fff;
+        padding: 6px 16px;
+        border-radius: 12px;
+        box-shadow: 0 0 80px 0 #4f66978a, 0 0 0 2px #263c5c96;
+        font-family: inherit;
+        pointer-events: none;
+        transition: opacity 0.3s;
+        opacity: 0.92;
+      }
+
       .gradient-text {
         background: linear-gradient(90deg, #ffffff, #ffffff, #ffffff);
         background-size: 200% auto;
@@ -169,6 +192,7 @@
         color: transparent;
       }
 
+      /* Title glass effect container */
       .cake-title-glass {
         width: 100%;
 
@@ -178,6 +202,7 @@
         justify-content: center;
       }
 
+      /* Cake map image and container */
       .cake-map-container {
         display: flex;
         justify-content: center;
@@ -186,7 +211,8 @@
         padding: 32px 0;
         background: rgba(38, 60, 92, 0.13);
         border-radius: 32px;
-        box-shadow: 0 0 48px 0 #263c5c55, 0 0 0 2px #263c5c, inset 0 0 32px 2px #73c6fd33;
+        box-shadow: 0 0 48px 0 #263c5c55, 0 0 0 2px #263c5c,
+          inset 0 0 32px 2px #73c6fd33;
         border: 2px solid #263c5c;
         max-width: 1300px;
       }
@@ -195,16 +221,23 @@
         border: 5px solid #73c6fd;
         border-radius: 18px;
         box-shadow: 0 4px 24px #263c5c80;
-        filter: brightness(.85);
+        filter: brightness(0.85);
         width: 100%;
         height: auto;
         max-width: 1200px;
       }
 
       @media (max-width: 900px) {
-        .cake-title { font-size: 2.2rem; }
-        .cake-map-container { padding: 8px 0; border-radius: 18px; }
-        .cake-map-img { border-radius: 8px; }
+        .cake-title {
+          font-size: 2.2rem;
+        }
+        .cake-map-container {
+          padding: 8px 0;
+          border-radius: 18px;
+        }
+        .cake-map-img {
+          border-radius: 8px;
+        }
       }
     </style>
   </head>
@@ -220,6 +253,7 @@
         <a href="index.html" class="gradient-text">Portfolio</a>
         <a href="index2.html#activity4_bookmark" class="gradient-text">Projects</a>
       </div>
+      <div id="scroll-hint">Scroll up to see menu</div>
     </nav>
 
     <!-- Main Title -->
@@ -229,32 +263,49 @@
 
     <!-- Interactive Image Map for Cake Selection -->
     <div class="cake-map-container">
-      <img src="portfolio_images/image.jpg" alt="Holiday Cakes" usemap="#cakemap" width="1219" height="812" class="cake-map-img">
+      <img
+        src="portfolio_images/image.jpg"
+        alt="Holiday Cakes"
+        usemap="#cakemap"
+        width="1219"
+        height="812"
+        class="cake-map-img"
+      />
       <map name="cakemap">
         <!-- Clickable areas for each cake, linking to their respective pages -->
-        <area alt="coffeeCake" title="coffeeCake" href="coffee_Cake.html" coords="320,151,292,157,272,161,255,168,238,171,225,183,213,194,221,321,239,338,263,348,294,356,322,358,354,362,381,362,404,362,432,361,459,357,480,356,505,351,527,343,547,335,557,324,563,311,569,195,562,174,532,169,519,160,485,154,430,156,415,153,398,149,382,151,365,148,340,154" shape="poly">
-        <area alt="Appleberry" title="Appleberry" href="Apple_berry.html" coords="442,452,407,471,395,482,386,496,382,508,386,551,395,575,394,610,405,622,417,632,433,641,446,643,466,649,489,653,510,660,543,661,562,665,588,666,613,665,639,666,663,661,684,660,718,653,739,645,757,640,776,628,788,617,799,606,801,587,805,546,808,525,810,504,803,475,767,458,726,451,702,444,673,441,635,435,591,434,561,434,527,439,498,444,473,445" shape="poly">
-        <area alt="TripleChocolate" title="TripleChocolate" href="Triple_Chocolate.html" coords="723,283,726,308,728,323,729,339,728,360,729,378,733,397,745,412,762,421,783,432,805,437,823,442,850,446,872,449,890,451,903,451,921,449,942,449,959,449,987,444,1006,438,1026,432,1043,425,1055,415,1068,404,1070,387,1069,364,1069,344,1072,318,1073,296,1069,276,1047,261,1029,253,1009,248,988,241,962,240,938,234,912,233,884,232,859,234,835,237,808,240,790,244,776,248,762,250,741,259" shape="poly">
-        <area alt="coffee" title="coffee" href="coffee.html" coords="999,464,1000,510,1004,540,1009,571,1014,595,1021,604,1038,608,1057,609,1070,610,1081,606,1090,597,1094,583,1097,567,1100,558,1116,551,1132,536,1141,521,1138,502,1116,494,1127,493,1116,478,1115,465,1103,455,1085,451,1065,447,1048,447,1034,448,1016,452" shape="poly">
+        <area
+          alt="coffeeCake"
+          title="coffeeCake"
+          href="coffee_Cake.html"
+          coords="320,151,292,157,272,161,255,168,238,171,225,183,213,194,221,321,239,338,263,348,294,356,322,358,354,362,381,362,404,362,432,361,459,357,480,356,505,351,527,343,547,335,557,324,563,311,569,195,562,174,532,169,519,160,485,154,430,156,415,153,398,149,382,151,365,148,340,154"
+          shape="poly"
+        />
+        <area
+          alt="Appleberry"
+          title="Appleberry"
+          href="Apple_berry.html"
+          coords="442,452,407,471,395,482,386,496,382,508,386,551,395,575,394,610,405,622,417,632,433,641,446,643,466,649,489,653,510,660,543,661,562,665,588,666,613,665,639,666,663,661,684,660,718,653,739,645,757,640,776,628,788,617,799,606,801,587,805,546,808,525,810,504,803,475,767,458,726,451,702,444,673,441,635,435,591,434,561,434,527,439,498,444,473,445"
+          shape="poly"
+        />
+        <area
+          alt="TripleChocolate"
+          title="TripleChocolate"
+          href="Triple_Chocolate.html"
+          coords="723,283,726,308,728,323,729,339,728,360,729,378,733,397,745,412,762,421,783,432,805,437,823,442,850,446,872,449,890,451,903,451,921,449,942,449,959,449,987,444,1006,438,1026,432,1043,425,1055,415,1068,404,1070,387,1069,364,1069,344,1072,318,1073,296,1069,276,1047,261,1029,253,1009,248,988,241,962,240,938,234,912,233,884,232,859,234,835,237,808,240,790,244,776,248,762,250,741,259"
+          shape="poly"
+        />
+        <area
+          alt="coffee"
+          title="coffee"
+          href="coffee.html"
+          coords="999,464,1000,510,1004,540,1009,571,1014,595,1021,604,1038,608,1057,609,1070,610,1081,606,1090,597,1094,583,1097,567,1100,558,1116,551,1132,536,1141,521,1138,502,1116,494,1127,493,1116,478,1115,465,1103,455,1085,451,1065,447,1048,447,1034,448,1016,452"
+          shape="poly"
+        />
       </map>
     </div>
 
-    <hr>
-    <!-- Navbar hide/show on scroll -->
-    <script>
-      // Hide/show the main navigation bar based on scroll direction
-      let lastScrollY = window.scrollY;
-      const navbar = document.querySelector('.main-navbar');
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > lastScrollY) {
-          // User is scrolling down: hide navbar
-          navbar.classList.add('hide-navbar');
-        } else {
-          // User is scrolling up: show navbar
-          navbar.classList.remove('hide-navbar');
-        }
-        lastScrollY = window.scrollY;
-      });
-    </script>
+    <hr />
+    <!-- Main JS for navbar/scroll logic -->
+    <script src="main.js"></script>
   </body>
 </html>

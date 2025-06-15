@@ -1,172 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NU QUEST</title>
+    <!-- Inline CSS for create account/thank you page -->
     <style>
-        body {
-            margin: 0;
-            background-color: black;
+      body {
+        margin: 0;
+        background-color: black;
+      }
+
+      h1 {
+        font-size: 18rem;
+        margin: 60px 0 10px 0;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-align: center;
+        background: linear-gradient(90deg, #263c5c, #fdded4, #4f6697);
+        background-size: 200% auto;
+        color: #fff;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradient-flow 5s linear infinite;
+        margin-left: 10%;
+        margin-right: 10%;
+      }
+
+      @keyframes gradient-flow {
+        0% {
+          background-position: 0% center;
         }
 
-        h1 {
-            font-size: 18rem;
-            margin: 60px 0 10px 0;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-align: center;
-            background: linear-gradient(90deg, #263c5c, #fdded4, #4f6697);
-            background-size: 200% auto;
-            color: #fff;
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradient-flow 5s linear infinite;
-            margin-left: 10%;
-            margin-right: 10%;
+        50% {
+          background-position: 100% center;
         }
 
-        @keyframes gradient-flow {
-            0% {
-                background-position: 0% center;
-            }
-
-            50% {
-                background-position: 100% center;
-            }
-
-            100% {
-                background-position: 200% center;
-            }
+        100% {
+          background-position: 200% center;
         }
+      }
 
+      /* Navbar styles */
+      .main-navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        z-index: 200;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 48px;
+        font-family: "Inter", sans-serif;
+        box-sizing: border-box;
+        transition: top 0.3s;
+      }
 
-        /* Navbar styles */
+      .main-navbar.hide-navbar {
+        top: -80px;
+        /* Hide above the viewport */
+      }
+
+      .navbar-logo {
+        font-size: 1.35rem;
+        font-weight: 700;
+        color: #fff;
+        letter-spacing: 1px;
+        white-space: nowrap;
+      }
+
+      .navbar-subtitle {
+        flex: 1;
+        text-align: center;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #fff;
+        letter-spacing: 0.5px;
+        white-space: nowrap;
+      }
+
+      .navbar-links {
+        display: flex;
+        gap: 40px;
+      }
+
+      .navbar-links a {
+        color: #fff;
+        font-size: 1.08rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: color 0.18s;
+        position: relative;
+      }
+
+      .navbar-links a.active,
+      .navbar-links a:hover {
+        color: #6ee7ff;
+      }
+
+      /* Responsive styles for navigation bar */
+      @media (max-width: 900px) {
         .main-navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            z-index: 200;
-            height: 64px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 48px;
-            font-family: 'Inter', sans-serif;
-            box-sizing: border-box;
-            transition: top 0.3s;
+          flex-direction: column;
+          height: auto;
+          padding: 12px 8px;
+          gap: 8px;
         }
 
-        .main-navbar.hide-navbar {
-            top: -80px;
-            /* Hide above the viewport */
-        }
-
-        .navbar-logo {
-            font-size: 1.35rem;
-            font-weight: 700;
-            color: #fff;
-            letter-spacing: 1px;
-            white-space: nowrap;
-        }
-
-        .navbar-subtitle {
-            flex: 1;
-            text-align: center;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #fff;
-            letter-spacing: 0.5px;
-            white-space: nowrap;
+        .navbar-logo,
+        .navbar-subtitle,
+        .navbar-links {
+          text-align: center;
+          margin: 0;
         }
 
         .navbar-links {
-            display: flex;
-            gap: 40px;
+          gap: 18px;
+          flex-wrap: wrap;
+          justify-content: center;
         }
+      }
 
-        .navbar-links a {
-            color: #fff;
-            font-size: 1.08rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: color 0.18s;
-            position: relative;
-        }
+      /* Scroll hint styles */
+      #scroll-hint {
+        display: none;
+        position: fixed;
+        top: 12px;
+        right: 16px;
+        z-index: 9999;
+        font-size: 0.8rem;
+        color: #fff;
+        padding: 6px 16px;
+        border-radius: 12px;
+        box-shadow: 0 0 80px 0 #4f66978a, 0 0 0 2px #263c5c96;
+        font-family: inherit;
+        pointer-events: none;
+        transition: opacity 0.3s;
+        opacity: 0.92;
+      }
 
-        .navbar-links a.active,
-        .navbar-links a:hover {
-            color: #6ee7ff;
-        }
+      /* Gradient text utility class */
+      .gradient-text {
+        background: linear-gradient(90deg, #ffffff, #ffffff, #ffffff);
+        background-size: 200% auto;
+        color: #fff;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        transition: background 0.4s;
+        display: inline-block;
+      }
 
-        @media (max-width: 900px) {
-            .main-navbar {
-                flex-direction: column;
-                height: auto;
-                padding: 12px 8px;
-                gap: 8px;
-            }
-
-            .navbar-logo,
-            .navbar-subtitle,
-            .navbar-links {
-                text-align: center;
-                margin: 0;
-            }
-
-            .navbar-links {
-                gap: 18px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-        }
-
-
-        .gradient-text {
-            background: linear-gradient(90deg, #ffffff, #ffffff, #ffffff);
-            background-size: 200% auto;
-            color: #fff;
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            transition: background 0.4s;
-            display: inline-block;
-        }
-
-        .gradient-text:hover {
-            background: linear-gradient(90deg, #00aeff, #73c6fd, #fdded4);
-            background-size: 200% auto;
-            background-position: right center;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            color: transparent;
-        }
+      .gradient-text:hover {
+        background: linear-gradient(90deg, #00aeff, #73c6fd, #fdded4);
+        background-size: 200% auto;
+        background-position: right center;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent;
+      }
     </style>
+  </head>
 
-</head>
-
-<body>
-
+  <body>
     <!-- Navigation bar for site navigation -->
     <nav class="main-navbar">
-        <div class="navbar-logo gradient-text"><a href="index.html">Neo Gonzales</a></div>
-        <div class="navbar-subtitle gradient-text">Web & Mobile Developer</div>
-        <div class="navbar-links">
-            <a href="Activity8.html" class="active gradient-text">Home</a>
-            <a href="index.html" class="gradient-text">Portfolio</a>
-            <a href="index2.html#activity8_bookmark" class="gradient-text">Projects</a>
-        </div>
+      <div class="navbar-logo gradient-text">
+        <a href="index.html">Neo Gonzales</a>
+      </div>
+      <div class="navbar-subtitle gradient-text">Web & Mobile Developer</div>
+      <div class="navbar-links">
+        <a href="Activity8.html" class="active gradient-text">Home</a>
+        <a href="index.html" class="gradient-text">Portfolio</a>
+        <a href="index2.html#activity8_bookmark" class="gradient-text"
+          >Projects</a
+        >
+      </div>
+      <div id="scroll-hint">Scroll up to see menu</div>
     </nav>
 
     <!-- Thank you message section -->
     <div class="head_color">
-        <h1>Thank you!</h1>
+      <h1>Thank you!</h1>
     </div>
-
-</body>
-
+  </body>
 </html>

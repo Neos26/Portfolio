@@ -1,7 +1,7 @@
 /* Import Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
-/* Base Styles */
+/* Base Styles for HTML and Body */
 html,
 body {
   height: 100%;
@@ -84,19 +84,34 @@ body {
     padding: 12px 8px;
     gap: 8px;
   }
-
   .navbar-logo,
   .navbar-subtitle,
   .navbar-links {
     text-align: center;
     margin: 0;
   }
-
   .navbar-links {
     gap: 18px;
     flex-wrap: wrap;
     justify-content: center;
   }
+}
+
+#scroll-hint {
+  display: none;
+  position: fixed;
+  top: 12px;
+  right: 16px;
+  z-index: 9999;
+  font-size: 0.8rem;
+  color: #fff;
+  padding: 6px 16px;
+  border-radius: 12px;
+  box-shadow: 0 0 80px 0 #4f66978a, 0 0 0 2px #263c5c96;
+  font-family: inherit;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  opacity: 0.92;
 }
 
 /* Hero Section */
@@ -289,7 +304,6 @@ body {
     flex-direction: column;
     gap: 24px;
   }
-
   .about-img img {
     width: 100%;
     height: auto;
@@ -608,7 +622,6 @@ body {
     opacity: 0;
     transform: translateX(-60px);
   }
-
   to {
     opacity: 1;
     transform: translateX(0);
@@ -620,7 +633,6 @@ body {
     opacity: 0;
     transform: translateX(60px);
   }
-
   to {
     opacity: 1;
     transform: translateX(0);
@@ -632,7 +644,6 @@ body {
     opacity: 0;
     transform: translateY(-60px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -644,7 +655,6 @@ body {
     opacity: 0;
     transform: translateY(60px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -1336,7 +1346,6 @@ input[type="radio"] {
 /* Animation for elements that animate on scroll */
 .animate-on-scroll {
   opacity: 0;
-  transform: translateY(80px) scale(0.95);
   transition: none;
 }
 

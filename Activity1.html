@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Eye of The Tiger</title>
     <!-- Inline CSS for styling the Eye of the Tiger lyrics page -->
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+      /* Import Google Fonts */
+      @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
       body {
         background-color: black;
-        font-family: 'Inter', sans-serif;
+        font-family: "Inter", sans-serif;
       }
       h3 {
         color: rgb(255, 255, 255);
@@ -21,9 +22,13 @@
         padding: 10px;
         font-size: 30px;
         color: aliceblue;
-        font-family: 'Courier New', Courier, monospace;
+        font-family: "Courier New", Courier, monospace;
         background: #000000;
-        background: repeating-linear-gradient(to top, #00000080 0%, #263c5c6b 100%);
+        background: repeating-linear-gradient(
+          to top,
+          #00000080 0%,
+          #263c5c6b 100%
+        );
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
         border-radius: 15px;
@@ -46,9 +51,15 @@
         animation: gradient-flow 5s linear infinite;
       }
       @keyframes gradient-flow {
-        0% { background-position: 0% center; }
-        50% { background-position: 100% center; }
-        100% { background-position: 200% center; }
+        0% {
+          background-position: 0% center;
+        }
+        50% {
+          background-position: 100% center;
+        }
+        100% {
+          background-position: 200% center;
+        }
       }
       /* Navigation bar styles */
       .main-navbar {
@@ -62,13 +73,16 @@
         align-items: center;
         justify-content: space-between;
         padding: 0 48px;
-        font-family: 'Inter', sans-serif;
+        font-family: "Inter", sans-serif;
         box-sizing: border-box;
         transition: top 0.3s;
       }
+
       .main-navbar.hide-navbar {
-        top: -80px; /* Hide above the viewport */
+        top: -80px;
+        /* Hide above the viewport */
       }
+
       .navbar-logo {
         font-size: 1.35rem;
         font-weight: 700;
@@ -76,6 +90,7 @@
         letter-spacing: 1px;
         white-space: nowrap;
       }
+
       .navbar-subtitle {
         flex: 1;
         text-align: center;
@@ -85,10 +100,12 @@
         letter-spacing: 0.5px;
         white-space: nowrap;
       }
+
       .navbar-links {
         display: flex;
         gap: 40px;
       }
+
       .navbar-links a {
         color: #fff;
         font-size: 1.08rem;
@@ -97,10 +114,12 @@
         transition: color 0.18s;
         position: relative;
       }
+
       .navbar-links a.active,
       .navbar-links a:hover {
         color: #6ee7ff;
       }
+
       @media (max-width: 900px) {
         .main-navbar {
           flex-direction: column;
@@ -108,18 +127,38 @@
           padding: 12px 8px;
           gap: 8px;
         }
+
         .navbar-logo,
         .navbar-subtitle,
         .navbar-links {
           text-align: center;
           margin: 0;
         }
+
         .navbar-links {
           gap: 18px;
           flex-wrap: wrap;
           justify-content: center;
         }
       }
+
+      #scroll-hint {
+        display: none;
+        position: fixed;
+        top: 12px;
+        right: 16px;
+        z-index: 9999;
+        font-size: 0.8rem;
+        color: #fff;
+        padding: 6px 16px;
+        border-radius: 12px;
+        box-shadow: 0 0 80px 0 #4f66978a, 0 0 0 2px #263c5c96;
+        font-family: inherit;
+        pointer-events: none;
+        transition: opacity 0.3s;
+        opacity: 0.92;
+      }
+
       .gradient-text {
         background: linear-gradient(90deg, #ffffff, #ffffff, #ffffff);
         background-size: 200% auto;
@@ -151,71 +190,69 @@
       <div class="navbar-links">
         <a href="Activity1.html" class="active gradient-text">Home</a>
         <a href="index.html" class="gradient-text">Portfolio</a>
-        <a href="index2.html#activity1_bookmark" class="gradient-text">Projects</a>
+        <a href="index2.html#activity1_bookmark" class="gradient-text"
+          >Projects</a
+        >
       </div>
+      <div id="scroll-hint">Scroll up to see menu</div>
     </nav>
     <!-- Main Title and Subtitle -->
     <h1>Eye of The Tiger</h1>
     <h3>by Survivor ‧ 1982</h3>
     <!-- Lyrics Section -->
     <p>
-      <b><br>
+      <b>
+        <!-- Verse 1 -->
+        <br>
         Risin' up, back on the street<br>
         Did my time, took my chances<br>
         Went the distance, now I'm back on my feet<br>
         Just a man and his will to survive<br>
         <br><br>
+        <!-- Verse 2 -->
         So many times, it happens too fast<br>
         You trade your passion for glory<br>
         Don't lose your grip on the dreams of the past<br>
         You must fight just to keep them alive<br>
         <br><br>
+        <!-- Chorus -->
         It's the eye of the tiger, it's the thrill of the fight<br>
         Risin' up to the challenge of our rival<br>
         And the last known survivor stalks his prey in the night<br>
         And he's watching us all with the eye of the tiger<br>
         <br><br>
+        <!-- Verse 3 -->
         Face to face, out on the heat<br>
         Hangin' tough, stayin' hungry<br>
         They stack the odds still we take to the street<br>
         For the kill, with the skill to survive<br>
         <br><br>
+        <!-- Chorus Repeat -->
         It's the eye of the tiger, it's the thrill of the fight<br>
         Risin' up to the challenge of our rival<br>
         And the last known survivor stalks his prey in the night<br>
         And he's watching us all with the eye of the tiger<br>
         <br><br>
+        <!-- Verse 4 -->
         Risin' up, straight to the top<br>
         Had the guts, got the glory<br>
         Went the distance, now I'm not gonna stop<br>
         Just a man and his will to survive<br>
         <br><br>
+        <!-- Final Chorus -->
         It's the eye of the tiger, it's the thrill of the fight<br>
         Risin' up to the challenge of our rival<br>
         And the last known survivor stalks his prey in the night<br>
         And he's watching us all with the eye of the tiger<br>
         <br><br>
+        <!-- Outro -->
         The eye of the tiger<br><br>
         The eye of the tiger<br><br>
         The eye of the tiger<br><br>
         The eye of the tiger
       </b>
     </p>
-    <!-- Navbar hide/show on scroll -->
-    <script>
-      // Hide/show the main navigation bar based on scroll direction
-      let lastScrollY = window.scrollY;
-      const navbar = document.querySelector('.main-navbar');
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > lastScrollY) {
-          // User is scrolling down: hide navbar
-          navbar.classList.add('hide-navbar');
-        } else {
-          // User is scrolling up: show navbar
-          navbar.classList.remove('hide-navbar');
-        }
-        lastScrollY = window.scrollY;
-      });
-    </script>
+    <!-- Main JS for navbar/scroll logic -->
+    <script src="main.js"></script>
   </body>
 </html>

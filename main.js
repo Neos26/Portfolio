@@ -1,14 +1,17 @@
 // Hide/show the main navigation bar based on scroll direction
 let lastScrollY = window.scrollY;
 const navbar = document.querySelector(".main-navbar");
+const scrollHint = document.getElementById("scroll-hint");
 
 window.addEventListener("scroll", () => {
   if (window.scrollY > lastScrollY) {
     // Scrolling down – hide navbar
     navbar.classList.add("hide-navbar");
+    if (scrollHint) scrollHint.style.display = "block";
   } else {
     // Scrolling up – show navbar
     navbar.classList.remove("hide-navbar");
+    if (scrollHint) scrollHint.style.display = "none";
   }
   lastScrollY = window.scrollY;
 });

@@ -10,14 +10,15 @@
     <!-- Main Navigation Bar -->
     <nav class="main-navbar">
       <div class="navbar-logo gradient-text">
-        <a href="index2.html">Neo Gonzales</a>
+        <a href="index.html">Neo Gonzales</a>
       </div>
       <div class="navbar-subtitle gradient-text">Web & Mobile Developer</div>
       <div class="navbar-links">
-        <a href="index.html#hero_bookmark" class="active gradient-text">Home</a>
+        <a href="index2.html" class="active gradient-text">Home</a>
         <a href="index.html#about_bookmark" class="gradient-text">About</a>
         <a href="index.html#contact_bookmark" class="gradient-text">Contact</a>
       </div>
+      <div id="scroll-hint">Scroll up to see menu</div>
     </nav>
 
     <!-- Project Cards Container -->
@@ -88,10 +89,7 @@
 
       <!--project 5: TABLE COLSPAN & ROWSPAN -->
       <div class="container" id="activity5_bookmark">
-        <div class="title">
-          TABLE COLSPAN & <br />
-          ROWSPAN
-        </div>
+        <div class="title">TABLE COLSPAN & <br />ROWSPAN</div>
         <div class="description">
           This activity emphasizes the use of HTML tables for organizing and
           presenting data, including advanced table elements like colspan and
@@ -191,22 +189,7 @@
       </div>
     </div>
 
-    <!-- Navbar hide/show on scroll -->
     <script>
-      // Hide/show the main navigation bar based on scroll direction
-      let lastScrollY = window.scrollY;
-      const navbar = document.querySelector(".main-navbar");
-      window.addEventListener("scroll", () => {
-        if (window.scrollY > lastScrollY) {
-          // User is scrolling down: hide navbar
-          navbar.classList.add("hide-navbar");
-        } else {
-          // User is scrolling up: show navbar
-          navbar.classList.remove("hide-navbar");
-        }
-        lastScrollY = window.scrollY;
-      });
-
       // Parallax effect: move project image left/right with mouse movement inside each container
       document.querySelectorAll(".container").forEach((container) => {
         const imageWrapper = container.querySelector(".image-wrapper");
@@ -222,5 +205,7 @@
         });
       });
     </script>
+
+    <script src="main.js"></script>
   </body>
 </html>

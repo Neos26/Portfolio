@@ -13,7 +13,7 @@ body {
 
 body {
   min-height: 100vh;
-  font-family: "Inter";
+  font-family: "Inter", sans-serif;
   background-color: black;
   /* Sets the main background and font for the site */
 }

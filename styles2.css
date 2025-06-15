@@ -1,221 +1,239 @@
 /* Import Google Fonts for consistent typography */
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
 /* Reset and base styles for html and body */
 html,
 body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    background: #000000;
-    color: #fff;
-    width: 100vw;
-    min-height: 100vh;
-    overflow-x: hidden;
-    font-family: 'Inter', sans-serif;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #000000;
+  color: #fff;
+  font-family: "Inter", sans-serif;
 }
 
-/* Main navigation bar styles */
+body {
+  min-height: 100vh;
+  min-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Main Navigation Bar Styles */
 .main-navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    z-index: 200;
-    height: 64px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 48px;
-    font-family: 'Inter', sans-serif;
-    box-sizing: border-box;
-    transition: top 0.3s;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 200;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  font-family: "Inter", sans-serif;
+  box-sizing: border-box;
+  transition: top 0.3s;
 }
 
 .main-navbar.hide-navbar {
-    top: -80px; /* Hide above the viewport */
+  top: -80px;
+  /* Hide above the viewport */
 }
 
 .navbar-logo {
-    font-size: 1.35rem;
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: 1px;
-    white-space: nowrap;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 1px;
+  white-space: nowrap;
 }
 
 .navbar-subtitle {
-    flex: 1;
-    text-align: center;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #fff;
-    letter-spacing: 0.5px;
-    white-space: nowrap;
+  flex: 1;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
 }
 
 .navbar-links {
-    display: flex;
-    gap: 40px;
+  display: flex;
+  gap: 40px;
 }
 
 .navbar-links a {
-    color: #fff;
-    font-size: 1.08rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: color 0.18s;
-    position: relative;
+  color: #fff;
+  font-size: 1.08rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.18s;
+  position: relative;
 }
 
 .navbar-links a.active,
 .navbar-links a:hover {
-    color: #6ee7ff;
+  color: #6ee7ff;
 }
 
-/* Responsive navbar for smaller screens */
 @media (max-width: 900px) {
-    .main-navbar {
-        flex-direction: column;
-        height: auto;
-        padding: 12px 8px;
-        gap: 8px;
-    }
-    .navbar-logo,
-    .navbar-subtitle,
-    .navbar-links {
-        text-align: center;
-        margin: 0;
-    }
-    .navbar-links {
-        gap: 18px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
+  .main-navbar {
+    flex-direction: column;
+    height: auto;
+    padding: 12px 8px;
+    gap: 8px;
+  }
+
+  .navbar-logo,
+  .navbar-subtitle,
+  .navbar-links {
+    text-align: center;
+    margin: 0;
+  }
+
+  .navbar-links {
+    gap: 18px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+#scroll-hint {
+  display: none;
+  position: fixed;
+  top: 12px;
+  right: 16px;
+  z-index: 9999;
+  font-size: 0.8rem;
+  color: #fff;
+  padding: 6px 16px;
+  border-radius: 12px;
+  box-shadow: 0 0 80px 0 #4f66978a, 0 0 0 2px #263c5c96;
+  font-family: inherit;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  opacity: 0.92;
 }
 
 /* Multi-section container for page layout */
 .multi-container {
-    width: 100vw;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
-    gap: 80px;
-    padding: 0 0;
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 80px;
+  padding: 0 0;
 }
 
 /* Section container for each project or card */
 .container {
-    width: 100vw;
-    height: 100vh;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /* Title for each section, with animated gradient */
 .title {
-    position: absolute;
-    left: 40px;
-    top: 40%;
-    transform: translateY(-60%);
-    font-size: 3vw;
-    font-weight: 700;
-    letter-spacing: 1px;
-    color: #fff;
-    white-space: nowrap;
-    background: linear-gradient(90deg, #263c5c, #fdded4, #4f6697);
-    background-size: 200% auto;
-    color: #fff;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: gradient-flow 5s linear infinite;
+  position: absolute;
+  left: 40px;
+  top: 40%;
+  transform: translateY(-60%);
+  font-size: 3vw;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #fff;
+  white-space: nowrap;
+  background: linear-gradient(90deg, #263c5c, #fdded4, #4f6697);
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-flow 5s linear infinite;
 }
 
 /* Animated gradient for section titles */
 @keyframes gradient-flow {
-    0% {
-        background-position: 0% center;
-    }
-    50% {
-        background-position: 100% center;
-    }
-    100% {
-        background-position: 200% center;
-    }
+  0% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 100% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
 }
 
 /* Description text for each section */
 .description {
-    position: absolute;
-    left: 40px;
-    top: calc(40% + 2.5vw); /* Adjust as needed for spacing */
-    font-size: 1.2vw;
-    color: #ffffff;
-    font-weight: 300;
-    margin-right: 70%;
+  position: absolute;
+  left: 40px;
+  top: calc(40% + 2.5vw); /* Adjust as needed for spacing */
+  font-size: 1.2vw;
+  color: #ffffff;
+  font-weight: 300;
+  margin-right: 70%;
 }
 
 /* Wrapper for section images, with rotation and shadow */
 .image-wrapper {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%) rotate(-4deg);
-    transition: transform 0.2s cubic-bezier(.4, 2, .6, 1);
-    box-shadow: 0 0 80px 0 #4f6697cc, 0 0 0 2px #263c5c;
-    will-change: transform;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-4deg);
+  transition: transform 0.2s cubic-bezier(0.4, 2, 0.6, 1);
+  box-shadow: 0 0 80px 0 #4f6697cc, 0 0 0 2px #263c5c;
+  will-change: transform;
 }
 
 .image-wrapper img {
-    display: block;
-    width: 420px;
-    height: 420px;
-    object-fit: contain;
-    border-radius: 0;
+  display: block;
+  width: 420px;
+  height: 420px;
+  object-fit: contain;
+  border-radius: 0;
 }
 
 /* Corner text for additional info or credits */
 .corner-text {
-    position: absolute;
-    right: 40px;
-    bottom: 60px;
-    text-align: right;
-    font-size: 1.1vw;
-    color: #fff;
-    font-weight: 600;
-    line-height: 1.2;
+  position: absolute;
+  right: 40px;
+  bottom: 60px;
+  text-align: right;
+  font-size: 1.1vw;
+  color: #fff;
+  font-weight: 600;
+  line-height: 1.2;
 }
 
-/* Gradient text utility class for headings and links
-   - Applies a linear gradient to text for a modern, eye-catching effect
-   - Used for navigation, section titles, and interactive elements
-   - Uses background-clip and -webkit-background-clip for cross-browser compatibility
-   - On hover, the gradient animates to a colorful blend for visual feedback */
+/* Gradient text utility class for headings and links*/
 .gradient-text {
-    background: linear-gradient(90deg, #ffffff, #ffffff, #ffffff);
-    background-size: 200% auto;
-    color: #fff;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    transition: background 0.4s;
-    display: inline-block;
+  background: linear-gradient(90deg, #ffffff, #ffffff, #ffffff);
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background 0.4s;
+  display: inline-block;
 }
 
 .gradient-text:hover {
-    background: linear-gradient(90deg, #00aeff, #73c6fd, #fdded4);
-    background-size: 200% auto;
-    background-position: right center;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    color: transparent;
+  background: linear-gradient(90deg, #00aeff, #73c6fd, #fdded4);
+  background-size: 200% auto;
+  background-position: right center;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 }

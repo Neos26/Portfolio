@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Coffee</title>
+    <!-- Inline CSS for Coffee page -->
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+      /* Import Google Fonts for modern typography */
+      @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
       body {
         background-color: #000;
-        font-family: 'Inter', sans-serif;
+        font-family: "Inter", sans-serif;
         margin: 0;
         padding: 0;
         min-height: 100vh;
@@ -30,10 +32,17 @@
         animation: gradient-flow 5s linear infinite;
       }
       @keyframes gradient-flow {
-        0% { background-position: 0% center; }
-        50% { background-position: 100% center; }
-        100% { background-position: 200% center; }
+        0% {
+          background-position: 0% center;
+        }
+        50% {
+          background-position: 100% center;
+        }
+        100% {
+          background-position: 200% center;
+        }
       }
+      /* Main image styles */
       img {
         border: 5px solid #73c6fd;
         border-radius: 10px;
@@ -85,14 +94,12 @@
         align-items: center;
         justify-content: space-between;
         padding: 0 48px;
-        font-family: 'Inter', sans-serif;
+        font-family: "Inter", sans-serif;
         box-sizing: border-box;
         transition: top 0.3s;
-        background: rgba(0, 0, 0, 0.85);
-        backdrop-filter: blur(8px);
       }
       .main-navbar.hide-navbar {
-        top: -80px;
+        top: -80px; /* Hide above the viewport */
       }
       .navbar-logo {
         font-size: 1.35rem;
@@ -126,6 +133,7 @@
       .navbar-links a:hover {
         color: #6ee7ff;
       }
+      /* Responsive styles for navigation bar */
       @media (max-width: 900px) {
         .main-navbar {
           flex-direction: column;
@@ -145,6 +153,24 @@
           justify-content: center;
         }
       }
+      /* Scroll hint styles */
+      #scroll-hint {
+        display: none;
+        position: fixed;
+        top: 12px;
+        right: 16px;
+        z-index: 9999;
+        font-size: 0.8rem;
+        color: #fff;
+        padding: 6px 16px;
+        border-radius: 12px;
+        box-shadow: 0 0 80px 0 #4f66978a, 0 0 0 2px #263c5c96;
+        font-family: inherit;
+        pointer-events: none;
+        transition: opacity 0.3s;
+        opacity: 0.92;
+      }
+      /* Gradient text utility class */
       .gradient-text {
         background: linear-gradient(90deg, #ffffff, #ffffff, #ffffff);
         background-size: 200% auto;
@@ -164,6 +190,7 @@
         background-clip: text;
         color: transparent;
       }
+      /* Main content title styles */
       .main-content-title {
         font-size: 6rem;
         font-weight: 700;
@@ -177,12 +204,14 @@
         margin-top: 110px;
         text-align: center;
       }
+      /* Glassmorphism card for coffee image and description */
       .main-content-glass {
         margin: -16px auto 32px auto;
         max-width: 700px;
         background: rgba(20, 32, 48, 0.13);
         border-radius: 32px;
-        box-shadow: 0 0 32px 0 #263c5c99, 0 0 0 2px #1a2333, inset 0 0 24px 2px #3a4a6a44;
+        box-shadow: 0 0 32px 0 #263c5c99, 0 0 0 2px #1a2333,
+          inset 0 0 24px 2px #3a4a6a44;
         border: 2px solid #263c5c;
         padding: 40px 32px 32px 32px;
         backdrop-filter: blur(12px) saturate(120%);
@@ -213,6 +242,7 @@
         margin-bottom: 28px;
         line-height: 1.6;
       }
+      /* Responsive styles for main content */
       @media (max-width: 900px) {
         .main-content-glass {
           max-width: 98vw;
@@ -238,34 +268,31 @@
       <div class="navbar-links">
         <a href="Activity4.html" class="active gradient-text">Home</a>
         <a href="index.html" class="gradient-text">Portfolio</a>
-        <a href="index2.html#activity4_bookmark" class="gradient-text">Projects</a>
+        <a href="index2.html#activity4_bookmark" class="gradient-text"
+          >Projects</a
+        >
       </div>
+      <div id="scroll-hint">Scroll up to see menu</div>
     </nav>
     <!-- Main title for the coffee page -->
     <h1 class="main-content-title">Coffee</h1>
+    <!-- Glassmorphism card for coffee image and description -->
     <div class="main-content-glass">
-      <img src="portfolio_images/coffee.jpg" alt="Coffee" class="main-content-img">
+      <img
+        src="portfolio_images/coffee.jpg"
+        alt="Coffee"
+        class="main-content-img"
+      />
       <div class="main-content-desc">
-        Rich, aromatic coffee brewed to perfection—ideal for pairing with your favorite cakes or for a cozy holiday treat.
+        Rich, aromatic coffee brewed to perfection—ideal for pairing with your
+        favorite cakes or for a cozy holiday treat.
       </div>
+      <!-- Back link to main activity page -->
       <div class="back-link">
         <a href="Activity4.html">BACK TO MAIN</a>
       </div>
     </div>
     <!-- JavaScript for hiding/showing navbar on scroll -->
-    <script>
-      let lastScrollY = window.scrollY;
-      const navbar = document.querySelector('.main-navbar');
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > lastScrollY) {
-          // Scrolling down: hide navbar
-          navbar.classList.add('hide-navbar');
-        } else {
-          // Scrolling up: show navbar
-          navbar.classList.remove('hide-navbar');
-        }
-        lastScrollY = window.scrollY;
-      });
-    </script>
+    <script src="main.js"></script>
   </body>
 </html>

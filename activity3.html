@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Resume</title>
     <!-- Inline CSS for Resume Page Styling -->
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+      /* Import Google Fonts */
+      @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
       body {
         background-color: #000;
-        font-family: 'Inter', sans-serif;
+        font-family: "Inter", sans-serif;
         color: #e6e6e6;
         margin-left: 10%;
         margin-right: 10%;
@@ -26,13 +27,16 @@
         align-items: center;
         justify-content: space-between;
         padding: 0 48px;
+        font-family: "Inter", sans-serif;
         box-sizing: border-box;
-        background: #000;
         transition: top 0.3s;
       }
+
       .main-navbar.hide-navbar {
         top: -80px;
+        /* Hide above the viewport */
       }
+
       .navbar-logo {
         font-size: 1.35rem;
         font-weight: 700;
@@ -40,6 +44,7 @@
         letter-spacing: 1px;
         white-space: nowrap;
       }
+
       .navbar-subtitle {
         flex: 1;
         text-align: center;
@@ -49,10 +54,12 @@
         letter-spacing: 0.5px;
         white-space: nowrap;
       }
+
       .navbar-links {
         display: flex;
         gap: 40px;
       }
+
       .navbar-links a {
         color: #fff;
         font-size: 1.08rem;
@@ -61,10 +68,12 @@
         transition: color 0.18s;
         position: relative;
       }
+
       .navbar-links a.active,
       .navbar-links a:hover {
         color: #6ee7ff;
       }
+
       @media (max-width: 900px) {
         .main-navbar {
           flex-direction: column;
@@ -72,18 +81,38 @@
           padding: 12px 8px;
           gap: 8px;
         }
+
         .navbar-logo,
         .navbar-subtitle,
         .navbar-links {
           text-align: center;
           margin: 0;
         }
+
         .navbar-links {
           gap: 18px;
           flex-wrap: wrap;
           justify-content: center;
         }
       }
+
+      #scroll-hint {
+        display: none;
+        position: fixed;
+        top: 12px;
+        right: 16px;
+        z-index: 9999;
+        font-size: 0.8rem;
+        color: #fff;
+        padding: 6px 16px;
+        border-radius: 12px;
+        box-shadow: 0 0 80px 0 #4f66978a, 0 0 0 2px #263c5c96;
+        font-family: inherit;
+        pointer-events: none;
+        transition: opacity 0.3s;
+        opacity: 0.92;
+      }
+
       .gradient-text {
         background: linear-gradient(90deg, #ffffff, #ffffff, #ffffff);
         background-size: 200% auto;
@@ -94,6 +123,7 @@
         transition: background 0.4s;
         display: inline-block;
       }
+
       .gradient-text:hover {
         background: linear-gradient(90deg, #00aeff, #73c6fd, #fdded4);
         background-size: 200% auto;
@@ -103,6 +133,7 @@
         background-clip: text;
         color: transparent;
       }
+
       /* Resume Content Styles */
       .resume-grid {
         display: flex;
@@ -111,6 +142,7 @@
         max-width: 1200px;
         min-height: 80vh;
       }
+
       .resume-left {
         flex: 1 1 320px;
         max-width: 350px;
@@ -119,7 +151,8 @@
         gap: 32px;
         background: rgba(8, 65, 129, 0.18);
         border-radius: 32px;
-        box-shadow: 0 0 48px 0 #4f6697cc, 0 0 0 2px #263c5c, inset 0 0 32px 2px #73c6fd55;
+        box-shadow: 0 0 48px 0 #4f6697cc, 0 0 0 2px #263c5c,
+          inset 0 0 32px 2px #73c6fd55;
         border: 2px solid #73c6fd;
         padding: 32px 18px 32px 18px;
         backdrop-filter: blur(12px);
@@ -128,16 +161,19 @@
         z-index: 2;
         align-items: center;
       }
+
       .resume-right {
         flex: 2 1 600px;
         background: rgba(38, 60, 92, 0.13);
         border-radius: 32px;
-        box-shadow: 0 0 48px 0 #263c5c55, 0 0 0 2px #263c5c, inset 0 0 32px 2px #73c6fd33;
+        box-shadow: 0 0 48px 0 #263c5c55, 0 0 0 2px #263c5c,
+          inset 0 0 32px 2px #73c6fd33;
         border: 2px solid #263c5c;
         padding: 32px 32px 32px 32px;
         min-width: 320px;
         z-index: 1;
       }
+
       .name-glass {
         width: 100%;
         margin: 100px auto 24px auto;
@@ -146,6 +182,7 @@
         align-items: center;
         justify-content: center;
       }
+
       .name {
         font-size: 8rem;
         font-weight: bold;
@@ -161,11 +198,11 @@
         width: 100%;
         max-width: 1000px;
         text-align: center;
-        /* Remove background, border, box-shadow, blur */
         border-radius: 32px;
         position: relative;
         margin: 0 auto;
       }
+
       .subtitle {
         font-size: 2rem;
         color: #fff;
@@ -188,7 +225,7 @@
         padding-bottom: 16px;
         border-bottom: 1px solid #263c5c44;
         position: relative;
-        background: rgba(38, 60, 92, 0.10);
+        background: rgba(38, 60, 92, 0.1);
         border-radius: 18px;
         box-shadow: 0 2px 16px 0 #263c5c22;
         padding-left: 18px;
@@ -252,7 +289,7 @@
         padding: 8px 0 8px 10px;
         border-left: 2px solid #73c6fd;
         border-radius: 6px;
-        background: rgba(38, 60, 92, 0.10);
+        background: rgba(38, 60, 92, 0.1);
         font-weight: 500;
       }
       .reference-email {
@@ -278,7 +315,12 @@
       .footer-glass {
         margin-top: 48px;
         padding: 1.2rem 0;
-        background: linear-gradient(90deg, rgba(6,16,28,0.85), rgba(10,37,64,0.85), rgba(14,58,90,0.85));
+        background: linear-gradient(
+          90deg,
+          rgba(6, 16, 28, 0.85),
+          rgba(10, 37, 64, 0.85),
+          rgba(14, 58, 90, 0.85)
+        );
         color: #fff;
         text-align: center;
         font-size: 1.1rem;
@@ -299,13 +341,26 @@
         box-sizing: border-box;
       }
       @keyframes gradient-flow {
-        0% { background-position: 0% center; }
-        50% { background-position: 100% center; }
-        100% { background-position: 200% center; }
+        0% {
+          background-position: 0% center;
+        }
+        50% {
+          background-position: 100% center;
+        }
+        100% {
+          background-position: 200% center;
+        }
       }
       @media (max-width: 1100px) {
-        .resume-grid { flex-direction: column; gap: 16px; }
-        .resume-left, .resume-right { max-width: 100%; min-width: 0; }
+        .resume-grid {
+          flex-direction: column;
+          gap: 16px;
+        }
+        .resume-left,
+        .resume-right {
+          max-width: 100%;
+          min-width: 0;
+        }
       }
       @media (max-width: 900px) {
         .main-navbar {
@@ -325,10 +380,22 @@
           flex-wrap: wrap;
           justify-content: center;
         }
-        .resume-main, main { padding: 8px 2px; }
-        .name, .subtitle { font-size: 1.2rem; padding: 8px 0 4px 0; }
-        .name { font-size: 3.5rem; }
-        .skills-columns { flex-direction: column; gap: 8px; }
+        .resume-main,
+        main {
+          padding: 8px 2px;
+        }
+        .name,
+        .subtitle {
+          font-size: 1.2rem;
+          padding: 8px 0 4px 0;
+        }
+        .name {
+          font-size: 3.5rem;
+        }
+        .skills-columns {
+          flex-direction: column;
+          gap: 8px;
+        }
       }
     </style>
   </head>
@@ -344,13 +411,16 @@
         <a href="index.html" class="gradient-text">Portfolio</a>
         <a href="index2.html#activity3_bookmark" class="gradient-text">Projects</a>
       </div>
+      <div id="scroll-hint">Scroll up to see menu</div>
     </nav>
     <!-- Name and Subtitle -->
     <div class="name-glass">
       <p class="name">Neo Gonzales</p>
       <p class="subtitle">BSIT &mdash; National University</p>
     </div>
+    <!-- Resume Main Grid Layout -->
     <div class="resume-grid">
+      <!-- Left Sidebar: Contact, Skills, Certifications -->
       <aside class="resume-left">
         <section class="resume-section">
           <h1 class="section-title">Contact</h1>
@@ -406,11 +476,15 @@
           </ul>
         </section>
       </aside>
+      <!-- Main Resume Content: Objective, Education, Experience, Projects, References -->
       <main class="resume-right">
         <section class="resume-section">
           <h1 class="section-title">Objective</h1>
           <div class="section-content-block">
-            <p class="section-content">Dedicated and tech-savy professional seeking a position at IT works to leverage my skills in Programming, Networking, Web-development.<br>Passionate about delivering efficient IT solutions, troubleshooting technical issues, and contributing to a dynamic team environment.</p>
+            <p class="section-content">
+              Dedicated and tech-savy professional seeking a position at IT works to leverage my skills in Programming, Networking, Web-development.<br />
+              Passionate about delivering efficient IT solutions, troubleshooting technical issues, and contributing to a dynamic team environment.
+            </p>
           </div>
         </section>
         <section class="resume-section">
@@ -431,14 +505,16 @@
         <section class="resume-section">
           <h1 class="section-title">Projects</h1>
           <ol class="section-list" type="I">
-            <li><strong>Soul Fighter:</strong>
+            <li>
+              <strong>Soul Fighter:</strong>
               <ul>
                 <li>A game of leveraging the world of monster to gain strength and be the person with the highest level.</li>
                 <li><strong>Role:</strong> Programming Head/back-end Developer</li>
                 <li><strong>Year:</strong> April - 2024</li>
               </ul>
             </li>
-            <li><strong>ServeOn:</strong>
+            <li>
+              <strong>ServeOn:</strong>
               <ul>
                 <li>An app that helps freelancers to seek clients.</li>
                 <li><strong>Role:</strong> Front-end/back-end Developer</li>
@@ -450,13 +526,16 @@
         <section class="resume-section">
           <h1 class="section-title">References</h1>
           <ol class="reference-list" type="A">
-            <li>Charles Daniel Cunanan
+            <li>
+              Charles Daniel Cunanan
               <span class="reference-email"><strong>Email:</strong> Charles@gmail.com</span>
             </li>
-            <li>Renz Biag
+            <li>
+              Renz Biag
               <span class="reference-email"><strong>Email:</strong> Renz@gmail.com</span>
             </li>
-            <li>Craven Conlu
+            <li>
+              Craven Conlu
               <span class="reference-email"><strong>Email:</strong> Craven@gmail.com</span>
             </li>
           </ol>
@@ -464,18 +543,6 @@
       </main>
     </div>
     <!-- Navbar hide/show on scroll -->
-    <script>
-      // Hide/show the main navigation bar based on scroll direction
-      let lastScrollY = window.scrollY;
-      const navbar = document.querySelector('.main-navbar');
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > lastScrollY) {
-          navbar.classList.add('hide-navbar');
-        } else {
-          navbar.classList.remove('hide-navbar');
-        }
-        lastScrollY = window.scrollY;
-      });
-    </script>
+    <script src="main.js"></script>
   </body>
 </html>

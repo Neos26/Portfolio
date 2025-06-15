@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Holiday Coffee Cake</title>
+    <!-- Inline CSS for Holiday Coffee Cake page -->
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+      /* Import Google Fonts for modern typography */
+      @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
       body {
         background-color: #000;
-        font-family: 'Inter', sans-serif;
+        font-family: "Inter", sans-serif;
         margin: 0;
         padding: 0;
         min-height: 100vh;
@@ -33,17 +35,25 @@
       }
 
       @keyframes gradient-flow {
-        0% { background-position: 0% center; }
-        50% { background-position: 100% center; }
-        100% { background-position: 200% center; }
+        0% {
+          background-position: 0% center;
+        }
+        50% {
+          background-position: 100% center;
+        }
+        100% {
+          background-position: 200% center;
+        }
       }
 
+      /* Glassmorphism card for main content */
       .main-content-glass {
         margin: -16px auto 32px auto;
         max-width: 700px;
         background: rgba(20, 32, 48, 0.13);
         border-radius: 32px;
-        box-shadow: 0 0 32px 0 #263c5c99, 0 0 0 2px #1a2333, inset 0 0 24px 2px #3a4a6a44;
+        box-shadow: 0 0 32px 0 #263c5c99, 0 0 0 2px #1a2333,
+          inset 0 0 24px 2px #3a4a6a44;
         border: 2px solid #263c5c;
         padding: 40px 32px 32px 32px;
         backdrop-filter: blur(12px) saturate(120%);
@@ -117,15 +127,13 @@
         align-items: center;
         justify-content: space-between;
         padding: 0 48px;
-        font-family: 'Inter', sans-serif;
+        font-family: "Inter", sans-serif;
         box-sizing: border-box;
         transition: top 0.3s;
-        background: rgba(0,0,0,0.85);
-        backdrop-filter: blur(8px);
       }
 
       .main-navbar.hide-navbar {
-        top: -80px;
+        top: -80px; /* Hide above the viewport */
       }
 
       .navbar-logo {
@@ -165,6 +173,7 @@
         color: #6ee7ff;
       }
 
+      /* Responsive styles for navigation bar */
       @media (max-width: 900px) {
         .main-navbar {
           flex-direction: column;
@@ -185,26 +194,27 @@
           flex-wrap: wrap;
           justify-content: center;
         }
-
-        .main-content-glass {
-          max-width: 98vw;
-          padding: 18px 4vw;
-        }
-
-        .main-content-title {
-          font-size: 2.2rem;
-        }
-
-        .main-content-img {
-          max-width: 98vw;
-          border-radius: 8px;
-        }
-
-        .footer-glass {
-          border-radius: 12px 12px 0 0;
-        }
       }
 
+      /* Scroll hint styles */
+      #scroll-hint {
+        display: none;
+        position: fixed;
+        top: 12px;
+        right: 16px;
+        z-index: 9999;
+        font-size: 0.8rem;
+        color: #fff;
+        padding: 6px 16px;
+        border-radius: 12px;
+        box-shadow: 0 0 80px 0 #4f66978a, 0 0 0 2px #263c5c96;
+        font-family: inherit;
+        pointer-events: none;
+        transition: opacity 0.3s;
+        opacity: 0.92;
+      }
+
+      /* Gradient text utility class */
       .gradient-text {
         background: linear-gradient(90deg, #ffffff, #ffffff, #ffffff);
         background-size: 200% auto;
@@ -226,6 +236,7 @@
         color: transparent;
       }
 
+      /* Footer glassmorphism style */
       .footer-glass {
         margin: 0;
         padding: 1.2rem 0;
@@ -233,7 +244,12 @@
         left: 0;
         position: fixed;
         bottom: 0;
-        background: linear-gradient(90deg, rgba(10, 18, 28, 0.92), rgba(18, 32, 48, 0.92), rgba(22, 44, 66, 0.92));
+        background: linear-gradient(
+          90deg,
+          rgba(10, 18, 28, 0.92),
+          rgba(18, 32, 48, 0.92),
+          rgba(22, 44, 66, 0.92)
+        );
         color: #dbeafe;
         text-align: center;
         font-size: 1.1rem;
@@ -261,36 +277,35 @@
       <div class="navbar-links">
         <a href="Activity4.html" class="active gradient-text">Home</a>
         <a href="index.html" class="gradient-text">Portfolio</a>
-        <a href="index2.html#activity4_bookmark" class="gradient-text">Projects</a>
+        <a href="index2.html#activity4_bookmark" class="gradient-text"
+          >Projects</a
+        >
       </div>
+      <div id="scroll-hint">Scroll up to see menu</div>
     </nav>
 
     <!-- Main title for the recipe -->
-    <h1 class="main-content-title" style="margin-top:110px;">Holiday Coffee Cake</h1>
+    <h1 class="main-content-title" style="margin-top: 110px">
+      Holiday Coffee Cake
+    </h1>
+    <!-- Glassmorphism card for cake image and description -->
     <div class="main-content-glass">
-      <img src="portfolio_images/coffee_cake.jpg" alt="Coffee Cake" class="main-content-img">
+      <img
+        src="portfolio_images/coffee_cake.jpg"
+        alt="Coffee Cake"
+        class="main-content-img"
+      />
       <div class="main-content-desc">
-        A moist, tender cake with a hint of coffee flavor, topped with a sweet cinnamon streusel and finished with a light glaze. Perfect for cozy holiday mornings or festive gatherings!
+        A moist, tender cake with a hint of coffee flavor, topped with a sweet
+        cinnamon streusel and finished with a light glaze. Perfect for cozy
+        holiday mornings or festive gatherings!
       </div>
+      <!-- Back link to main activity page -->
       <div class="back-link">
         <a href="Activity4.html">BACK TO MAIN</a>
       </div>
     </div>
     <!-- JavaScript for hiding/showing navbar on scroll -->
-    <script>
-      let lastScrollY = window.scrollY;
-      const navbar = document.querySelector('.main-navbar');
-
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > lastScrollY) {
-          // Scrolling down: hide navbar
-          navbar.classList.add('hide-navbar');
-        } else {
-          // Scrolling up: show navbar
-          navbar.classList.remove('hide-navbar');
-        }
-        lastScrollY = window.scrollY;
-      });
-    </script>
+    <script src="main.js"></script>
   </body>
 </html>

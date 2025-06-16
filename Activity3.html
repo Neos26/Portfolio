@@ -1,547 +1,577 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resume w/ List</title>
     <!-- Inline CSS for Resume Page Styling -->
     <style>
-      /* Import Google Fonts */
-      @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
-      body {
-        background-color: #000;
-        font-family: "Inter", sans-serif;
-        color: #e6e6e6;
-        margin-left: 10%;
-        margin-right: 10%;
-      }
-      /* Navigation Bar Styles */
-      .main-navbar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        z-index: 200;
-        height: 64px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 48px;
-        background-color: #0000009c;
-        font-family: "Inter", sans-serif;
-        box-sizing: border-box;
-        transition: top 0.3s;
-      }
+        /* Import Google Fonts */
+        @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
-      .main-navbar.hide-navbar {
-        top: -80px;
-        /* Hide above the viewport */
-      }
+        body {
+            background-color: #000;
+            font-family: "Inter", sans-serif;
+            color: #e6e6e6;
+            margin-left: 10%;
+            margin-right: 10%;
+        }
 
-      .navbar-logo {
-        font-size: 1.35rem;
-        font-weight: 700;
-        color: #fff;
-        letter-spacing: 1px;
-        white-space: nowrap;
-      }
-
-      .navbar-subtitle {
-        flex: 1;
-        text-align: center;
-        font-size: 1.1rem;
-        font-weight: 600;
-        color: #fff;
-        letter-spacing: 0.5px;
-        white-space: nowrap;
-      }
-
-      .navbar-links {
-        display: flex;
-        gap: 40px;
-      }
-
-      .navbar-links a {
-        color: #fff;
-        font-size: 1.08rem;
-        font-weight: 600;
-        text-decoration: none;
-        transition: color 0.18s;
-        position: relative;
-      }
-
-      .navbar-links a.active,
-      .navbar-links a:hover {
-        color: #6ee7ff;
-      }
-
-      @media (max-width: 900px) {
+        /* Navigation Bar Styles */
         .main-navbar {
-          flex-direction: column;
-          height: auto;
-          padding: 12px 8px;
-          gap: 8px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            z-index: 200;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            background-color: #0000009c;
+            font-family: "Inter", sans-serif;
+            box-sizing: border-box;
+            transition: top 0.3s;
         }
 
-        .navbar-logo,
-        .navbar-subtitle,
+        .main-navbar.hide-navbar {
+            top: -80px;
+            /* Hide above the viewport */
+        }
+
+        .navbar-logo {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        .navbar-subtitle {
+            flex: 1;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
         .navbar-links {
-          text-align: center;
-          margin: 0;
+            display: flex;
+            gap: 40px;
         }
 
-        .navbar-links {
-          gap: 18px;
-          flex-wrap: wrap;
-          justify-content: center;
+        .navbar-links a {
+            color: #fff;
+            font-size: 1.08rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.18s;
+            position: relative;
         }
-      }
 
-      #scroll-hint {
-        display: none;
-        position: fixed;
-        top: 12px;
-        right: 16px;
-        z-index: 9999;
-        font-size: 0.8rem;
-        color: #fff;
-        padding: 6px 16px;
-        border-radius: 12px;
-        box-shadow: 0 0 80px 0 #4f66978a, 0 0 0 2px #263c5c96;
-        font-family: inherit;
-        pointer-events: none;
-        transition: opacity 0.3s;
-        opacity: 0.92;
-      }
-
-      .gradient-text {
-        background: linear-gradient(90deg, #ffffff, #ffffff, #ffffff);
-        background-size: 200% auto;
-        color: #fff;
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        transition: background 0.4s;
-        display: inline-block;
-      }
-
-      .gradient-text:hover {
-        background: linear-gradient(90deg, #00aeff, #73c6fd, #fdded4);
-        background-size: 200% auto;
-        background-position: right center;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        color: transparent;
-      }
-
-      /* Resume Content Styles */
-      .resume-grid {
-        display: flex;
-        gap: 32px;
-        margin: 60px auto 0 auto;
-        max-width: 1200px;
-        min-height: 80vh;
-      }
-
-      .resume-left {
-        flex: 1 1 320px;
-        max-width: 350px;
-        display: flex;
-        flex-direction: column;
-        gap: 32px;
-        background: rgba(8, 65, 129, 0.18);
-        border-radius: 32px;
-        box-shadow: 0 0 48px 0 #4f6697cc, 0 0 0 2px #263c5c,
-          inset 0 0 32px 2px #73c6fd55;
-        border: 2px solid #73c6fd;
-        padding: 32px 18px 32px 18px;
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        min-width: 260px;
-        z-index: 2;
-        align-items: center;
-      }
-
-      .resume-right {
-        flex: 2 1 600px;
-        background: rgba(38, 60, 92, 0.13);
-        border-radius: 32px;
-        box-shadow: 0 0 48px 0 #263c5c55, 0 0 0 2px #263c5c,
-          inset 0 0 32px 2px #73c6fd33;
-        border: 2px solid #263c5c;
-        padding: 32px 32px 32px 32px;
-        min-width: 320px;
-        z-index: 1;
-      }
-
-      .name-glass {
-        width: 100%;
-        margin: 100px auto 24px auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .name {
-        font-size: 8rem;
-        font-weight: bold;
-        letter-spacing: 2px;
-        background: linear-gradient(90deg, #263c5c, #fdded4, #4f6697);
-        background-size: 200% auto;
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: gradient-flow 5s linear infinite;
-        margin-bottom: 0;
-        padding-bottom: 0;
-        width: 100%;
-        max-width: 1000px;
-        text-align: center;
-        border-radius: 32px;
-        position: relative;
-        margin: 0 auto;
-      }
-
-      .subtitle {
-        font-size: 2rem;
-        color: #fff;
-        background: none;
-        box-shadow: none;
-        border: none;
-        backdrop-filter: none;
-        -webkit-backdrop-filter: none;
-        margin-top: 0;
-        padding-top: 0;
-        width: 100%;
-        max-width: 1000px;
-        text-align: center;
-        border-radius: 32px;
-        position: relative;
-        margin: 0 auto;
-      }
-      .resume-section {
-        margin-bottom: 36px;
-        padding-bottom: 16px;
-        border-bottom: 1px solid #263c5c44;
-        position: relative;
-        background: rgba(38, 60, 92, 0.1);
-        border-radius: 18px;
-        box-shadow: 0 2px 16px 0 #263c5c22;
-        padding-left: 18px;
-        padding-right: 18px;
-      }
-      .resume-section:last-child {
-        border-bottom: none;
-      }
-      .section-title {
-        font-size: 1.5rem;
-        color: #73c6fd;
-        letter-spacing: 1.5px;
-        margin-bottom: 12px;
-        font-weight: 700;
-        text-shadow: 0 0 8px #263c5c;
-        background: linear-gradient(90deg, #263c5c, #73c6fd, #4f6697);
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: gradient-flow 5s linear infinite;
-      }
-      .section-list {
-        margin-left: 0;
-        font-size: 1rem;
-        margin-bottom: 10px;
-        color: #e6e6e6;
-        padding-left: 0;
-        list-style-position: inside;
-      }
-      .section-list li {
-        margin-bottom: 8px;
-        padding: 4px 0 4px 10px;
-        border-left: 2px solid #73c6fd33;
-        border-radius: 6px;
-        background: rgba(38, 60, 92, 0.08);
-        transition: background 0.2s;
-      }
-      .section-list li strong {
-        color: #fdded4;
-      }
-      .skills-columns {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 16px;
-        justify-content: space-between;
-      }
-      .skills-columns > div {
-        flex: 1 1 120px;
-        min-width: 120px;
-      }
-      .reference-list {
-        margin-left: 0;
-        font-size: 1rem;
-        margin-bottom: 10px;
-        color: #e6e6e6;
-        padding-left: 0;
-        list-style-position: inside;
-      }
-      .reference-list li {
-        margin-bottom: 16px;
-        padding: 8px 0 8px 10px;
-        border-left: 2px solid #73c6fd;
-        border-radius: 6px;
-        background: rgba(38, 60, 92, 0.1);
-        font-weight: 500;
-      }
-      .reference-email {
-        display: block;
-        color: #73c6fd;
-        font-size: 1rem;
-        margin-top: 2px;
-        margin-left: 12px;
-      }
-      .ai-footer {
-        margin-top: 48px;
-        padding: 1.2rem 0;
-        background: linear-gradient(90deg, #263c5c, #084181, #4f6697);
-        color: #fff;
-        text-align: center;
-        font-size: 1.1rem;
-        border-top: 2px solid #73c6fd;
-        letter-spacing: 1px;
-        box-shadow: 0 0 24px #73c6fd44;
-        text-shadow: 0 0 8px #73c6fd;
-      }
-      /* Footer Styles */
-      .footer-glass {
-        margin-top: 48px;
-        padding: 1.2rem 0;
-        background: linear-gradient(
-          90deg,
-          rgba(6, 16, 28, 0.85),
-          rgba(10, 37, 64, 0.85),
-          rgba(14, 58, 90, 0.85)
-        );
-        color: #fff;
-        text-align: center;
-        font-size: 1.1rem;
-        border-top: 2px solid #263c5c;
-        letter-spacing: 1px;
-        box-shadow: 0 0 24px #06101c88;
-        text-shadow: 0 0 8px #0a2540;
-        border-radius: 24px 24px 0 0;
-        backdrop-filter: blur(12px) saturate(140%);
-        -webkit-backdrop-filter: blur(12px) saturate(140%);
-        border-left: 2px solid #263c5c44;
-        border-right: 2px solid #263c5c44;
-        width: 100vw;
-        left: 50%;
-        transform: translateX(-50%);
-        position: relative;
-        max-width: 100vw;
-        box-sizing: border-box;
-      }
-      @keyframes gradient-flow {
-        0% {
-          background-position: 0% center;
+        .navbar-links a.active,
+        .navbar-links a:hover {
+            color: #6ee7ff;
         }
-        50% {
-          background-position: 100% center;
+
+        @media (max-width: 900px) {
+            .main-navbar {
+                flex-direction: column;
+                height: auto;
+                padding: 12px 8px;
+                gap: 8px;
+            }
+
+            .navbar-logo,
+            .navbar-subtitle,
+            .navbar-links {
+                text-align: center;
+                margin: 0;
+            }
+
+            .navbar-links {
+                gap: 18px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
         }
-        100% {
-          background-position: 200% center;
+
+        #scroll-hint {
+            display: none;
+            position: fixed;
+            top: 12px;
+            right: 16px;
+            z-index: 9999;
+            font-size: 0.8rem;
+            color: #fff;
+            padding: 6px 16px;
+            border-radius: 12px;
+            box-shadow: 0 0 80px 0 #4f66978a, 0 0 0 2px #263c5c96;
+            font-family: inherit;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            opacity: 0.92;
         }
-      }
-      @media (max-width: 1100px) {
+
+        .gradient-text {
+            background: linear-gradient(90deg, #ffffff, #ffffff, #ffffff);
+            background-size: 200% auto;
+            color: #fff;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: background 0.4s;
+            display: inline-block;
+        }
+
+        .gradient-text:hover {
+            background: linear-gradient(90deg, #00aeff, #73c6fd, #fdded4);
+            background-size: 200% auto;
+            background-position: right center;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Resume Content Styles */
         .resume-grid {
-          flex-direction: column;
-          gap: 16px;
+            display: flex;
+            gap: 32px;
+            margin: 60px auto 0 auto;
+            max-width: 1200px;
+            min-height: 80vh;
         }
-        .resume-left,
+
+        .resume-left {
+            flex: 1 1 320px;
+            max-width: 350px;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            background: rgba(8, 65, 129, 0.18);
+            border-radius: 32px;
+            box-shadow: 0 0 48px 0 #4f6697cc, 0 0 0 2px #263c5c,
+                inset 0 0 32px 2px #73c6fd55;
+            border: 2px solid #73c6fd;
+            padding: 32px 18px 32px 18px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            min-width: 260px;
+            z-index: 2;
+            align-items: center;
+        }
+
         .resume-right {
-          max-width: 100%;
-          min-width: 0;
+            flex: 2 1 600px;
+            background: rgba(38, 60, 92, 0.13);
+            border-radius: 32px;
+            box-shadow: 0 0 48px 0 #263c5c55, 0 0 0 2px #263c5c,
+                inset 0 0 32px 2px #73c6fd33;
+            border: 2px solid #263c5c;
+            padding: 32px 32px 32px 32px;
+            min-width: 320px;
+            z-index: 1;
         }
-      }
-      @media (max-width: 900px) {
-        .main-navbar {
-          flex-direction: column;
-          height: auto;
-          padding: 12px 8px;
-          gap: 8px;
+
+        .name-glass {
+            width: 100%;
+            margin: 100px auto 24px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
-        .navbar-logo,
-        .navbar-subtitle,
-        .navbar-links {
-          text-align: center;
-          margin: 0;
-        }
-        .navbar-links {
-          gap: 18px;
-          flex-wrap: wrap;
-          justify-content: center;
-        }
-        .resume-main,
-        main {
-          padding: 8px 2px;
-        }
-        .name,
-        .subtitle {
-          font-size: 1.2rem;
-          padding: 8px 0 4px 0;
-        }
+
         .name {
-          font-size: 3.5rem;
+            font-size: 8rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, #263c5c, #fdded4, #4f6697);
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-flow 5s linear infinite;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            width: 100%;
+            max-width: 1000px;
+            text-align: center;
+            border-radius: 32px;
+            position: relative;
+            margin: 0 auto;
         }
+
+        .subtitle {
+            font-size: 2rem;
+            color: #fff;
+            background: none;
+            box-shadow: none;
+            border: none;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            margin-top: 0;
+            padding-top: 0;
+            width: 100%;
+            max-width: 1000px;
+            text-align: center;
+            border-radius: 32px;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .resume-section {
+            margin-bottom: 36px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #263c5c44;
+            position: relative;
+            background: rgba(38, 60, 92, 0.1);
+            border-radius: 18px;
+            box-shadow: 0 2px 16px 0 #263c5c22;
+            padding-left: 18px;
+            padding-right: 18px;
+        }
+
+        .resume-section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: #73c6fd;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+            font-weight: 700;
+            text-shadow: 0 0 8px #263c5c;
+            background: linear-gradient(90deg, #263c5c, #73c6fd, #4f6697);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-flow 5s linear infinite;
+        }
+
+        .section-list {
+            margin-left: 0;
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: #e6e6e6;
+            padding-left: 0;
+            list-style-position: inside;
+        }
+
+        .section-list li {
+            margin-bottom: 8px;
+            padding: 4px 0 4px 10px;
+            border-left: 2px solid #73c6fd33;
+            border-radius: 6px;
+            background: rgba(38, 60, 92, 0.08);
+            transition: background 0.2s;
+        }
+
+        .section-list li strong {
+            color: #fdded4;
+        }
+
         .skills-columns {
-          flex-direction: column;
-          gap: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: space-between;
         }
-      }
+
+        .skills-columns>div {
+            flex: 1 1 120px;
+            min-width: 120px;
+        }
+
+        .reference-list {
+            margin-left: 0;
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: #e6e6e6;
+            padding-left: 0;
+            list-style-position: inside;
+        }
+
+        .reference-list li {
+            margin-bottom: 16px;
+            padding: 8px 0 8px 10px;
+            border-left: 2px solid #73c6fd;
+            border-radius: 6px;
+            background: rgba(38, 60, 92, 0.1);
+            font-weight: 500;
+        }
+
+        .reference-email {
+            display: block;
+            color: #73c6fd;
+            font-size: 1rem;
+            margin-top: 2px;
+            margin-left: 12px;
+        }
+
+        .ai-footer {
+            margin-top: 48px;
+            padding: 1.2rem 0;
+            background: linear-gradient(90deg, #263c5c, #084181, #4f6697);
+            color: #fff;
+            text-align: center;
+            font-size: 1.1rem;
+            border-top: 2px solid #73c6fd;
+            letter-spacing: 1px;
+            box-shadow: 0 0 24px #73c6fd44;
+            text-shadow: 0 0 8px #73c6fd;
+        }
+
+        /* Footer Styles */
+        .footer-glass {
+            margin-top: 48px;
+            padding: 1.2rem 0;
+            background: linear-gradient(90deg,
+                    rgba(6, 16, 28, 0.85),
+                    rgba(10, 37, 64, 0.85),
+                    rgba(14, 58, 90, 0.85));
+            color: #fff;
+            text-align: center;
+            font-size: 1.1rem;
+            border-top: 2px solid #263c5c;
+            letter-spacing: 1px;
+            box-shadow: 0 0 24px #06101c88;
+            text-shadow: 0 0 8px #0a2540;
+            border-radius: 24px 24px 0 0;
+            backdrop-filter: blur(12px) saturate(140%);
+            -webkit-backdrop-filter: blur(12px) saturate(140%);
+            border-left: 2px solid #263c5c44;
+            border-right: 2px solid #263c5c44;
+            width: 100vw;
+            left: 50%;
+            transform: translateX(-50%);
+            position: relative;
+            max-width: 100vw;
+            box-sizing: border-box;
+        }
+
+        @keyframes gradient-flow {
+            0% {
+                background-position: 0% center;
+            }
+
+            50% {
+                background-position: 100% center;
+            }
+
+            100% {
+                background-position: 200% center;
+            }
+        }
+
+        @media (max-width: 1100px) {
+            .resume-grid {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .resume-left,
+            .resume-right {
+                max-width: 100%;
+                min-width: 0;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .main-navbar {
+                flex-direction: column;
+                height: auto;
+                padding: 12px 8px;
+                gap: 8px;
+            }
+
+            .navbar-logo,
+            .navbar-subtitle,
+            .navbar-links {
+                text-align: center;
+                margin: 0;
+            }
+
+            .navbar-links {
+                gap: 18px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .resume-main,
+            main {
+                padding: 8px 2px;
+            }
+
+            .name,
+            .subtitle {
+                font-size: 1.2rem;
+                padding: 8px 0 4px 0;
+            }
+
+            .name {
+                font-size: 3.5rem;
+            }
+
+            .skills-columns {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
     </style>
-  </head>
-  <body>
+</head>
+
+<body>
     <!-- Main Navigation Bar -->
     <nav class="main-navbar">
-      <div class="navbar-logo gradient-text">
-        <a href="Activity3.html">RESUME W/ LIST</a>
-      </div>
-      <div class="navbar-links">
-        <a href="index.html" class="active gradient-text">Home</a>
-        <a href="index2.html#activity3_bookmark" class="gradient-text">Projects</a>
-      </div>
-      <div id="scroll-hint">Scroll up to see menu</div>
+        <div class="navbar-logo gradient-text">
+            <a href="Activity3.html">RESUME W/ LIST</a>
+        </div>
+        <div class="navbar-links">
+            <a href="index.html" class="active gradient-text">Home</a>
+            <a href="index2.html#activity3_bookmark" class="gradient-text">Projects</a>
+        </div>
+        <div id="scroll-hint">Scroll up to see menu</div>
     </nav>
     <!-- Name and Subtitle -->
     <div class="name-glass">
-      <p class="name">Neo Gonzales</p>
-      <p class="subtitle">BSIT &mdash; National University</p>
+        <p class="name">Neo Gonzales</p>
+        <p class="subtitle">BSIT &mdash; National University</p>
     </div>
     <!-- Resume Main Grid Layout -->
     <div class="resume-grid">
-      <!-- Left Sidebar: Contact, Skills, Certifications -->
-      <aside class="resume-left">
-        <section class="resume-section">
-          <h1 class="section-title">Contact</h1>
-          <ul class="section-list">
-            <li><strong>Email:</strong> Gonzalesni@students.nu-clark.edu.ph</li>
-            <li><strong>Phone:</strong> 09964728109</li>
-            <li><strong>Address:</strong> Angeles City, 2009</li>
-          </ul>
-        </section>
-        <section class="resume-section">
-          <h1 class="section-title">Skills</h1>
-          <div class="skills-columns">
-            <div>
-              <h4>Programming</h4>
-              <ul class="section-list">
-                <li>Java</li>
-                <li>Javascript</li>
-                <li>Python</li>
-                <li>C++</li>
-              </ul>
-            </div>
-            <div>
-              <h4>Problem-Solving</h4>
-              <ul class="section-list">
-                <li>Debugging</li>
-                <li>Troubleshooting</li>
-                <li>Critical thinking</li>
-              </ul>
-            </div>
-            <div>
-              <h4>Communication</h4>
-              <ul class="section-list">
-                <li>Writing clear Documents</li>
-                <li>Teamwork</li>
-              </ul>
-            </div>
-            <div>
-              <h4>Time Management</h4>
-              <ul class="section-list">
-                <li>Good with deadlines</li>
-                <li>Prioritizing tasks</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-        <section class="resume-section">
-          <h1 class="section-title">Certifications</h1>
-          <ul class="section-list">
-            <li>Comptia ITF+ Certification</li>
-            <li>Department of Information, Communication and Technology Certification</li>
-            <li>Cisco Certification</li>
-            <li>TOEIC Certification</li>
-          </ul>
-        </section>
-      </aside>
-      <!-- Main Resume Content: Objective, Education, Experience, Projects, References -->
-      <main class="resume-right">
-        <section class="resume-section">
-          <h1 class="section-title">Objective</h1>
-          <div class="section-content-block">
-            <p class="section-content">
-              Dedicated and tech-savy professional seeking a position at IT works to leverage my skills in Programming, Networking, Web-development.<br>
-              Passionate about delivering efficient IT solutions, troubleshooting technical issues, and contributing to a dynamic team environment.
-            </p>
-          </div>
-        </section>
-        <section class="resume-section">
-          <h1 class="section-title">Education</h1>
-          <ul class="section-list">
-            <li><strong>Senior High School:</strong> Angeles City Science High School (2021-2023)</li>
-            <li><strong>College:</strong> National University Clark (2023-2027)</li>
-          </ul>
-        </section>
-        <section class="resume-section">
-          <h1 class="section-title">Experience</h1>
-          <ul class="section-list">
-            <li>3rd Regional Cybersecurity - Capture the flag participant</li>
-            <li>CodeChum Regional Programming Competition - participant</li>
-            <li>National University Clark QuizBee - participant</li>
-          </ul>
-        </section>
-        <section class="resume-section">
-          <h1 class="section-title">Projects</h1>
-          <ol class="section-list" type="I">
-            <li>
-              <strong>Soul Fighter:</strong>
-              <ul>
-                <li>A game of leveraging the world of monster to gain strength and be the person with the highest level.</li>
-                <li><strong>Role:</strong> Programming Head/back-end Developer</li>
-                <li><strong>Year:</strong> April - 2024</li>
-              </ul>
-            </li>
-            <li>
-              <strong>ServeOn:</strong>
-              <ul>
-                <li>An app that helps freelancers to seek clients.</li>
-                <li><strong>Role:</strong> Front-end/back-end Developer</li>
-                <li><strong>Year:</strong> February - 2024</li>
-              </ul>
-            </li>
-          </ol>
-        </section>
-        <section class="resume-section">
-          <h1 class="section-title">References</h1>
-          <ol class="reference-list" type="A">
-            <li>
-              Charles Daniel Cunanan
-              <span class="reference-email"><strong>Email:</strong> Charles@gmail.com</span>
-            </li>
-            <li>
-              Renz Biag
-              <span class="reference-email"><strong>Email:</strong> Renz@gmail.com</span>
-            </li>
-            <li>
-              Craven Conlu
-              <span class="reference-email"><strong>Email:</strong> Craven@gmail.com</span>
-            </li>
-          </ol>
-        </section>
-      </main>
+        <!-- Left Sidebar: Contact, Skills, Certifications -->
+        <aside class="resume-left">
+            <section class="resume-section">
+                <h1 class="section-title">Contact</h1>
+                <ul class="section-list">
+                    <li><strong>Email:</strong> Gonzalesni@students.nu-clark.edu.ph</li>
+                    <li><strong>Phone:</strong> 09964728109</li>
+                    <li><strong>Address:</strong> Angeles City, 2009</li>
+                </ul>
+            </section>
+            <section class="resume-section">
+                <h1 class="section-title">Skills</h1>
+                <div class="skills-columns">
+                    <div>
+                        <h4>Programming</h4>
+                        <ul class="section-list">
+                            <li>Java</li>
+                            <li>Javascript</li>
+                            <li>Python</li>
+                            <li>C++</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Problem-Solving</h4>
+                        <ul class="section-list">
+                            <li>Debugging</li>
+                            <li>Troubleshooting</li>
+                            <li>Critical thinking</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Communication</h4>
+                        <ul class="section-list">
+                            <li>Writing clear Documents</li>
+                            <li>Teamwork</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Time Management</h4>
+                        <ul class="section-list">
+                            <li>Good with deadlines</li>
+                            <li>Prioritizing tasks</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <section class="resume-section">
+                <h1 class="section-title">Certifications</h1>
+                <ul class="section-list">
+                    <li>Comptia ITF+ Certification</li>
+                    <li>Department of Information, Communication and Technology Certification</li>
+                    <li>Cisco Certification</li>
+                    <li>TOEIC Certification</li>
+                </ul>
+            </section>
+        </aside>
+        <!-- Main Resume Content: Objective, Education, Experience, Projects, References -->
+        <main class="resume-right">
+            <section class="resume-section">
+                <h1 class="section-title">Objective</h1>
+                <div class="section-content-block">
+                    <p class="section-content">
+                        Dedicated and tech-savy professional seeking a position at IT works to leverage my skills in
+                        Programming, Networking, Web-development.<br />
+                        Passionate about delivering efficient IT solutions, troubleshooting technical issues, and
+                        contributing to a dynamic team environment.
+                    </p>
+                </div>
+            </section>
+            <section class="resume-section">
+                <h1 class="section-title">Education</h1>
+                <ul class="section-list">
+                    <li><strong>Senior High School:</strong> Angeles City Science High School (2021-2023)</li>
+                    <li><strong>College:</strong> National University Clark (2023-2027)</li>
+                </ul>
+            </section>
+            <section class="resume-section">
+                <h1 class="section-title">Experience</h1>
+                <ul class="section-list">
+                    <li>3rd Regional Cybersecurity - Capture the flag participant</li>
+                    <li>CodeChum Regional Programming Competition - participant</li>
+                    <li>National University Clark QuizBee - participant</li>
+                </ul>
+            </section>
+            <section class="resume-section">
+                <h1 class="section-title">Projects</h1>
+                <ol class="section-list" type="I">
+                    <li>
+                        <strong>Soul Fighter:</strong>
+                        <ul>
+                            <li>A game of leveraging the world of monster to gain strength and be the person with the
+                                highest level.</li>
+                            <li><strong>Role:</strong> Programming Head/back-end Developer</li>
+                            <li><strong>Year:</strong> April - 2024</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>ServeOn:</strong>
+                        <ul>
+                            <li>An app that helps freelancers to seek clients.</li>
+                            <li><strong>Role:</strong> Front-end/back-end Developer</li>
+                            <li><strong>Year:</strong> February - 2024</li>
+                        </ul>
+                    </li>
+                </ol>
+            </section>
+            <section class="resume-section">
+                <h1 class="section-title">References</h1>
+                <ol class="reference-list" type="A">
+                    <li>
+                        Charles Daniel Cunanan
+                        <span class="reference-email"><strong>Email:</strong> Charles@gmail.com</span>
+                    </li>
+                    <li>
+                        Renz Biag
+                        <span class="reference-email"><strong>Email:</strong> Renz@gmail.com</span>
+                    </li>
+                    <li>
+                        Craven Conlu
+                        <span class="reference-email"><strong>Email:</strong> Craven@gmail.com</span>
+                    </li>
+                </ol>
+            </section>
+        </main>
     </div>
     <!-- Navbar hide/show on scroll -->
     <script src="main.js"></script>
-  </body>
+</body>
+
 </html>

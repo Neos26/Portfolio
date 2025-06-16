@@ -1,344 +1,378 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Triple Chocolate Cake</title>
     <!-- Inline CSS for Triple Chocolate Cake page -->
     <style>
-      /* Import Google Fonts for modern typography */
-      @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
-      body {
-        background-color: #000;
-        font-family: "Inter", sans-serif;
-        margin: 0;
-        padding: 0;
-      }
-      h1 {
-        text-align: center;
-        color: #fff;
-        background: linear-gradient(90deg, #263c5c, #fdded4, #4f6697);
-        background-size: 200% auto;
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        font-size: 6rem;
-        font-weight: 700;
-        letter-spacing: 2px;
-        margin-top: 90px;
-        margin-bottom: 60px;
-        animation: gradient-flow 5s linear infinite;
-      }
-      @keyframes gradient-flow {
-        0% {
-          background-position: 0% center;
+        /* Import Google Fonts for modern typography */
+        @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+        body {
+            background-color: #000;
+            font-family: "Inter", sans-serif;
+            margin: 0;
+            padding: 0;
         }
-        50% {
-          background-position: 100% center;
-        }
-        100% {
-          background-position: 200% center;
-        }
-      }
-      /* Main image styles */
-      img {
-        border: 5px solid #73c6fd;
-        border-radius: 10px;
-        margin-top: 30px;
-        margin-left: auto;
-        margin-right: auto;
-        display: block;
-        box-shadow: 0 4px 24px #263c5c80;
-        width: auto;
-        height: 50vh;
-        max-width: 50vw;
-        object-fit: cover;
-        aspect-ratio: 16 / 9;
-      }
-      .back-link {
-        text-align: center;
-        margin-top: 32px;
-      }
-      .back-link a {
-        color: #fff;
-        font-size: 1.2rem;
-        font-weight: 600;
-        text-decoration: none;
-        background: linear-gradient(90deg, #00aeff, #73c6fd, #fdded4);
-        background-size: 200% auto;
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        transition: background 0.4s;
-      }
-      .back-link a:hover {
-        background: linear-gradient(90deg, #263c5c, #fdded4, #4f6697);
-        background-size: 200% auto;
-        background-position: right center;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        color: transparent;
-      }
-      /* Navbar styles */
-      .main-navbar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        z-index: 200;
-        height: 64px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 48px;
-        background-color: #0000009c;
-        font-family: "Inter", sans-serif;
-        box-sizing: border-box;
-        transition: top 0.3s;
-      }
-      .main-navbar.hide-navbar {
-        top: -80px; /* Hide above the viewport */
-      }
-      .navbar-logo {
-        font-size: 1.35rem;
-        font-weight: 700;
-        color: #fff;
-        letter-spacing: 1px;
-        white-space: nowrap;
-      }
-      .navbar-subtitle {
-        flex: 1;
-        text-align: center;
-        font-size: 1.1rem;
-        font-weight: 600;
-        color: #fff;
-        letter-spacing: 0.5px;
-        white-space: nowrap;
-      }
-      .navbar-links {
-        display: flex;
-        gap: 40px;
-      }
-      .navbar-links a {
-        color: #fff;
-        font-size: 1.08rem;
-        font-weight: 600;
-        text-decoration: none;
-        transition: color 0.18s;
-        position: relative;
-      }
-      .navbar-links a.active,
-      .navbar-links a:hover {
-        color: #6ee7ff;
-      }
-      /* Responsive styles for navigation bar */
-      @media (max-width: 900px) {
-        .main-navbar {
-          flex-direction: column;
-          height: auto;
-          padding: 12px 8px;
-          gap: 8px;
-        }
-        .navbar-logo,
-        .navbar-subtitle,
-        .navbar-links {
-          text-align: center;
-          margin: 0;
-        }
-        .navbar-links {
-          gap: 18px;
-          flex-wrap: wrap;
-          justify-content: center;
-        }
-      }
-      /* Scroll hint styles */
-      #scroll-hint {
-        display: none;
-        position: fixed;
-        top: 12px;
-        right: 16px;
-        z-index: 9999;
-        font-size: 0.8rem;
-        color: #fff;
-        padding: 6px 16px;
-        border-radius: 12px;
-        box-shadow: 0 0 80px 0 #4f66978a, 0 0 0 2px #263c5c96;
-        font-family: inherit;
-        pointer-events: none;
-        transition: opacity 0.3s;
-        opacity: 0.92;
-      }
-      /* Gradient text utility class */
-      .gradient-text {
-        background: linear-gradient(90deg, #ffffff, #ffffff, #ffffff);
-        background-size: 200% auto;
-        color: #fff;
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        transition: background 0.4s;
-        display: inline-block;
-      }
-      .gradient-text:hover {
-        background: linear-gradient(90deg, #00aeff, #73c6fd, #fdded4);
-        background-size: 200% auto;
-        background-position: right center;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        color: transparent;
-      }
-      /* Glassmorphism card for cake content */
-      .glass-card {
-        margin: 32px auto 0 auto;
-        max-width: 520px;
-        background: rgba(30, 50, 80, 0.35);
-        border-radius: 24px;
-        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25);
-        backdrop-filter: blur(16px) saturate(180%);
-        -webkit-backdrop-filter: blur(16px) saturate(180%);
-        border: 1.5px solid rgba(114, 206, 253, 0.22);
-        padding: 32px 32px 24px 32px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 24px;
-      }
-      .cake-img {
-        border: 4px solid #73c6fd;
-        border-radius: 12px;
-        box-shadow: 0 4px 24px #263c5c80;
-        width: 100%;
-        max-width: 380px;
-        height: auto;
-        aspect-ratio: 16/9;
-        object-fit: cover;
-        display: block;
-        margin: 0 auto;
-      }
-      .cake-description {
-        color: #eaf6ff;
-        font-size: 1.18rem;
-        text-align: center;
-        margin-top: 8px;
-        margin-bottom: 0;
-        letter-spacing: 0.01em;
-        line-height: 1.5;
-        text-shadow: 0 2px 8px #263c5c40;
-      }
-      /* Responsive styles for cake card and headings */
-      @media (max-width: 600px) {
-        .glass-card {
-          max-width: 98vw;
-          padding: 18px 4vw 16px 4vw;
-        }
-        .cake-img {
-          max-width: 98vw;
-        }
+
         h1 {
-          font-size: 2.5rem;
+            text-align: center;
+            color: #fff;
+            background: linear-gradient(90deg, #263c5c, #fdded4, #4f6697);
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 6rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-top: 90px;
+            margin-bottom: 60px;
+            animation: gradient-flow 5s linear infinite;
         }
-        h3 {
-          font-size: 1.1rem;
+
+        @keyframes gradient-flow {
+            0% {
+                background-position: 0% center;
+            }
+
+            50% {
+                background-position: 100% center;
+            }
+
+            100% {
+                background-position: 200% center;
+            }
         }
-      }
-      /* New styles for cake glass card and footer */
-      .cake-title-glass {
-        text-align: center;
-        color: #fff;
-        margin-top: 60px;
-        font-size: 3rem;
-        font-weight: 700;
-        letter-spacing: 1px;
-        text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
-      }
-      .cake-subtitle-glass {
-        text-align: center;
-        color: #fff;
-        margin-top: 10px;
-        margin-bottom: 40px;
-        font-size: 1.5rem;
-        font-weight: 500;
-        letter-spacing: 0.5px;
-        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-      }
-      .cake-glass-card {
-        margin: 0 auto;
-        max-width: 700px;
-        /* Match Apple Berry Crumble CheeseCake width */
-        background: rgba(30, 50, 80, 0.35);
-        border-radius: 24px;
-        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25);
-        backdrop-filter: blur(16px) saturate(180%);
-        -webkit-backdrop-filter: blur(16px) saturate(180%);
-        border: 1.5px solid rgba(114, 206, 253, 0.22);
-        padding: 32px 24px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 24px;
-        position: relative;
-        overflow: hidden;
-      }
-      .cake-image-glass {
-        border: 4px solid #73c6fd;
-        border-radius: 12px;
-        box-shadow: 0 4px 24px #263c5c80;
-        width: 100%;
-        max-width: 480px;
-        height: auto;
-        aspect-ratio: 16/9;
-        object-fit: cover;
-        display: block;
-        margin: 0 auto;
-      }
-      .cake-description-glass {
-        color: #eaf6ff;
-        font-size: 1.18rem;
-        text-align: center;
-        margin-top: 8px;
-        margin-bottom: 0;
-        letter-spacing: 0.01em;
-        line-height: 1.5;
-        text-shadow: 0 2px 8px #263c5c40;
-      }
+
+        /* Main image styles */
+        img {
+            border: 5px solid #73c6fd;
+            border-radius: 10px;
+            margin-top: 30px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            box-shadow: 0 4px 24px #263c5c80;
+            width: auto;
+            height: 50vh;
+            max-width: 50vw;
+            object-fit: cover;
+            aspect-ratio: 16 / 9;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 32px;
+        }
+
+        .back-link a {
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            background: linear-gradient(90deg, #00aeff, #73c6fd, #fdded4);
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: background 0.4s;
+        }
+
+        .back-link a:hover {
+            background: linear-gradient(90deg, #263c5c, #fdded4, #4f6697);
+            background-size: 200% auto;
+            background-position: right center;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Navbar styles */
+        .main-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            z-index: 200;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            background-color: #0000009c;
+            font-family: "Inter", sans-serif;
+            box-sizing: border-box;
+            transition: top 0.3s;
+        }
+
+        .main-navbar.hide-navbar {
+            top: -80px;
+            /* Hide above the viewport */
+        }
+
+        .navbar-logo {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        .navbar-subtitle {
+            flex: 1;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .navbar-links a {
+            color: #fff;
+            font-size: 1.08rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.18s;
+            position: relative;
+        }
+
+        .navbar-links a.active,
+        .navbar-links a:hover {
+            color: #6ee7ff;
+        }
+
+        /* Responsive styles for navigation bar */
+        @media (max-width: 900px) {
+            .main-navbar {
+                flex-direction: column;
+                height: auto;
+                padding: 12px 8px;
+                gap: 8px;
+            }
+
+            .navbar-logo,
+            .navbar-subtitle,
+            .navbar-links {
+                text-align: center;
+                margin: 0;
+            }
+
+            .navbar-links {
+                gap: 18px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        /* Scroll hint styles */
+        #scroll-hint {
+            display: none;
+            position: fixed;
+            top: 12px;
+            right: 16px;
+            z-index: 9999;
+            font-size: 0.8rem;
+            color: #fff;
+            padding: 6px 16px;
+            border-radius: 12px;
+            box-shadow: 0 0 80px 0 #4f66978a, 0 0 0 2px #263c5c96;
+            font-family: inherit;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            opacity: 0.92;
+        }
+
+        /* Gradient text utility class */
+        .gradient-text {
+            background: linear-gradient(90deg, #ffffff, #ffffff, #ffffff);
+            background-size: 200% auto;
+            color: #fff;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: background 0.4s;
+            display: inline-block;
+        }
+
+        .gradient-text:hover {
+            background: linear-gradient(90deg, #00aeff, #73c6fd, #fdded4);
+            background-size: 200% auto;
+            background-position: right center;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Glassmorphism card for cake content */
+        .glass-card {
+            margin: 32px auto 0 auto;
+            max-width: 520px;
+            background: rgba(30, 50, 80, 0.35);
+            border-radius: 24px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25);
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            border: 1.5px solid rgba(114, 206, 253, 0.22);
+            padding: 32px 32px 24px 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .cake-img {
+            border: 4px solid #73c6fd;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px #263c5c80;
+            width: 100%;
+            max-width: 380px;
+            height: auto;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .cake-description {
+            color: #eaf6ff;
+            font-size: 1.18rem;
+            text-align: center;
+            margin-top: 8px;
+            margin-bottom: 0;
+            letter-spacing: 0.01em;
+            line-height: 1.5;
+            text-shadow: 0 2px 8px #263c5c40;
+        }
+
+        /* Responsive styles for cake card and headings */
+        @media (max-width: 600px) {
+            .glass-card {
+                max-width: 98vw;
+                padding: 18px 4vw 16px 4vw;
+            }
+
+            .cake-img {
+                max-width: 98vw;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h3 {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* New styles for cake glass card and footer */
+        .cake-title-glass {
+            text-align: center;
+            color: #fff;
+            margin-top: 60px;
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+        }
+
+        .cake-subtitle-glass {
+            text-align: center;
+            color: #fff;
+            margin-top: 10px;
+            margin-bottom: 40px;
+            font-size: 1.5rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .cake-glass-card {
+            margin: 0 auto;
+            max-width: 700px;
+            /* Match Apple Berry Crumble CheeseCake width */
+            background: rgba(30, 50, 80, 0.35);
+            border-radius: 24px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25);
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            border: 1.5px solid rgba(114, 206, 253, 0.22);
+            padding: 32px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cake-image-glass {
+            border: 4px solid #73c6fd;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px #263c5c80;
+            width: 100%;
+            max-width: 480px;
+            height: auto;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .cake-description-glass {
+            color: #eaf6ff;
+            font-size: 1.18rem;
+            text-align: center;
+            margin-top: 8px;
+            margin-bottom: 0;
+            letter-spacing: 0.01em;
+            line-height: 1.5;
+            text-shadow: 0 2px 8px #263c5c40;
+        }
     </style>
-  </head>
-  <body>
+</head>
+
+<body>
     <!-- Navigation bar for site navigation -->
     <nav class="main-navbar">
-      <div class="navbar-logo gradient-text">
-        <a href="Activity4.html">MAP AREA</a>
-      </div>
-      <div class="navbar-links">
-        <a href="index.html" class="active gradient-text">Home</a>
-        <a href="index2.html#activity4_bookmark" class="gradient-text">Projects</a>
-      </div>
-      <div id="scroll-hint">Scroll up to see menu</div>
+        <div class="navbar-logo gradient-text">
+            <a href="Activity4.html">MAP AREA</a>
+        </div>
+        <div class="navbar-links">
+            <a href="index.html" class="active gradient-text">Home</a>
+            <a href="index2.html#activity4_bookmark" class="gradient-text">Projects</a>
+        </div>
+        <div id="scroll-hint">Scroll up to see menu</div>
     </nav>
     <!-- Main title for the cake -->
     <h1>Triple Chocolate Cake</h1>
     <!-- Glassmorphism card for cake content -->
     <div class="cake-glass-card">
-      <img
-        src="portfolio_images/chocolate.jpg"
-        alt="Triple Chocolate"
-        class="cake-image-glass"
-      >
-      <div class="cake-description-glass">
-        <p>
-          This decadent triple chocolate cake features layers of rich Belgian
-          chocolate sponge, creamy chocolate mousse, and a glossy chocolate
-          ganache. Perfect for true chocolate lovers!
-        </p>
-      </div>
+        <img src="portfolio_images/chocolate.jpg" alt="Triple Chocolate" class="cake-image-glass">
+        <div class="cake-description-glass">
+            <p>
+                This decadent triple chocolate cake features layers of rich Belgian
+                chocolate sponge, creamy chocolate mousse, and a glossy chocolate
+                ganache. Perfect for true chocolate lovers!
+            </p>
+        </div>
     </div>
     <!-- Link to go back to the main Activity4 page -->
     <div class="back-link">
-      <a href="Activity4.html">BACK TO MAIN</a>
+        <a href="Activity4.html">BACK TO MAIN</a>
     </div>
     <!-- JavaScript for hiding/showing navbar on scroll -->
     <script src="main.js"></script>
-  </body>
+</body>
+
 </html>
